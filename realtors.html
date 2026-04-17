@@ -1,154 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Realtors | SRQ Home Guardian &amp; Concierge</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
-    body{font-family:'DM Sans',sans-serif;background:#fff;color:#111827;line-height:1.6;-webkit-font-smoothing:antialiased}
-    :root{--black:#111827;--ink:#374151;--muted:#6B7280;--border:#E5E7EB;--bg:#F9F8F6;--bg2:#F3F1EE;--white:#ffffff;--green:#1B4332;--green-md:#2D6A4F;--green-lt:#D8EFE5;--sand:#C4A882;--shadow-sm:0 4px 12px rgba(17,24,39,.08);--shadow-md:0 12px 32px rgba(17,24,39,.10);--r:12px;--r-sm:6px}
-    nav{position:sticky;top:0;z-index:200;background:var(--white);border-bottom:1px solid var(--border);padding:0 6%;display:flex;align-items:center;justify-content:space-between;height:68px}
-    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;color:var(--black);text-decoration:none;display:flex;flex-direction:column;line-height:1.1}
-    .nav-logo-sub{font-family:'DM Sans',sans-serif;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:400}
-    .nav-links{display:flex;gap:2rem;align-items:center}
-    .nav-links a{color:var(--ink);text-decoration:none;font-size:.85rem;font-weight:500;transition:color .15s}
-    .nav-links a:hover,.nav-links a.active{color:var(--green)}
-    .nav-cta{background:var(--black);color:var(--white);padding:.5rem 1.3rem;border-radius:50px;font-size:.82rem;font-weight:600;text-decoration:none}
-    .page-hero{background:var(--black);padding:90px 6% 80px}
-    .hero-eyebrow{display:inline-block;font-size:.68rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--sand);margin-bottom:1.4rem}
-    .page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,5.5vw,5rem);font-weight:300;line-height:1.1;color:var(--white);margin-bottom:1.2rem}
-    .page-hero p{color:rgba(255,255,255,.58);font-size:.96rem;max-width:560px;line-height:1.75;font-weight:300;margin-bottom:2rem}
-    .wrap{max-width:1200px;margin:0 auto;padding:0 6%}
-    .section{padding:90px 0}.section.bg-alt{background:var(--bg)}.section.bg-dark{background:var(--black)}
-    .section-eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--green);margin-bottom:.7rem;display:block}
-    .section.bg-dark .section-eyebrow{color:var(--sand)}
-    .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weight:400;color:var(--black);line-height:1.15;margin-bottom:.9rem}
-    .section.bg-dark .section-title{color:var(--white)}
-    .section-sub{font-size:.93rem;color:var(--muted);max-width:520px;line-height:1.75;font-weight:300}
-    .section.bg-dark .section-sub{color:rgba(255,255,255,.5)}
-    .btn{display:inline-block;text-decoration:none;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.85rem;letter-spacing:.04em;text-transform:uppercase;padding:.75rem 1.8rem;border-radius:50px;transition:all .2s;border:none;cursor:pointer}
-    .btn-dark{background:var(--black);color:var(--white)}.btn-dark:hover{background:var(--green)}
-    .btn-outline-w{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.4)}.btn-outline-w:hover{border-color:var(--white)}
-    footer{background:var(--black);color:rgba(255,255,255,.4);padding:2.5rem 6%;text-align:center;font-size:.8rem;border-top:1px solid rgba(255,255,255,.06)}
-    footer a{color:rgba(255,255,255,.6);text-decoration:none}.footer-brand{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:rgba(255,255,255,.75);margin-bottom:.4rem}
-    .footer-links{margin-top:.8rem;display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap}
-    @media(max-width:768px){.page-hero{padding:60px 6% 50px}.section{padding:60px 0}.nav-links a:not(.nav-cta){display:none}}
-  </style>
-  <style>
-    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
-    .two-col p{font-size:.9rem;color:var(--muted);line-height:1.8;margin-bottom:1rem;font-weight:300}
-    .pull-quote{border-left:2px solid var(--sand);padding-left:2rem;margin:2rem 0}
-    .pull-quote blockquote{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:400;font-style:italic;color:var(--black);line-height:1.6;margin-bottom:.8rem}
-    .pull-quote cite{font-size:.75rem;color:var(--muted);font-style:normal;font-weight:500;letter-spacing:.08em;text-transform:uppercase}
-    .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-top:3rem}
-    .why-card{background:var(--white);padding:2rem;transition:background .15s}
-    .why-card:hover{background:var(--bg)}
-    .why-icon{font-size:1.6rem;margin-bottom:.8rem;display:block}
-    .why-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--black);margin-bottom:.4rem}
-    .why-desc{font-size:.8rem;color:var(--muted);line-height:1.65;font-weight:300}
-    .steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-top:3rem}
-    .step-card{background:var(--white);padding:2rem;transition:background .15s}
-    .step-card:hover{background:var(--bg)}
-    .step-n{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;color:var(--border);line-height:1;margin-bottom:.8rem}
-    .step-title{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--black);margin-bottom:.4rem}
-    .step-desc{font-size:.8rem;color:var(--muted);line-height:1.65;font-weight:300}
-    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
-    .form-field{margin-bottom:1.2rem}
-    .form-field label{display:block;font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:.45rem}
-    .form-field input,.form-field textarea{width:100%;padding:.8rem 1rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--r-sm);color:var(--white);font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:300;transition:border-color .15s}
-    .form-field input:focus,.form-field textarea:focus{outline:none;border-color:rgba(255,255,255,.3)}
-    .form-field input::placeholder,.form-field textarea::placeholder{color:rgba(255,255,255,.2)}
-    .form-field textarea{height:110px;resize:vertical}
-    @media(max-width:900px){.two-col{grid-template-columns:1fr;gap:3rem}.why-grid{grid-template-columns:1fr 1fr}.steps-grid{grid-template-columns:1fr 1fr}.contact-grid{grid-template-columns:1fr;gap:2.5rem}}
-    @media(max-width:600px){.why-grid,.steps-grid{grid-template-columns:1fr}}
-  </style>
-</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Realtors | SRQ Home Guardian &amp; Concierge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:#0a0a0a;color:#111827;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif}
+a{text-decoration:none;color:inherit}
+:root{--black:#0a0a0a;--charcoal:#111827;--ink:#1f2937;--muted:#6B7280;--bg:#F9F8F6;--white:#fff;--green:#1B4332;--gmd:#2D6A4F;--glt:#52B788;--sand:#C4A882;--glass:rgba(255,255,255,.07);--gb:rgba(255,255,255,.14)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:9999;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:76px;background:rgba(10,10,10,.9);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.07)}
+.nl .lm{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:#fff;letter-spacing:.05em}
+.nl .ls{font-size:.58rem;font-weight:500;color:rgba(255,255,255,.4);letter-spacing:.2em;text-transform:uppercase;display:block;margin-top:2px}
+.nr{display:flex;align-items:center;gap:36px}
+.nr a{font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7);transition:color .2s}
+.nr a:hover{color:#fff}
+.nr .ncta{background:#fff;color:#0a0a0a;padding:11px 26px;border-radius:2px;font-size:.72rem;font-weight:600;letter-spacing:.12em;transition:all .3s}
+.nr .ncta:hover{background:var(--sand);color:#fff}
+.stag{font-size:.63rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--sand);margin-bottom:14px;display:block}
+.stitle{font-size:clamp(2.2rem,3.5vw,3.4rem);font-weight:300;line-height:1.15}
+.ssub{font-size:1rem;font-weight:300;color:var(--muted);line-height:1.75;max-width:560px}
+.btn-w{background:#fff;color:#0a0a0a;font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:14px 30px;border-radius:2px;border:none;cursor:pointer;display:inline-block;transition:all .3s}
+.btn-w:hover{background:var(--sand);color:#fff}
+.btn-ghost{background:transparent;color:#fff;font-size:.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:13px 30px;border-radius:2px;border:1px solid rgba(255,255,255,.38);display:inline-block;transition:all .3s}
+.btn-ghost:hover{background:rgba(255,255,255,.1);border-color:#fff}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.rv.vis{opacity:1;transform:translateY(0)}
+
+/* HERO */
+.rhero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+.rhero-bg{position:absolute;inset:-8%;background:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1800&q=85&auto=format&fit=crop') center/cover no-repeat;will-change:transform}
+.rhero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,10,10,.85) 0%,rgba(10,10,10,.5) 55%,rgba(27,67,50,.55) 100%)}
+.rhero-near{position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to top,rgba(10,10,10,1) 0%,transparent 100%)}
+.rhero-content{position:relative;z-index:5;padding:160px 80px 120px;max-width:800px}
+.rhero h1{font-size:clamp(3rem,5vw,5.5rem);font-weight:300;color:#fff;line-height:1.1;margin-bottom:24px}
+.rhero h1 em{font-style:italic;color:var(--sand)}
+.rhero p{font-size:1.05rem;font-weight:300;color:rgba(255,255,255,.72);max-width:560px;line-height:1.75;margin-bottom:44px}
+.rhero-btns{display:flex;gap:16px}
+
+/* WHY US */
+.why{background:var(--bg);padding:100px 80px}
+.why-inner{display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:center}
+.why-img{position:relative}
+.why-img img{width:100%;height:560px;object-fit:cover;border-radius:4px;box-shadow:0 32px 80px rgba(0,0,0,.16);display:block}
+.why-glow{position:absolute;inset:-3px;border-radius:6px;background:linear-gradient(135deg,var(--green) 0%,var(--sand) 100%);z-index:-1;opacity:.5}
+.why-float{position:absolute;bottom:-28px;right:-28px;background:#fff;border-radius:12px;padding:24px 26px;box-shadow:0 20px 56px rgba(0,0,0,.14);transform:perspective(500px) rotateY(-6deg) rotateX(4deg);transition:transform .4s}
+.why-float:hover{transform:perspective(500px) rotateY(0deg) rotateX(0deg)}
+.wf-n{font-family:'Cormorant Garamond',serif;font-size:2.6rem;color:var(--green);font-weight:400;line-height:1}
+.wf-t{font-size:.68rem;font-weight:500;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-top:5px}
+.benefit-list{display:flex;flex-direction:column;gap:20px;margin-top:36px}
+.bitem{display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:8px;background:#fff;transition:all .35s;cursor:default;transform-style:preserve-3d}
+.bitem:hover{box-shadow:0 10px 36px rgba(0,0,0,.07);transform:perspective(400px) rotateX(2deg) translateX(6px)}
+.bicon{width:40px;height:40px;border-radius:8px;background:rgba(27,67,50,.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem}
+.bitem h4{font-family:'DM Sans',sans-serif;font-size:.86rem;font-weight:600;color:var(--charcoal);margin-bottom:3px}
+.bitem p{font-size:.8rem;color:var(--muted);line-height:1.6}
+
+/* PARTNER SECTION */
+.partner{background:var(--charcoal);padding:100px 80px;position:relative;overflow:hidden}
+.partner::before{content:'';position:absolute;top:-150px;left:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(196,168,130,.12) 0%,transparent 70%);pointer-events:none}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px;perspective:1000px}
+.pcard{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:36px;position:relative;transition:all .4s;transform-style:preserve-3d;cursor:default}
+.pcard:hover{background:rgba(255,255,255,.09);transform:perspective(700px) rotateY(-4deg) rotateX(3deg) translateY(-6px);box-shadow:0 24px 64px rgba(0,0,0,.4)}
+.pcard-shine{position:absolute;inset:0;background:linear-gradient(135deg,transparent 35%,rgba(255,255,255,.05) 50%,transparent 65%);opacity:0;transition:opacity .3s;pointer-events:none;border-radius:14px}
+.pcard:hover .pcard-shine{opacity:1}
+.pcard-num{font-family:'Cormorant Garamond',serif;font-size:3rem;color:var(--sand);font-weight:300;line-height:1;margin-bottom:12px}
+.pcard h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:#fff;margin-bottom:10px}
+.pcard p{font-size:.82rem;color:rgba(255,255,255,.55);line-height:1.65}
+
+/* CTA FULLBLEED */
+.rcta{position:relative;min-height:55vh;display:flex;align-items:center;justify-content:center;overflow:hidden;text-align:center}
+.rcta-bg{position:absolute;inset:-8%;background:url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1600&q=80&auto=format&fit=crop') center/cover no-repeat;will-change:transform}
+.rcta-ov{position:absolute;inset:0;background:rgba(10,10,10,.74)}
+.rcta-body{position:relative;z-index:5;padding:80px 40px;max-width:680px}
+.rcta-body .stag{color:var(--sand)}
+.rcta-body .stitle{color:#fff;margin-bottom:18px}
+.rcta-body p{color:rgba(255,255,255,.65);font-size:1rem;line-height:1.7;margin-bottom:40px}
+.rcta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+/* FOOTER */
+.footer{background:#050505;padding:72px 80px 40px;color:rgba(255,255,255,.5)}
+.ftop{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:60px;margin-bottom:56px}
+.fbrand .lm{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#fff;font-weight:400;margin-bottom:4px}
+.fbrand .ls{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:14px;display:block}
+.fbrand p{font-size:.78rem;line-height:1.75;max-width:250px}
+.fcol h4{font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:18px}
+.fcol a{display:block;font-size:.8rem;color:rgba(255,255,255,.5);margin-bottom:9px;transition:color .2s}
+.fcol a:hover{color:#fff}
+.fbot{border-top:1px solid rgba(255,255,255,.06);padding-top:26px;display:flex;justify-content:space-between}
+.fbot p{font-size:.7rem;color:rgba(255,255,255,.22)}
+@media(max-width:960px){
+  .nav{padding:0 24px}
+  .rhero{padding-left:28px!important}
+  .rhero-content,.why,.partner,.footer{padding-left:28px!important;padding-right:28px!important}
+  .why-inner{grid-template-columns:1fr}
+  .pgrid{grid-template-columns:1fr}
+  .ftop{grid-template-columns:1fr 1fr;gap:36px}
+}
+</style></head>
 <body>
-  <nav>
-    <a href="index.html" class="nav-logo"><span class="nav-logo-top">SRQ HGC</span><span class="nav-logo-sub">Home Guardian &amp; Concierge</span></a>
-    <div class="nav-links"><a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="realtors.html" class="active">Realtors</a><a href="contact.html" class="nav-cta">Contact</a></div>
-  </nav>
-  <header class="page-hero">
-    <div class="wrap">
-      <span class="hero-eyebrow">Realtor Partnership</span>
-      <h1>We Work With<br>Sarasota Realtors</h1>
-      <p>When your clients purchase a second home in Sarasota, they need someone they can trust to watch over it. SRQ HGC is the partner realtors recommend.</p>
-      <a href="#partner" class="btn btn-dark">Work With Us</a>
+<nav class="nav">
+  <div class="nl"><span class="lm">SRQ HGC</span><span class="ls">Home Guardian &amp; Concierge</span></div>
+  <div class="nr">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="realtors.html">Realtors</a>
+    <a href="contact.html" class="ncta">Get Started</a>
+  </div>
+</nav>
+
+<section class="rhero">
+  <div class="rhero-bg" id="rheroBg"></div>
+  <div class="rhero-near"></div>
+  <div class="rhero-content rv">
+    <div class="stag">For Real Estate Professionals</div>
+    <h1>We Work With<br><em>Realtors</em></h1>
+    <p>When your clients close on a Sarasota property, the question becomes: who takes care of it? We do. Partner with SRQ HGC to ensure every client you place has world-class home care from day one.</p>
+    <div class="rhero-btns">
+      <a href="contact.html" class="btn-w">Let's Connect</a>
+      <a href="pricing.html" class="btn-ghost">View Plans</a>
     </div>
-  </header>
-  <section class="section">
-    <div class="wrap">
-      <div class="two-col">
-        <div>
-          <span class="section-eyebrow">Why It Matters</span>
-          <h2 class="section-title">Your Clients Bought a Home. Now What?</h2>
-          <p>Most buyers in Sarasota are part-time residents — snowbirds, second-home owners, investors. They go back north. They travel. And their beautiful new home sits empty for months at a time.</p>
-          <p>That's where SRQ HGC comes in. We provide professional home watch, hurricane preparation, vendor coordination, and concierge services that protect their investment and keep them coming back to Sarasota.</p>
-          <p>When you introduce your clients to SRQ HGC, you're not just selling them a home — you're setting them up with everything they need to enjoy it worry-free, long after the closing.</p>
-        </div>
-        <div>
-          <div class="pull-quote">
-            <blockquote>"My clients always ask what they're supposed to do when they're not in town. Now I have a real answer — and it's one that makes them feel taken care of long after the closing."</blockquote>
-            <cite>— Sarasota Realtor Partner</cite>
-          </div>
-        </div>
+  </div>
+</section>
+
+<section class="why rv">
+  <div class="why-inner">
+    <div class="why-img">
+      <div class="why-glow"></div>
+      <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=85&auto=format&fit=crop" alt="Realtor partnership" loading="lazy">
+      <div class="why-float">
+        <div class="wf-n">50+</div>
+        <div class="wf-t">Active Member Homes</div>
       </div>
     </div>
-  </section>
-  <section class="section bg-alt">
-    <div class="wrap">
-      <span class="section-eyebrow">What Your Clients Get</span>
-      <h2 class="section-title">Everything Their Property Needs</h2>
-      <p class="section-sub">SRQ HGC covers every aspect of owning a second home in Sarasota — from hurricane prep to restaurant reservations.</p>
-      <div class="why-grid">
-        <div class="why-card"><span class="why-icon">🏠</span><div class="why-name">Professional Home Watch</div><p class="why-desc">Regular property inspections with photo documentation. Your clients stay informed no matter where they are.</p></div>
-        <div class="why-card"><span class="why-icon">🌀</span><div class="why-name">Hurricane Protection</div><p class="why-desc">Pre-storm prep, post-storm inspection, and real-time updates during every weather event.</p></div>
-        <div class="why-card"><span class="why-icon">🔧</span><div class="why-name">Vendor Coordination</div><p class="why-desc">We manage every contractor so your clients never have to fly home for a repair.</p></div>
-        <div class="why-card"><span class="why-icon">🍽️</span><div class="why-name">Concierge &amp; Lifestyle</div><p class="why-desc">Restaurant reservations, grocery delivery, event tickets, transportation — so every visit feels like a five-star arrival.</p></div>
-        <div class="why-card"><span class="why-icon">📱</span><div class="why-name">Smart Home Monitoring</div><p class="why-desc">We monitor alarm systems, cameras, and smart devices — protecting their investment around the clock.</p></div>
-        <div class="why-card"><span class="why-icon">🏡</span><div class="why-name">Welcome Home Package</div><p class="why-desc">We can prepare the home before their first arrival — fresh flowers, stocked pantry, AC set. A perfect first impression.</p></div>
+    <div>
+      <div class="stag">The Partnership</div>
+      <h2 class="stitle" style="color:var(--charcoal)">Your Clients Get<br>the Best. Always.</h2>
+      <p class="ssub" style="margin-bottom:0">You work hard to place your clients in the right home. We make sure that home is always protected, maintained, and ready — so they love every moment of ownership.</p>
+      <div class="benefit-list">
+        <div class="bitem"><div class="bicon">🤝</div><div><h4>A Trusted Referral Partner</h4><p>We work with realtors across Sarasota, Longboat Key, Siesta Key, and Casey Key. When you refer a client, they're in expert hands.</p></div></div>
+        <div class="bitem"><div class="bicon">🏠</div><div><h4>Full-Spectrum Home Care</h4><p>From basic home watch to full concierge — every client can find the right plan. We fit seamlessly into the post-closing experience.</p></div></div>
+        <div class="bitem"><div class="bicon">📋</div><div><h4>Photo Reports Your Clients Will Love</h4><p>Detailed photo reports after every visit. Your clients stay informed about their property — which reflects well on everyone involved.</p></div></div>
+        <div class="bitem"><div class="bicon">🌀</div><div><h4>Hurricane Preparedness Built In</h4><p>Clients buying in Florida want to know their home is protected during storm season. We give them exactly that confidence.</p></div></div>
       </div>
     </div>
-  </section>
-  <section class="section">
-    <div class="wrap">
-      <span class="section-eyebrow">How the Partnership Works</span>
-      <h2 class="section-title">Simple. No Obligations. Just Value.</h2>
-      <p class="section-sub">No paperwork, no commitments — just a trusted resource you can offer your clients at any point in the transaction.</p>
-      <div class="steps-grid">
-        <div class="step-card"><div class="step-n">01</div><div class="step-title">Reach Out to Us</div><p class="step-desc">Drop us a message or call directly. We'll introduce ourselves and make sure you're comfortable with what we offer your clients.</p></div>
-        <div class="step-card"><div class="step-n">02</div><div class="step-title">We Provide Materials</div><p class="step-desc">We'll give you simple, professional materials to share — so you always have a ready answer to "who watches the home when we're away?"</p></div>
-        <div class="step-card"><div class="step-n">03</div><div class="step-title">Introduce Your Clients</div><p class="step-desc">At closing, during the walkthrough, or whenever your client asks — introduce them to SRQ HGC. We'll take it from there.</p></div>
-        <div class="step-card"><div class="step-n">04</div><div class="step-title">We Take Care of Them</div><p class="step-desc">We become their trusted local resource in Sarasota. They stay happy in their new home. Your relationship with them grows stronger.</p></div>
-      </div>
+  </div>
+</section>
+
+<section class="partner rv">
+  <div class="stag" style="color:var(--sand)">How It Works</div>
+  <h2 class="stitle" style="color:#fff">Simple Partnership.<br>Real Results.</h2>
+  <div class="pgrid">
+    <div class="pcard"><div class="pcard-shine"></div><div class="pcard-num">01</div><h3>You Make the Intro</h3><p>When a client closes on a Sarasota property, connect them with SRQ HGC. A quick introduction is all it takes — we handle everything from there.</p></div>
+    <div class="pcard"><div class="pcard-shine"></div><div class="pcard-num">02</div><h3>We Consult &amp; Enroll</h3><p>We meet with your client, learn their property and lifestyle needs, and recommend the right membership tier. No pressure — just honest guidance.</p></div>
+    <div class="pcard"><div class="pcard-shine"></div><div class="pcard-num">03</div><h3>Their Home Is Protected</h3><p>From the moment they sign up, their property is under our care. They get photo reports, hurricane prep, concierge access — and total peace of mind.</p></div>
+  </div>
+</section>
+
+<section class="rcta">
+  <div class="rcta-bg" id="rctaBg"></div>
+  <div class="rcta-ov"></div>
+  <div class="rcta-body rv">
+    <div class="stag">Let's Work Together</div>
+    <h2 class="stitle">Partner With<br>SRQ HGC</h2>
+    <p>We work with real estate professionals who want to give their clients an exceptional ownership experience. Let's talk.</p>
+    <div class="rcta-btns">
+      <a href="contact.html" class="btn-w">Get in Touch</a>
+      <a href="pricing.html" class="btn-ghost">View Our Plans</a>
     </div>
-  </section>
-  <section class="section bg-dark" id="partner">
-    <div class="wrap">
-      <div class="contact-grid">
-        <div>
-          <span class="section-eyebrow">Get in Touch</span>
-          <h2 class="section-title">Let's Work Together</h2>
-          <p class="section-sub">Reach out and let's talk about how SRQ HGC can be the resource you offer your Sarasota clients.</p>
-        </div>
-        <div>
-          <div class="form-field"><label>Your Name</label><input type="text" placeholder="Jane Smith"></div>
-          <div class="form-field"><label>Brokerage / Company</label><input type="text" placeholder="Coldwell Banker, Michael Saunders, etc."></div>
-          <div class="form-field"><label>Email Address</label><input type="email" placeholder="jane@brokerage.com"></div>
-          <div class="form-field"><label>Phone</label><input type="tel" placeholder="(941) 555-0100"></div>
-          <div class="form-field"><label>Message (optional)</label><textarea placeholder="Tell us about your clients or what you're looking for..."></textarea></div>
-          <a href="contact.html" class="btn btn-outline-w" style="width:100%;text-align:center;display:block">Send via Contact Page</a>
-        </div>
-      </div>
-    </div>
-  </section>
-  <footer>
-    <div class="footer-brand">SRQ Home Guardian &amp; Concierge</div>
-    <div>Sarasota · Longboat Key · Siesta Key · Casey Key</div>
-    <div class="footer-links"><a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="realtors.html">Realtors</a><a href="contact.html">Contact</a></div>
-  </footer>
-</body>
-</html>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="ftop">
+    <div class="fbrand"><div class="lm">SRQ HGC</div><span class="ls">Home Guardian &amp; Concierge</span><p>Protecting and caring for Sarasota's finest homes — year-round, rain or shine, storm or calm.</p></div>
+    <div class="fcol"><h4>Services</h4><a href="services.html">Home Watch</a><a href="services.html">Hurricane Prep</a><a href="services.html">Concierge</a><a href="services.html">Transportation</a></div>
+    <div class="fcol"><h4>Company</h4><a href="index.html">Home</a><a href="pricing.html">Pricing</a><a href="realtors.html">Realtors</a><a href="contact.html">Contact</a></div>
+    <div class="fcol"><h4>Service Areas</h4><a href="#">Sarasota</a><a href="#">Longboat Key</a><a href="#">Siesta Key</a><a href="#">Casey Key</a></div>
+  </div>
+  <div class="fbot"><p>&copy; 2025 SRQ Home Guardian &amp; Concierge. All rights reserved.</p><p>Sarasota, Florida</p></div>
+</footer>
+<script>
+window.addEventListener('scroll',()=>{
+  const b=document.getElementById('rheroBg'),c=document.getElementById('rctaBg');
+  if(b) b.style.transform='translateY('+(scrollY*0.12)+'px)';
+  if(c) c.style.transform='translateY('+(scrollY*0.06)+'px)';
+});
+document.querySelectorAll('.pcard').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+    card.style.transform='perspective(700px) rotateY('+(x*14)+'deg) rotateX('+(-y*9)+'deg) translateY(-6px)';
+  });
+  card.addEventListener('mouseleave',()=>{card.style.transform='';});
+});
+document.querySelectorAll('.bitem').forEach(el=>{
+  el.addEventListener('mousemove',e=>{
+    const r=el.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    el.style.transform='perspective(400px) rotateX(2deg) translateX('+(x*8+6)+'px)';
+  });
+  el.addEventListener('mouseleave',()=>{el.style.transform='';});
+});
+const ro=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')}),{threshold:0.1});
+document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
+</script>
+</body></html>
