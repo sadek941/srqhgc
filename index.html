@@ -1,277 +1,536 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SRQ HGC — Home Guardian &amp; Concierge | Sarasota, Florida</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{font-family:'DM Sans',sans-serif;background:#fff;color:#111827;line-height:1.6;-webkit-font-smoothing:antialiased}
-    :root{
-      --black:#111827;--ink:#374151;--muted:#6B7280;--border:#E5E7EB;
-      --bg:#F9F8F6;--bg2:#F3F1EE;--white:#ffffff;
-      --green:#1B4332;--green-md:#2D6A4F;--green-lt:#D8EFE5;--sand:#C4A882;
-      --shadow-xs:0 1px 3px rgba(17,24,39,.06);
-      --shadow-sm:0 4px 12px rgba(17,24,39,.08);
-      --shadow-md:0 12px 32px rgba(17,24,39,.10);
-      --shadow-lg:0 24px 56px rgba(17,24,39,.14);
-      --r:12px;--r-sm:6px
-    }
-    nav{position:sticky;top:0;z-index:200;background:var(--white);border-bottom:1px solid var(--border);padding:0 6%;display:flex;align-items:center;justify-content:space-between;height:68px}
-    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;letter-spacing:.02em;color:var(--black);text-decoration:none;display:flex;flex-direction:column;line-height:1.1}
-    .nav-logo-sub{font-family:'DM Sans',sans-serif;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:400}
-    .nav-links{display:flex;gap:2rem;align-items:center}
-    .nav-links a{color:var(--ink);text-decoration:none;font-size:.85rem;font-weight:500;transition:color .15s}
-    .nav-links a:hover,.nav-links a.active{color:var(--green)}
-    .nav-cta{background:var(--black);color:var(--white);padding:.5rem 1.3rem;border-radius:50px;font-size:.82rem;font-weight:600;text-decoration:none;transition:background .2s}
-    .nav-cta:hover{background:var(--green)}
-    .page-hero{background:var(--black);padding:90px 6% 80px;text-align:center;position:relative;overflow:hidden}
-    .hero-eyebrow{display:inline-block;font-size:.68rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--sand);margin-bottom:1.4rem}
-    .page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,5.5vw,5rem);font-weight:300;line-height:1.1;color:var(--white);margin-bottom:1.2rem;letter-spacing:-.01em}
-    .page-hero p{color:rgba(255,255,255,.58);font-size:.96rem;max-width:520px;margin:0 auto;line-height:1.75;font-weight:300}
-    .page-hero strong{color:rgba(255,255,255,.9);font-weight:500}
-    .wrap{max-width:1200px;margin:0 auto;padding:0 6%}
-    .section{padding:90px 0}
-    .section.bg-alt{background:var(--bg)}
-    .section.bg-dark{background:var(--black)}
-    .section.bg-green{background:var(--green)}
-    .section-eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--green);margin-bottom:.7rem;display:block}
-    .section.bg-dark .section-eyebrow{color:var(--sand)}
-    .section.bg-green .section-eyebrow{color:rgba(255,255,255,.6)}
-    .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weight:400;color:var(--black);line-height:1.15;letter-spacing:-.01em;margin-bottom:.9rem}
-    .section.bg-dark .section-title,.section.bg-green .section-title{color:var(--white)}
-    .section-sub{font-size:.93rem;color:var(--muted);max-width:520px;line-height:1.75;font-weight:300}
-    .section.bg-dark .section-sub{color:rgba(255,255,255,.5)}
-    .section.bg-green .section-sub{color:rgba(255,255,255,.7)}
-    .btn{display:inline-block;text-decoration:none;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.85rem;letter-spacing:.04em;text-transform:uppercase;padding:.75rem 1.8rem;border-radius:50px;transition:all .2s}
-    .btn-dark{background:var(--black);color:var(--white)}
-    .btn-dark:hover{background:var(--green);transform:translateY(-1px)}
-    .btn-green{background:var(--green);color:var(--white)}
-    .btn-green:hover{background:var(--green-md);transform:translateY(-1px)}
-    .btn-outline{background:transparent;color:var(--black);border:1.5px solid var(--black)}
-    .btn-outline:hover{background:var(--black);color:var(--white)}
-    .btn-outline-w{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.4)}
-    .btn-outline-w:hover{border-color:var(--white);background:rgba(255,255,255,.06)}
-    footer{background:var(--black);color:rgba(255,255,255,.4);padding:2.5rem 6%;text-align:center;font-size:.8rem;border-top:1px solid rgba(255,255,255,.06)}
-    footer a{color:rgba(255,255,255,.6);text-decoration:none;transition:color .15s}
-    footer a:hover{color:var(--white)}
-    .footer-brand{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:rgba(255,255,255,.75);margin-bottom:.4rem}
-    .footer-links{margin-top:.8rem;display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap}
-    @media(max-width:768px){.page-hero{padding:60px 6% 50px}.section{padding:60px 0}.nav-links a:not(.nav-cta){display:none}}
-  </style>
-  <style>
-    .hero{min-height:auto;background:var(--black);display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:5rem;padding:60px 6%;position:relative;overflow:hidden}
-    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 75% 25%,rgba(196,168,130,.05) 0%,transparent 55%);pointer-events:none}
-    .hero-pill{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.5);font-size:.65rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;padding:.4rem 1rem;border-radius:50px;margin-bottom:2rem}
-    .hero-pill-dot{width:5px;height:5px;background:var(--sand);border-radius:50%;flex-shrink:0}
-    .hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,4.5vw,4.2rem);font-weight:300;line-height:1.05;color:var(--white);letter-spacing:-.02em;margin-bottom:1.5rem}
-    .hero h1 em{font-style:italic;color:var(--sand)}
-    .hero-sub{font-size:.95rem;color:rgba(255,255,255,.5);max-width:440px;line-height:1.8;margin-bottom:2.5rem;font-weight:300}
-    .hero-actions{display:flex;gap:1rem;margin-bottom:3.5rem;flex-wrap:wrap}
-    .hero-divider{width:40px;height:1px;background:rgba(255,255,255,.15);margin-bottom:2rem}
-    .hero-stats{display:flex;gap:2.5rem}
-    .stat-val{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:var(--white);line-height:1}
-    .stat-label{font-size:.62rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:.2rem}
-    .hero-right{position:relative}
-    .hero-img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--r);display:block;filter:brightness(.88) saturate(.9)}
-    .hero-badge{position:absolute;top:2rem;right:-1.5rem;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-radius:var(--r-sm);padding:1rem 1.3rem;box-shadow:var(--shadow-md);min-width:150px}
-    .hero-badge-label{font-size:.6rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.2rem}
-    .hero-badge-val{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--black);line-height:1}
-    .hero-badge-sub{font-size:.68rem;color:var(--muted)}
-    .hero-badge2{position:absolute;bottom:2rem;left:-1.5rem;background:var(--green);border-radius:var(--r-sm);padding:.9rem 1.2rem;display:flex;align-items:center;gap:.8rem;box-shadow:var(--shadow-md)}
-    .hero-badge2-dot{width:8px;height:8px;background:#6BD0A0;border-radius:50%;flex-shrink:0}
-    .hero-badge2-text{font-size:.8rem;font-weight:600;color:var(--white)}
-    .hero-badge2-sub{font-size:.68rem;color:rgba(255,255,255,.6)}
-    .trust-bar{background:var(--bg);border-bottom:1px solid var(--border);padding:1.2rem 6%;display:flex;justify-content:center;flex-wrap:wrap}
-    .trust-item{display:flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:.4rem 1.8rem;border-right:1px solid var(--border)}
-    .trust-item:last-child{border-right:none}
-    .trust-dot{width:4px;height:4px;background:var(--green);border-radius:50%;flex-shrink:0}
-    .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-top:3.5rem}
-    .why-card{background:var(--white);padding:2.2rem 2rem;transition:background .2s}
-    .why-card:hover{background:var(--bg)}
-    .why-num{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--border);line-height:1;margin-bottom:1rem}
-    .why-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--black);margin-bottom:.5rem}
-    .why-desc{font-size:.83rem;color:var(--muted);line-height:1.7;font-weight:300}
-    .hurricane-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
-    .hurricane-inner p{color:rgba(255,255,255,.55);font-size:.9rem;line-height:1.8;margin-bottom:1rem;font-weight:300}
-    .hurricane-list{list-style:none;margin:1.8rem 0 2rem}
-    .hurricane-list li{display:flex;align-items:flex-start;gap:.8rem;font-size:.85rem;color:rgba(255,255,255,.7);padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.06)}
-    .hurricane-list li:last-child{border-bottom:none}
-    .h-dash{width:16px;height:1px;background:var(--sand);flex-shrink:0;margin-top:9px}
-    .h-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);overflow:hidden}
-    .h-stat{background:rgba(255,255,255,.03);padding:2rem 1.5rem}
-    .h-stat-val{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--white);line-height:1}
-    .h-stat-label{font-size:.65rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:.4rem}
-    .preview-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-top:3.5rem}
-    .preview-col{background:var(--white);padding:1.8rem 1.4rem;display:flex;flex-direction:column;transition:background .15s}
-    .preview-col:hover{background:var(--bg)}
-    .preview-col.featured{background:var(--black)}
-    .preview-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;margin-bottom:.3rem}
-    .preview-col:not(.featured) .preview-name{color:var(--black)}
-    .preview-col.featured .preview-name{color:var(--white)}
-    .preview-price{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:300;line-height:1;margin:.4rem 0 .15rem}
-    .preview-col:not(.featured) .preview-price{color:var(--black)}
-    .preview-col.featured .preview-price{color:var(--white)}
-    .preview-mo{font-size:.7rem;color:var(--muted);margin-bottom:1.2rem}
-    .preview-col.featured .preview-mo{color:rgba(255,255,255,.4)}
-    .preview-feats{list-style:none;flex:1}
-    .preview-feats li{font-size:.77rem;padding:.2rem 0;display:flex;gap:.4rem}
-    .preview-col:not(.featured) .preview-feats li{color:var(--ink)}
-    .preview-col.featured .preview-feats li{color:rgba(255,255,255,.75)}
-    .preview-ck{font-size:.65rem;color:var(--green);flex-shrink:0;margin-top:2px}
-    .preview-col.featured .preview-ck{color:rgba(255,255,255,.5)}
-    .preview-cta{display:block;text-align:center;margin-top:1.4rem;padding:.6rem 1rem;border-radius:50px;font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:all .2s}
-    .preview-col:not(.featured) .preview-cta{border:1.5px solid var(--border);color:var(--black)}
-    .preview-col:not(.featured) .preview-cta:hover{border-color:var(--black);background:var(--black);color:var(--white)}
-    .preview-col.featured .preview-cta{background:var(--white);color:var(--black)}
-    .preview-col.featured .preview-cta:hover{background:var(--sand)}
-    .annual-note{text-align:center;margin-top:1.5rem;font-size:.83rem;color:var(--muted)}
-    .annual-note strong{color:var(--green)}
-    .see-all{display:inline-block;margin-top:.8rem;font-size:.8rem;color:var(--green);text-decoration:none;font-weight:600}
-    .see-all:hover{text-decoration:underline}
-    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-top:3.5rem}
-    .svc-card{background:var(--white);padding:2rem;transition:background .15s}
-    .svc-card:hover{background:var(--bg)}
-    .svc-icon{font-size:1.6rem;margin-bottom:.8rem;display:block}
-    .svc-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--black);margin-bottom:.4rem}
-    .svc-desc{font-size:.8rem;color:var(--muted);line-height:1.65;font-weight:300}
-    .realtors-inner{display:grid;grid-template-columns:1fr auto;gap:4rem;align-items:center}
-    @media(max-width:1000px){.hero{grid-template-columns:1fr;min-height:auto;padding:60px 6%}.hero-right{display:none}.why-grid{grid-template-columns:1fr}.hurricane-inner{grid-template-columns:1fr;gap:3rem}.preview-grid{grid-template-columns:1fr}.services-grid{grid-template-columns:1fr 1fr}.realtors-inner{grid-template-columns:1fr;gap:2rem}}
-    @media(max-width:600px){.services-grid{grid-template-columns:1fr}}
-  </style>
-</head>
-<body>
-  <nav>
-    <a href="index.html" class="nav-logo"><span class="nav-logo-top">SRQ HGC</span><span class="nav-logo-sub">Home Guardian &amp; Concierge</span></a>
-    <div class="nav-links">
-      <a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="realtors.html">Realtors</a>
-      <a href="contact.html" class="nav-cta">Get Started</a>
-    </div>
-  </nav>
-  <section class="hero">
-    <div>
-      <div class="hero-pill"><span class="hero-pill-dot"></span>Sarasota · Longboat Key · Siesta Key · Casey Key</div>
-      <h1>Your Home<br><em>Guardians</em> —<br>Everything<br>Handled</h1>
-      <p class="hero-sub">From home watch and hurricane prep to restaurant reservations, grocery delivery, and transportation — one membership, total peace of mind.</p>
-      <div class="hero-actions">
-        <a href="contact.html" class="btn btn-dark">Get Started Today</a>
-        <a href="pricing.html" class="btn btn-outline-w">View Plans</a>
-      </div>
-      <div class="hero-divider"></div>
-      <div class="hero-stats">
-        <div><div class="stat-val">50+</div><div class="stat-label">Homes Protected</div></div>
-        <div><div class="stat-val">24hr</div><div class="stat-label">Emergency Response</div></div>
-        <div><div class="stat-val">5</div><div class="stat-label">Membership Tiers</div></div>
-      </div>
-    </div>
-    <div class="hero-right">
-      <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=700&q=80" alt="Luxury Sarasota property" class="hero-img">
-      <div class="hero-badge"><div class="hero-badge-label">Active Clients</div><div class="hero-badge-val">50+</div><div class="hero-badge-sub">Sarasota County</div></div>
-      <div class="hero-badge2"><div class="hero-badge2-dot"></div><div><div class="hero-badge2-text">Next Visit: Today</div><div class="hero-badge2-sub">Photo report on the way</div></div></div>
-    </div>
-  </section>
-  <div class="trust-bar">
-    <div class="trust-item"><span class="trust-dot"></span>Licensed &amp; Insured</div>
-    <div class="trust-item"><span class="trust-dot"></span>Photo Reports Every Visit</div>
-    <div class="trust-item"><span class="trust-dot"></span>Hurricane-Ready Protocols</div>
-    <div class="trust-item"><span class="trust-dot"></span>Smart Home Integration</div>
-    <div class="trust-item"><span class="trust-dot"></span>5-Star Service</div>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SRQ HGC — Home Guardian &amp; Concierge | Sarasota, Florida</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:#0a0a0a;color:#111827;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif}
+a{text-decoration:none;color:inherit}
+:root{
+  --black:#0a0a0a;
+  --charcoal:#111827;
+  --ink:#1f2937;
+  --muted:#6B7280;
+  --bg:#F9F8F6;
+  --white:#ffffff;
+  --green:#1B4332;
+  --gmd:#2D6A4F;
+  --glt:#52B788;
+  --sand:#C4A882;
+  --sand2:#E8D5B7;
+  --glass:rgba(255,255,255,0.07);
+  --gb:rgba(255,255,255,0.14);
+}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:9999;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:76px;transition:background .4s,backdrop-filter .4s}
+.nav.solid{background:rgba(10,10,10,.92);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.08)}
+.nl .lm{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:#fff;letter-spacing:.05em}
+.nl .ls{font-size:.58rem;font-weight:500;color:rgba(255,255,255,.4);letter-spacing:.2em;text-transform:uppercase;display:block;margin-top:2px}
+.nr{display:flex;align-items:center;gap:36px}
+.nr a{font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.75);transition:color .2s}
+.nr a:hover{color:#fff}
+.nr .ncta{background:#fff;color:#0a0a0a;padding:11px 26px;border-radius:2px;font-size:.72rem;font-weight:600;letter-spacing:.12em;transition:all .3s}
+.nr .ncta:hover{background:var(--sand);color:#fff}
+
+/* ── HERO ── */
+.hero{position:relative;height:100vh;min-height:700px;display:flex;align-items:center;overflow:hidden;perspective:1200px}
+.hero-layers{position:absolute;inset:0}
+.hl-far{position:absolute;inset:-8%;background:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=85&auto=format&fit=crop') center/cover no-repeat;transform:translateZ(-60px) scale(1.5);will-change:transform}
+.hl-mid{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,10,10,.8) 0%,rgba(10,10,10,.45) 55%,rgba(27,67,50,.55) 100%)}
+.hl-near{position:absolute;bottom:0;left:0;right:0;height:240px;background:linear-gradient(to top,rgba(10,10,10,1) 0%,transparent 100%)}
+.hero-content{position:relative;z-index:10;padding:0 80px;max-width:820px}
+.hbadge{display:inline-flex;align-items:center;gap:9px;background:var(--glass);backdrop-filter:blur(16px);border:1px solid var(--gb);padding:8px 18px;border-radius:50px;margin-bottom:36px}
+.hbadge .dot{width:7px;height:7px;border-radius:50%;background:#4ade80;animation:blink 2.2s infinite}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.4)}}
+.hbadge span{font-size:.65rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.hero h1{font-size:clamp(3.4rem,5.8vw,6.2rem);font-weight:300;color:#fff;line-height:1.05;letter-spacing:-.01em;margin-bottom:28px}
+.hero h1 em{font-style:italic;color:var(--sand);font-weight:400}
+.hero p{font-size:1.05rem;font-weight:300;color:rgba(255,255,255,.72);line-height:1.75;max-width:520px;margin-bottom:48px}
+.hbtns{display:flex;gap:16px}
+.btn-w{background:#fff;color:#0a0a0a;font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:16px 34px;border-radius:2px;border:none;cursor:pointer;transition:all .3s}
+.btn-w:hover{background:var(--sand);color:#fff;transform:translateY(-2px);box-shadow:0 10px 36px rgba(196,168,130,.4)}
+.btn-ghost{background:transparent;color:#fff;font-size:.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:15px 34px;border-radius:2px;border:1px solid rgba(255,255,255,.38);cursor:pointer;transition:all .3s}
+.btn-ghost:hover{background:rgba(255,255,255,.1);border-color:#fff}
+.hstats{position:absolute;bottom:52px;left:80px;display:flex;gap:56px;z-index:10}
+.hstat .n{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:#fff;line-height:1}
+.hstat .l{font-size:.62rem;font-weight:500;color:rgba(255,255,255,.45);letter-spacing:.15em;text-transform:uppercase;margin-top:4px}
+.hfloat{position:absolute;bottom:80px;right:80px;z-index:10;background:rgba(255,255,255,.1);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:26px 30px;min-width:230px;box-shadow:0 24px 64px rgba(0,0,0,.3);transform:perspective(600px) rotateY(-8deg) rotateX(4deg);transition:transform .4s}
+.hfloat:hover{transform:perspective(600px) rotateY(0deg) rotateX(0deg)}
+.hf-label{font-size:.62rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:10px}
+.hf-val{font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:#fff;font-weight:400}
+.hf-sub{font-size:.72rem;color:rgba(255,255,255,.55);margin-top:5px}
+.hf-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#4ade80;margin-right:6px;animation:blink 2.2s infinite}
+</style>
+</head><style>
+/* ── TRUST STRIP ── */
+.tstrip{background:#111;padding:18px 60px;display:flex;align-items:center;justify-content:center;gap:48px;border-bottom:1px solid rgba(255,255,255,.06)}
+.tstrip span{font-size:.68rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+.tstrip .dot{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.12);flex-shrink:0}
+
+/* ── ABOUT ── */
+.about{background:#fff;padding:110px 80px}
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:center}
+.aimg{position:relative;border-radius:4px;overflow:visible}
+.aimg img{width:100%;height:600px;object-fit:cover;border-radius:4px;display:block;box-shadow:0 32px 80px rgba(0,0,0,.18)}
+.aimg-glow{position:absolute;inset:-2px;border-radius:6px;background:linear-gradient(135deg,var(--sand) 0%,var(--green) 100%);z-index:-1;opacity:.6}
+.afc{position:absolute;bottom:-36px;right:-36px;background:#fff;border-radius:14px;padding:26px 28px;box-shadow:0 24px 60px rgba(0,0,0,.14);min-width:190px;transform:perspective(500px) rotateY(-6deg) rotateX(4deg);transition:transform .4s}
+.afc:hover{transform:perspective(500px) rotateY(0deg) rotateX(0deg)}
+.afc .an{font-family:'Cormorant Garamond',serif;font-size:2.8rem;color:var(--green);font-weight:400;line-height:1}
+.afc .at{font-size:.7rem;font-weight:500;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-top:6px}
+.stag{font-size:.63rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--sand);margin-bottom:14px}
+.stitle{font-size:clamp(2.2rem,3.5vw,3.4rem);font-weight:300;line-height:1.15;color:var(--charcoal);margin-bottom:18px}
+.ssub{font-size:1rem;font-weight:300;color:var(--muted);line-height:1.75;max-width:480px}
+.flist{margin-top:40px;display:flex;flex-direction:column;gap:22px}
+.fitem{display:flex;gap:16px;align-items:flex-start}
+.ficon{width:42px;height:42px;border-radius:10px;background:rgba(27,67,50,.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.15rem}
+.fitem h4{font-family:'DM Sans',sans-serif;font-size:.86rem;font-weight:600;color:var(--charcoal);margin-bottom:4px}
+.fitem p{font-size:.8rem;color:var(--muted);line-height:1.6}
+
+/* ── SERVICES 3D GRID ── */
+.svc-section{background:#0e0e0e;padding:100px 80px;position:relative;overflow:hidden}
+.svc-section::before{content:'';position:absolute;top:-300px;right:-200px;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(27,67,50,.28) 0%,transparent 70%);pointer-events:none}
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px;perspective:1000px}
+.scard{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:4/3;cursor:pointer;transform-style:preserve-3d;transition:transform .1s ease-out,box-shadow .3s}
+.scard:hover{box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.scard img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;display:block}
+.scard:hover img{transform:scale(1.07)}
+.scard-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,.88) 0%,rgba(10,10,10,.15) 60%,transparent 100%);transition:background .4s}
+.scard:hover .scard-ov{background:linear-gradient(to top,rgba(27,67,50,.92) 0%,rgba(27,67,50,.3) 60%,transparent 100%)}
+.scard-tag{position:absolute;top:18px;left:18px;background:rgba(255,255,255,.1);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.18);padding:5px 12px;border-radius:50px;font-size:.62rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.82)}
+.scard-body{position:absolute;bottom:0;left:0;right:0;padding:26px;transform:translateZ(20px)}
+.scard-body h3{font-size:1.45rem;font-weight:400;color:#fff;margin-bottom:6px}
+.scard-body p{font-size:.78rem;color:rgba(255,255,255,.68);line-height:1.55;opacity:0;transform:translateY(8px);transition:all .35s .05s}
+.scard:hover .scard-body p{opacity:1;transform:translateY(0)}
+.scard-shine{position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.06) 50%,transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
+.scard:hover .scard-shine{opacity:1}
+</style><style>
+/* ── HURRICANE PARALLAX ── */
+.hurr{position:relative;min-height:75vh;display:flex;align-items:center;overflow:hidden}
+.hurr-bg{position:absolute;inset:-12%;background:url('https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=1600&q=85&auto=format&fit=crop') center/cover no-repeat;will-change:transform}
+.hurr-ov{position:absolute;inset:0;background:linear-gradient(100deg,rgba(10,10,10,.9) 35%,rgba(10,10,10,.35) 100%)}
+.hurr-content{position:relative;z-index:5;padding:80px}
+.hurr-pills{display:flex;flex-wrap:wrap;gap:12px;margin:32px 0 40px}
+.hpill{background:rgba(255,255,255,.09);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.14);padding:9px 18px;border-radius:50px;font-size:.73rem;font-weight:500;color:rgba(255,255,255,.82)}
+
+/* ── PRICING ── */
+.pricing{background:var(--bg);padding:100px 80px}
+.ptoggle{display:flex;align-items:center;gap:14px;margin-bottom:56px}
+.ptog-lbl{font-size:.8rem;font-weight:500;color:var(--muted)}
+.track{position:relative;width:52px;height:28px;background:#d1d5db;border-radius:50px;cursor:pointer;transition:background .3s}
+.track.on{background:var(--green)}
+.thumb{position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:transform .3s;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.track.on .thumb{transform:translateX(24px)}
+.save-badge{background:var(--green);color:#fff;font-size:.63rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:50px}
+.pgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;perspective:1200px}
+.pcard{padding:36px 22px;border-right:1px solid #e5e7eb;background:#fff;position:relative;transition:all .4s;cursor:default;transform-style:preserve-3d}
+.pcard:last-child{border-right:none}
+.pcard.hot{background:var(--charcoal);border-color:var(--charcoal)}
+.pcard:hover:not(.hot){transform:translateY(-6px) rotateX(2deg);box-shadow:0 20px 60px rgba(0,0,0,.1);z-index:5}
+.pcard.hot:hover{transform:translateY(-6px) rotateX(2deg);box-shadow:0 20px 60px rgba(0,0,0,.25);z-index:5}
+.ptier{font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.pname{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:400;color:var(--charcoal);margin-bottom:18px}
+.pamt{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--charcoal);line-height:1}
+.pper{font-size:.8rem;color:var(--muted);margin-left:3px}
+.pann{font-size:.72rem;color:var(--gmd);font-weight:500;margin:6px 0 20px;min-height:18px}
+.pdiv{height:1px;background:#e5e7eb;margin:16px 0}
+.pfeats{list-style:none;display:flex;flex-direction:column;gap:9px}
+.pfeats li{font-size:.76rem;color:var(--ink);display:flex;align-items:flex-start;gap:7px;line-height:1.4}
+.pfeats li::before{content:'✓';color:var(--gmd);font-weight:700;flex-shrink:0;margin-top:1px}
+.pfeats li.no::before{content:'—';color:#d1d5db}
+.pfeats li.no{color:var(--muted)}
+.pcta{display:block;width:100%;margin-top:24px;padding:12px;text-align:center;font-size:.73rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border-radius:3px;border:1px solid var(--charcoal);color:var(--charcoal);background:transparent;cursor:pointer;transition:all .3s}
+.pcta:hover{background:var(--charcoal);color:#fff}
+.pcard.hot .ptier{color:rgba(255,255,255,.45)}
+.pcard.hot .pname,.pcard.hot .pamt{color:#fff}
+.pcard.hot .pper{color:rgba(255,255,255,.5)}
+.pcard.hot .pann{color:rgba(255,255,255,.6)}
+.pcard.hot .pdiv{background:rgba(255,255,255,.12)}
+.pcard.hot .pfeats li{color:#fff}
+.pcard.hot .pfeats li.no{color:rgba(255,255,255,.35)}
+.pcard.hot .pcta{border-color:#fff;color:#fff}
+.pcard.hot .pcta:hover{background:#fff;color:var(--charcoal)}
+.pbadge{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--sand);color:#fff;font-size:.58rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:5px 14px;border-radius:0 0 8px 8px}
+
+/* ── TESTIMONIALS ── */
+.testis{background:#0e0e0e;padding:100px 80px;position:relative;overflow:hidden}
+.testis::after{content:'';position:absolute;bottom:-120px;left:-80px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(196,168,130,.12) 0%,transparent 70%);pointer-events:none}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px;perspective:1000px}
+.tcard{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:36px;position:relative;overflow:hidden;transition:all .4s;transform-style:preserve-3d;cursor:default}
+.tcard:hover{background:rgba(255,255,255,.09);transform:translateY(-6px) rotateX(3deg) rotateY(-2deg);box-shadow:0 28px 70px rgba(0,0,0,.4)}
+.tcard::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:7rem;color:rgba(196,168,130,.12);position:absolute;top:-16px;left:18px;line-height:1;pointer-events:none}
+.tcard-shine{position:absolute;inset:0;background:linear-gradient(135deg,transparent 40%,rgba(255,255,255,.04) 50%,transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
+.tcard:hover .tcard-shine{opacity:1}
+.tstars{color:var(--sand);font-size:.75rem;letter-spacing:2px;margin-bottom:14px}
+.ttext{font-size:.88rem;color:rgba(255,255,255,.75);line-height:1.75;margin-bottom:22px;position:relative;z-index:1}
+.tname{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#fff;font-weight:400}
+.trole{font-size:.65rem;color:rgba(255,255,255,.38);letter-spacing:.1em;text-transform:uppercase;margin-top:2px}
+
+/* ── FULL BLEED CTA ── */
+.ctasec{position:relative;min-height:55vh;display:flex;align-items:center;justify-content:center;overflow:hidden;text-align:center}
+.cta-bg{position:absolute;inset:-8%;background:url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1600&q=80&auto=format&fit=crop') center/cover no-repeat;will-change:transform}
+.cta-ov{position:absolute;inset:0;background:rgba(10,10,10,.72)}
+.cta-body{position:relative;z-index:5;padding:80px 40px;max-width:680px}
+.cta-body .stag{color:var(--sand)}
+.cta-body .stitle{color:#fff;margin-bottom:20px}
+.cta-body p{color:rgba(255,255,255,.68);font-size:1rem;line-height:1.7;margin-bottom:40px}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+/* ── FOOTER ── */
+.footer{background:#050505;padding:72px 80px 40px;color:rgba(255,255,255,.5)}
+.ftop{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:60px;margin-bottom:56px}
+.fbrand .lm{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#fff;font-weight:400;margin-bottom:4px}
+.fbrand .ls{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:14px;display:block}
+.fbrand p{font-size:.78rem;line-height:1.75;max-width:250px}
+.fcol h4{font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:18px}
+.fcol a{display:block;font-size:.8rem;color:rgba(255,255,255,.5);margin-bottom:9px;transition:color .2s}
+.fcol a:hover{color:#fff}
+.fbot{border-top:1px solid rgba(255,255,255,.06);padding-top:26px;display:flex;align-items:center;justify-content:space-between}
+.fbot p{font-size:.7rem;color:rgba(255,255,255,.22)}
+
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(32px);transition:opacity .75s ease,transform .75s ease}
+.rv.vis{opacity:1;transform:translateY(0)}
+.rv-left{opacity:0;transform:translateX(-40px);transition:opacity .75s ease,transform .75s ease}
+.rv-left.vis{opacity:1;transform:translateX(0)}
+.rv-right{opacity:0;transform:translateX(40px);transition:opacity .75s ease,transform .75s ease}
+.rv-right.vis{opacity:1;transform:translateX(0)}
+
+@media(max-width:960px){
+  .nav,.hero-content,.hstats,.hurr-content,.about,.pricing,.svc-section,.testis,.ctasec,.footer{padding-left:28px!important;padding-right:28px!important}
+  .about-inner{grid-template-columns:1fr}
+  .sgrid,.tgrid{grid-template-columns:1fr 1fr}
+  .pgrid{grid-template-columns:1fr 1fr;gap:16px;border:none;border-radius:0}
+  .pcard{border:1px solid #e5e7eb;border-radius:8px}
+  .hfloat{display:none}
+  .ftop{grid-template-columns:1fr 1fr;gap:36px}
+}
+</style><body>
+<nav class="nav" id="mainNav">
+  <div class="nl"><span class="lm">SRQ HGC</span><span class="ls">Home Guardian &amp; Concierge</span></div>
+  <div class="nr">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="realtors.html">Realtors</a>
+    <a href="contact.html" class="ncta">Get Started</a>
   </div>
-  <section class="section">
-    <div class="wrap">
-      <span class="section-eyebrow">Why SRQ HGC</span>
-      <h2 class="section-title">More Than a Home Watch Service</h2>
-      <p class="section-sub">Property protection and genuine concierge services in one membership — so your home is always safe, and your life in Sarasota is always easy.</p>
-      <div class="why-grid">
-        <div class="why-card"><div class="why-num">01</div><div class="why-title">Professional Home Watch</div><p class="why-desc">Regular inspections with detailed photo reports — whether you're across the country or across the world.</p></div>
-        <div class="why-card"><div class="why-num">02</div><div class="why-title">Hurricane &amp; Storm Ready</div><p class="why-desc">We prepare your home before every storm — shutters, furniture, generator, utilities — and inspect after.</p></div>
-        <div class="why-card"><div class="why-num">03</div><div class="why-title">Vendor Coordination</div><p class="why-desc">Never fly home to meet a plumber again. We manage all contractors on your behalf.</p></div>
-        <div class="why-card"><div class="why-num">04</div><div class="why-title">True Concierge Services</div><p class="why-desc">Restaurant reservations, event tickets, grocery delivery — when you arrive, everything is already handled.</p></div>
-        <div class="why-card"><div class="why-num">05</div><div class="why-title">Smart Home Integration</div><p class="why-desc">We monitor your smart home systems, alarms, cameras, and sensors as part of your membership.</p></div>
-        <div class="why-card"><div class="why-num">06</div><div class="why-title">Transportation &amp; Transfers</div><p class="why-desc">Airport pickups, errands, medical appointments — private, reliable, always on time.</p></div>
+</nav>
+
+<section class="hero">
+  <div class="hero-layers">
+    <div class="hl-far" id="hlFar"></div>
+    <div class="hl-mid"></div>
+    <div class="hl-near"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hbadge"><span class="dot"></span><span>Sarasota · Longboat Key · Siesta Key · Casey Key</span></div>
+    <h1>Your Home<br><em>Guardians</em> —<br>Everything Handled</h1>
+    <p>From hurricane prep and home watch to restaurant reservations, grocery delivery, and private transportation — one membership, total peace of mind.</p>
+    <div class="hbtns">
+      <a href="contact.html" class="btn-w">Get Started Today</a>
+      <a href="pricing.html" class="btn-ghost">View Plans</a>
+    </div>
+  </div>
+  <div class="hstats">
+    <div class="hstat"><span class="n">50+</span><span class="l">Homes Protected</span></div>
+    <div class="hstat"><span class="n">24hr</span><span class="l">Emergency Response</span></div>
+    <div class="hstat"><span class="n">5</span><span class="l">Membership Tiers</span></div>
+    <div class="hstat"><span class="n">100%</span><span class="l">Satisfaction</span></div>
+  </div>
+  <div class="hfloat" id="hfloat">
+    <div class="hf-label">Property Status</div>
+    <div class="hf-val"><span class="hf-dot"></span>All Clear</div>
+    <div class="hf-sub">Next inspection: This week</div>
+  </div>
+</section>
+
+<div class="tstrip">
+  <span>Licensed &amp; Insured</span><span class="dot"></span>
+  <span>Locally Owned</span><span class="dot"></span>
+  <span>Sarasota County</span><span class="dot"></span>
+  <span>Year-Round Protection</span><span class="dot"></span>
+  <span>24hr Emergency Line</span><span class="dot"></span>
+  <span>No Contracts Required</span>
+</div>
+
+<section class="about">
+  <div class="about-inner">
+    <div class="aimg rv-left">
+      <div class="aimg-glow"></div>
+      <img src="https://images.unsplash.com/photo-1613977257592-4871e5fcd7c4?w=900&q=85&auto=format&fit=crop" alt="Luxury Sarasota home" loading="lazy">
+      <div class="afc">
+        <div class="an">15%</div>
+        <div class="at">Annual Plan Savings</div>
       </div>
     </div>
-  </section>
-  <section class="section bg-dark">
-    <div class="wrap">
-      <div class="hurricane-inner">
-        <div>
-          <span class="section-eyebrow">Hurricane Protection</span>
-          <h2 class="section-title">Sarasota Hurricane Season Is Real. We Take It Seriously.</h2>
-          <p>Florida's Gulf Coast is one of the most hurricane-vulnerable regions in the country. For part-time residents, a storm while you're away can turn into a catastrophe — because no one is there to prepare, respond, or report back.</p>
-          <p>SRQ HGC provides professional hurricane preparation and response as part of every plan from Coastal and above — and available as an add-on for Essential members.</p>
-          <ul class="hurricane-list">
-            <li><span class="h-dash"></span><span>Storm shutter installation and outdoor furniture securing</span></li>
-            <li><span class="h-dash"></span><span>Generator inspection and fuel check before storm season</span></li>
-            <li><span class="h-dash"></span><span>Water and gas shutoff procedures when needed</span></li>
-            <li><span class="h-dash"></span><span>Immediate post-storm inspection with photo documentation</span></li>
-            <li><span class="h-dash"></span><span>Emergency contractor coordination for damage response</span></li>
-            <li><span class="h-dash"></span><span>Real-time updates to you no matter where you are</span></li>
-            <li><span class="h-dash"></span><span>Seasonal storm prep checklist completed each June</span></li>
-          </ul>
-          <a href="pricing.html" class="btn btn-outline-w">See Hurricane Protection Plans</a>
-        </div>
-        <div class="h-stats">
-          <div class="h-stat"><div class="h-stat-val">6+</div><div class="h-stat-label">Seasons Served</div></div>
-          <div class="h-stat"><div class="h-stat-val">24hr</div><div class="h-stat-label">Post-Storm Response</div></div>
-          <div class="h-stat"><div class="h-stat-val">100%</div><div class="h-stat-label">Photo-Documented</div></div>
-          <div class="h-stat"><div class="h-stat-val">$0</div><div class="h-stat-label">Surprise Fees</div></div>
-        </div>
+    <div class="rv-right">
+      <div class="stag">Who We Are</div>
+      <h2 class="stitle">Not Just Home Watch.<br>True Guardianship.</h2>
+      <p class="ssub">We treat every home like our own — catching issues before they become disasters, preparing for storms before they arrive, and making every visit feel like coming home.</p>
+      <div class="flist">
+        <div class="fitem"><div class="ficon">🏠</div><div><h4>Professional Home Inspections</h4><p>Detailed photo reports after every visit. We check everything — inside, outside, mechanical, structural.</p></div></div>
+        <div class="fitem"><div class="ficon">🌀</div><div><h4>Hurricane Preparation &amp; Recovery</h4><p>We mobilize before storms hit and coordinate recovery immediately after — protecting your investment when it matters most.</p></div></div>
+        <div class="fitem"><div class="ficon">🍽️</div><div><h4>Full Concierge Services</h4><p>Restaurant reservations, grocery delivery, vendor scheduling, private transportation — your Sarasota life, curated.</p></div></div>
       </div>
     </div>
-  </section>
-  <section class="section bg-alt">
-    <div class="wrap">
-      <span class="section-eyebrow">Membership Plans</span>
-      <h2 class="section-title">Choose Your Level of Care</h2>
-      <p class="section-sub">Every plan includes member pricing on add-on services — the more you use, the more you save.</p>
-      <div class="preview-grid">
-        <div class="preview-col"><span class="preview-name">Essential</span><span class="preview-price">$169</span><span class="preview-mo">/ month</span><ul class="preview-feats"><li><span class="preview-ck">✓</span><span>Bi-weekly inspections</span></li><li><span class="preview-ck">✓</span><span>Photo reports</span></li><li><span class="preview-ck">✓</span><span>1 vendor coordination/mo</span></li><li><span class="preview-ck">✓</span><span>Basic storm check</span></li></ul><a href="pricing.html" class="preview-cta">View Plan</a></div>
-        <div class="preview-col"><span class="preview-name">Coastal</span><span class="preview-price">$297</span><span class="preview-mo">/ month</span><ul class="preview-feats"><li><span class="preview-ck">✓</span><span>Weekly inspections</span></li><li><span class="preview-ck">✓</span><span>Hurricane prep included</span></li><li><span class="preview-ck">✓</span><span>Smart home check</span></li><li><span class="preview-ck">✓</span><span>2 vendor coordinations/mo</span></li></ul><a href="pricing.html" class="preview-cta">View Plan</a></div>
-        <div class="preview-col featured"><span class="preview-name">SRQ Care</span><span class="preview-price">$509</span><span class="preview-mo">/ month</span><ul class="preview-feats"><li><span class="preview-ck">✓</span><span>Weekly inspections</span></li><li><span class="preview-ck">✓</span><span>Unlimited coordination</span></li><li><span class="preview-ck">✓</span><span>Full concierge services</span></li><li><span class="preview-ck">✓</span><span>24/7 emergency line</span></li></ul><a href="pricing.html" class="preview-cta">View Plan</a></div>
-        <div class="preview-col"><span class="preview-name">Estate Care</span><span class="preview-price">$1,019</span><span class="preview-mo">/ month</span><ul class="preview-feats"><li><span class="preview-ck">✓</span><span>Twice-weekly inspections</span></li><li><span class="preview-ck">✓</span><span>Estate management</span></li><li><span class="preview-ck">✓</span><span>Contractor supervision</span></li><li><span class="preview-ck">✓</span><span>Quarterly condition report</span></li></ul><a href="pricing.html" class="preview-cta">View Plan</a></div>
-        <div class="preview-col"><span class="preview-name">Sarasota Life</span><span class="preview-price">$2,124</span><span class="preview-mo">/ month</span><ul class="preview-feats"><li><span class="preview-ck">✓</span><span>Everything in Estate Care</span></li><li><span class="preview-ck">✓</span><span>Personal concierge line</span></li><li><span class="preview-ck">✓</span><span>Full lifestyle management</span></li><li><span class="preview-ck">✓</span><span>24/7 dedicated concierge</span></li></ul><a href="pricing.html" class="preview-cta">View Plan</a></div>
-      </div>
-      <p class="annual-note">Pay annually and <strong>save 15%</strong> — plus unlock member pricing on every service we offer.</p>
-      <div style="text-align:center"><a href="pricing.html" class="see-all">Full pricing &amp; add-on services →</a></div>
+  </div>
+</section>
+
+<section class="svc-section">
+  <div class="stag rv">What We Do</div>
+  <h2 class="stitle rv" style="color:#fff;max-width:600px">Every Service You Need,<br>Under One Membership</h2>
+  <div class="sgrid" id="sgrid">
+    <div class="scard" data-tilt><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80&auto=format&fit=crop" alt="Home Watch" loading="lazy"><div class="scard-ov"></div><div class="scard-shine"></div><div class="scard-tag">Core</div><div class="scard-body"><h3>Home Watch</h3><p>Regular inspections with photo reports. We catch issues before they become expensive surprises.</p></div></div>
+    <div class="scard" data-tilt><img src="https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=700&q=80&auto=format&fit=crop" alt="Hurricane" loading="lazy"><div class="scard-ov"></div><div class="scard-shine"></div><div class="scard-tag">Essential</div><div class="scard-body"><h3>Hurricane Prep</h3><p>Shutter deployment, furniture storage, power shutoffs, and post-storm damage assessment.</p></div></div>
+    <div class="scard" data-tilt><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&q=80&auto=format&fit=crop" alt="Concierge" loading="lazy"><div class="scard-ov"></div><div class="scard-shine"></div><div class="scard-tag">Premium</div><div class="scard-body"><h3>Concierge</h3><p>Restaurant reservations, event tickets, grocery delivery, vendor coordination — all handled.</p></div></div>
+    <div class="scard" data-tilt><img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=700&q=80&auto=format&fit=crop" alt="Smart Home" loading="lazy"><div class="scard-ov"></div><div class="scard-shine"></div><div class="scard-tag">Tech</div><div class="scard-body"><h3>Smart Home</h3><p>Remote monitoring, thermostat management, security checks, and real-time alerts.</p></div></div>
+    <div class="scard" data-tilt><img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=700&q=80&auto=format&fit=crop" alt="Transportation" loading="lazy"><div class="scard-ov"></div><div class="scard-shine"></div><div class="scard-tag">Lifestyle</div><div class="scard-body"><h3>Transportation</h3><p>Airport pickups, dinner transfers, local errands. Professional, discreet, on-time every time.</p></div></div>
+    <div class="scard" data-tilt><img src="https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=700&q=80&auto=format&fit=crop" alt="Estate" loading="lazy"><div class="scard-ov"></div><div class="scard-shine"></div><div class="scard-tag">Estate</div><div class="scard-body"><h3>Estate Care</h3><p>Pool, dock, waterfront, generator checks, guest suite setup, and full estate oversight.</p></div></div>
+  </div>
+  <div class="rv" style="text-align:center;margin-top:48px"><a href="services.html" class="btn-ghost">View All Services</a></div>
+</section>
+<section class="hurr">
+  <div class="hurr-bg" id="hurrBg"></div>
+  <div class="hurr-ov"></div>
+  <div class="hurr-content">
+    <div class="stag rv">Hurricane Season</div>
+    <h2 class="stitle rv" style="color:#fff;max-width:640px">Your Home Is Protected<br>Before the Storm Arrives</h2>
+    <p class="ssub rv" style="color:rgba(255,255,255,.68);margin-bottom:0">Florida's hurricane season runs June through November. Most damage is preventable — if you have someone watching. We monitor forecasts around the clock and mobilize before conditions deteriorate.</p>
+    <div class="hurr-pills rv">
+      <div class="hpill">🌀 Pre-Storm Shutter Deployment</div>
+      <div class="hpill">📋 Damage Documentation</div>
+      <div class="hpill">🔧 Contractor Coordination</div>
+      <div class="hpill">📸 Detailed Photo Reports</div>
+      <div class="hpill">⚡ Generator &amp; Power Checks</div>
+      <div class="hpill">🏠 Outdoor Furniture Storage</div>
     </div>
-  </section>
-  <section class="section">
-    <div class="wrap">
-      <span class="section-eyebrow">What We Do</span>
-      <h2 class="section-title">Every Service You Need in Sarasota</h2>
-      <p class="section-sub">From home watch to full lifestyle coordination — we handle it so you don't have to.</p>
-      <div class="services-grid">
-        <div class="svc-card"><span class="svc-icon">🏠</span><div class="svc-name">Home Watch &amp; Inspections</div><p class="svc-desc">Regular property inspections with photo documentation delivered after every visit.</p></div>
-        <div class="svc-card"><span class="svc-icon">🌀</span><div class="svc-name">Hurricane &amp; Storm Prep</div><p class="svc-desc">Pre-storm shutdown, post-storm inspection, and seasonal preparation every year.</p></div>
-        <div class="svc-card"><span class="svc-icon">🔧</span><div class="svc-name">Vendor Coordination</div><p class="svc-desc">We meet, manage, and oversee every contractor so you never have to fly home for a repair.</p></div>
-        <div class="svc-card"><span class="svc-icon">📱</span><div class="svc-name">Smart Home Monitoring</div><p class="svc-desc">Alarm checks, camera reviews, smart device management, and remote system support.</p></div>
-        <div class="svc-card"><span class="svc-icon">🚗</span><div class="svc-name">Transportation</div><p class="svc-desc">Airport transfers, errands, and local transportation — private, reliable, always on time.</p></div>
-        <div class="svc-card"><span class="svc-icon">🍽️</span><div class="svc-name">Concierge &amp; Lifestyle</div><p class="svc-desc">Reservations, event tickets, grocery delivery, personal shopping — all handled.</p></div>
-      </div>
-      <div style="text-align:center;margin-top:2rem"><a href="services.html" class="see-all">Explore all services →</a></div>
+    <a href="services.html" class="btn-w rv">Learn More</a>
+  </div>
+</section>
+
+<section class="pricing rv">
+  <div class="stag">Membership Plans</div>
+  <h2 class="stitle">Simple, Transparent Pricing</h2>
+  <p class="ssub" style="margin-bottom:40px">Choose the plan that fits your home. All plans include core home watch — scale up as you need more.</p>
+  <div class="ptoggle">
+    <span class="ptog-lbl">Monthly</span>
+    <div class="track" id="ptrack" onclick="toggleBill()"><div class="thumb"></div></div>
+    <span class="ptog-lbl">Annual</span>
+    <span class="save-badge">Save 15%</span>
+  </div>
+  <div class="pgrid">
+    <div class="pcard">
+      <div class="ptier">Tier 1</div><div class="pname">Essential</div>
+      <div><span class="pamt" data-mo="169" data-yr="143">$169</span><span class="pper">/mo</span></div>
+      <div class="pann" id="pa1">Billed monthly</div>
+      <div class="pdiv"></div>
+      <ul class="pfeats">
+        <li>2x monthly home inspections</li><li>Photo report each visit</li><li>Exterior &amp; interior check</li><li>24hr emergency contact</li>
+        <li class="no">Hurricane prep</li><li class="no">Concierge services</li>
+      </ul>
+      <a href="contact.html" class="pcta">Get Started</a>
     </div>
-  </section>
-  <section class="section bg-dark">
-    <div class="wrap">
-      <div class="realtors-inner">
-        <div>
-          <span class="section-eyebrow">For Realtors</span>
-          <h2 class="section-title">We Work With Sarasota Realtors</h2>
-          <p class="section-sub">Give your clients the peace of mind that protects their investment — and your relationship with them — long after closing.</p>
-        </div>
-        <a href="realtors.html" class="btn btn-outline-w">Realtor Partnership →</a>
-      </div>
+    <div class="pcard">
+      <div class="ptier">Tier 2</div><div class="pname">Coastal</div>
+      <div><span class="pamt" data-mo="297" data-yr="252">$297</span><span class="pper">/mo</span></div>
+      <div class="pann" id="pa2">Billed monthly</div>
+      <div class="pdiv"></div>
+      <ul class="pfeats">
+        <li>4x monthly inspections</li><li>Hurricane prep &amp; recovery</li><li>Smart home monitoring</li><li>Welcome Home Package</li>
+        <li>Basic vendor coordination</li><li class="no">Concierge services</li>
+      </ul>
+      <a href="contact.html" class="pcta">Get Started</a>
     </div>
-  </section>
-  <footer>
-    <div class="footer-brand">SRQ Home Guardian &amp; Concierge</div>
-    <div>Sarasota · Longboat Key · Siesta Key · Casey Key</div>
-    <div class="footer-links"><a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="realtors.html">Realtors</a><a href="contact.html">Contact</a></div>
-  </footer>
+    <div class="pcard hot">
+      <div class="pbadge">Most Popular</div>
+      <div class="ptier">Tier 3</div><div class="pname">SRQ Care</div>
+      <div><span class="pamt" data-mo="509" data-yr="433">$509</span><span class="pper">/mo</span></div>
+      <div class="pann" id="pa3">Billed monthly</div>
+      <div class="pdiv"></div>
+      <ul class="pfeats">
+        <li>Weekly inspections</li><li>Full hurricane services</li><li>Smart home + security</li><li>Welcome Home Package</li>
+        <li>Vendor coordination</li><li>Transportation (2 trips/mo)</li>
+      </ul>
+      <a href="contact.html" class="pcta">Get Started</a>
+    </div>
+    <div class="pcard">
+      <div class="ptier">Tier 4</div><div class="pname">Estate Care</div>
+      <div><span class="pamt" data-mo="1019" data-yr="866">$1,019</span><span class="pper">/mo</span></div>
+      <div class="pann" id="pa4">Billed monthly</div>
+      <div class="pdiv"></div>
+      <ul class="pfeats">
+        <li>Unlimited inspections</li><li>Pool, dock &amp; waterfront</li><li>Generator oversight</li><li>Full vendor management</li>
+        <li>Concierge reservations</li><li>4 transportation trips/mo</li>
+      </ul>
+      <a href="contact.html" class="pcta">Get Started</a>
+    </div>
+    <div class="pcard">
+      <div class="ptier">Tier 5</div><div class="pname">Sarasota Life</div>
+      <div><span class="pamt" data-mo="2124" data-yr="1805">$2,124</span><span class="pper">/mo</span></div>
+      <div class="pann" id="pa5">Billed monthly</div>
+      <div class="pdiv"></div>
+      <ul class="pfeats">
+        <li>Everything in Estate</li><li>Unlimited transportation</li><li>Unlimited concierge</li><li>Grocery coordination</li>
+        <li>Event &amp; restaurant booking</li><li>Dedicated personal line</li>
+      </ul>
+      <a href="contact.html" class="pcta">Get Started</a>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:28px">
+    <a href="pricing.html" style="font-size:.8rem;color:var(--muted);border-bottom:1px solid #e5e7eb;padding-bottom:2px;font-weight:500;letter-spacing:.06em">View Full Pricing &amp; Add-Ons &rarr;</a>
+  </div>
+</section>
+
+<section class="testis">
+  <div class="stag rv" style="color:var(--sand)">What Our Members Say</div>
+  <h2 class="stitle rv" style="color:#fff">Trusted by Sarasota's<br>Most Discerning Homeowners</h2>
+  <div class="tgrid">
+    <div class="tcard rv"><div class="tcard-shine"></div><div class="tstars">★★★★★</div><p class="ttext">We've owned our Longboat Key property for 12 years and never felt this at ease. Every time we arrive, everything is perfect. The Welcome Home Package alone is worth the membership.</p><div class="tname">The Harrington Family</div><div class="trole">Longboat Key · Coastal Member</div></div>
+    <div class="tcard rv"><div class="tcard-shine"></div><div class="tstars">★★★★★</div><p class="ttext">After the last hurricane, our neighbors had thousands in damage. Our home was fully prepped and had zero issues. SRQ HGC handled everything — we didn't lift a finger from Chicago.</p><div class="tname">David &amp; Carol M.</div><div class="trole">Siesta Key · Estate Care</div></div>
+    <div class="tcard rv"><div class="tcard-shine"></div><div class="tstars">★★★★★</div><p class="ttext">I use the Sarasota Life plan and it truly is exactly that — my Sarasota life, managed. Reservations ready when I land, car waiting at the airport, groceries stocked. Pure luxury.</p><div class="tname">Patricia V.</div><div class="trole">Casey Key · Sarasota Life</div></div>
+  </div>
+</section>
+
+<section class="ctasec">
+  <div class="cta-bg" id="ctaBg"></div>
+  <div class="cta-ov"></div>
+  <div class="cta-body rv">
+    <div class="stag">Ready to Get Started</div>
+    <h2 class="stitle">Your Home Deserves<br>a Guardian</h2>
+    <p>Join the families who never worry about their Sarasota property — because we're here.</p>
+    <div class="cta-btns">
+      <a href="contact.html" class="btn-w">Schedule a Consultation</a>
+      <a href="pricing.html" class="btn-ghost">View All Plans</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="ftop">
+    <div class="fbrand">
+      <div class="lm">SRQ HGC</div><span class="ls">Home Guardian &amp; Concierge</span>
+      <p>Protecting and caring for Sarasota's finest homes — year-round, rain or shine, storm or calm.</p>
+    </div>
+    <div class="fcol"><h4>Services</h4><a href="services.html">Home Watch</a><a href="services.html">Hurricane Prep</a><a href="services.html">Concierge</a><a href="services.html">Transportation</a><a href="services.html">Smart Home</a></div>
+    <div class="fcol"><h4>Company</h4><a href="index.html">Home</a><a href="pricing.html">Pricing</a><a href="realtors.html">Realtors</a><a href="contact.html">Contact</a></div>
+    <div class="fcol"><h4>Service Areas</h4><a href="#">Sarasota</a><a href="#">Longboat Key</a><a href="#">Siesta Key</a><a href="#">Casey Key</a><a href="#">Osprey</a></div>
+  </div>
+  <div class="fbot"><p>&copy; 2025 SRQ Home Guardian &amp; Concierge. All rights reserved.</p><p>Sarasota, Florida</p></div>
+</footer>
+<script>
+// Nav scroll
+window.addEventListener('scroll',()=>{
+  document.getElementById('mainNav').classList.toggle('solid',scrollY>60);
+});
+
+// Multi-layer parallax hero
+window.addEventListener('scroll',()=>{
+  const y=scrollY;
+  const far=document.getElementById('hlFar');
+  const hb=document.getElementById('ctaBg');
+  const hurrBg=document.getElementById('hurrBg');
+  if(far) far.style.transform='translateZ(-60px) scale(1.5) translateY('+(y*0.12)+'px)';
+  if(hb) hb.style.transform='translateY('+(y*0.08)+'px)';
+  if(hurrBg) hurrBg.style.transform='translateY('+(y*0.1)+'px)';
+});
+
+// 3D tilt on service cards
+document.querySelectorAll('[data-tilt]').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-0.5;
+    const y=(e.clientY-r.top)/r.height-0.5;
+    card.style.transform='perspective(800px) rotateY('+(x*18)+'deg) rotateX('+(-y*12)+'deg) scale(1.03)';
+  });
+  card.addEventListener('mouseleave',()=>{
+    card.style.transform='perspective(800px) rotateY(0deg) rotateX(0deg) scale(1)';
+  });
+});
+
+// Pricing tilt
+document.querySelectorAll('.pcard').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-0.5;
+    const y=(e.clientY-r.top)/r.height-0.5;
+    card.style.transform='perspective(600px) rotateY('+(x*10)+'deg) rotateX('+(-y*6)+'deg) translateY(-6px)';
+  });
+  card.addEventListener('mouseleave',()=>{card.style.transform='';});
+});
+
+// Testimonial tilt
+document.querySelectorAll('.tcard').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-0.5;
+    const y=(e.clientY-r.top)/r.height-0.5;
+    card.style.transform='perspective(700px) rotateY('+(x*12)+'deg) rotateX('+(-y*8)+'deg) translateY(-6px)';
+  });
+  card.addEventListener('mouseleave',()=>{card.style.transform='';});
+});
+
+// Floating card mouse parallax
+document.addEventListener('mousemove',e=>{
+  const f=document.getElementById('hfloat');
+  if(!f)return;
+  const cx=window.innerWidth/2,cy=window.innerHeight/2;
+  const dx=(e.clientX-cx)/cx,dy=(e.clientY-cy)/cy;
+  f.style.transform='perspective(600px) rotateY('+(dx*-10+(-8))+'deg) rotateX('+(dy*6+4)+'deg)';
+});
+
+// Billing toggle
+let ann=false;
+const rates=[
+  {mo:169,yr:143,total:1721,save:303,id:'pa1'},
+  {mo:297,yr:252,total:3030,save:534,id:'pa2'},
+  {mo:509,yr:433,total:5192,save:916,id:'pa3'},
+  {mo:1019,yr:866,total:10394,save:1834,id:'pa4'},
+  {mo:2124,yr:1805,total:21665,save:3823,id:'pa5'}
+];
+function toggleBill(){
+  ann=!ann;
+  document.getElementById('ptrack').classList.toggle('on',ann);
+  document.querySelectorAll('.pamt').forEach((el,i)=>{
+    if(!rates[i])return;
+    el.textContent='$'+(ann?rates[i].yr.toLocaleString():rates[i].mo.toLocaleString());
+    const a=document.getElementById(rates[i].id);
+    if(a){
+      if(ann){a.textContent='$'+rates[i].total.toLocaleString()+'/yr · save $'+rates[i].save;a.style.color='var(--gmd)';a.style.fontWeight='600';}
+      else{a.textContent='Billed monthly';a.style.color='';a.style.fontWeight='';}
+    }
+  });
+}
+
+// Scroll reveal
+const ro=new IntersectionObserver(entries=>entries.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('vis');}
+}),{threshold:0.12});
+document.querySelectorAll('.rv,.rv-left,.rv-right').forEach(el=>ro.observe(el));
+
+// Particle / floating orbs on hero (CSS-driven via pseudo but add via JS for extra depth)
+(function(){
+  const hero=document.querySelector('.hero');
+  if(!hero)return;
+  for(let i=0;i<6;i++){
+    const orb=document.createElement('div');
+    const sz=40+Math.random()*80;
+    orb.style.cssText='position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(196,168,130,'+(0.06+Math.random()*0.06)+') 0%,transparent 70%);width:'+sz+'px;height:'+sz+'px;top:'+(10+Math.random()*80)+'%;left:'+(5+Math.random()*90)+'%;pointer-events:none;animation:floatOrb '+(6+Math.random()*6)+'s ease-in-out infinite alternate;animation-delay:'+(-Math.random()*6)+'s;z-index:3';
+    hero.appendChild(orb);
+  }
+  if(!document.getElementById('orbStyle')){
+    const s=document.createElement('style');
+    s.id='orbStyle';
+    s.textContent='@keyframes floatOrb{from{transform:translate(0,0) scale(1)}to{transform:translate('+(Math.random()>0.5?'':'-')+'20px,'+(Math.random()>0.5?'':'-')+'30px) scale(1.15)}}';
+    document.head.appendChild(s);
+  }
+})();
+</script>
 </body>
 </html>
