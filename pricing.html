@@ -4,883 +4,295 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pricing | SRQ Home Guardian &amp; Concierge</title>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
-    body { font-family: 'DM Sans', sans-serif; background: #fff; color: #111827; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-
-    :root {
-      --black:    #111827;
-      --ink:      #374151;
-      --muted:    #6B7280;
-      --border:   #E5E7EB;
-      --bg:       #F9F8F6;
-      --bg2:      #F3F1EE;
-      --white:    #ffffff;
-      --green:    #1B4332;
-      --green-md: #2D6A4F;
-      --green-lt: #D8EFE5;
-      --sand:     #C4A882;
-
-      --shadow-xs: 0 1px 3px rgba(17,24,39,.06);
-      --shadow-sm: 0 4px 12px rgba(17,24,39,.08);
-      --shadow-md: 0 12px 32px rgba(17,24,39,.10);
-      --shadow-lg: 0 24px 56px rgba(17,24,39,.14);
-      --r: 12px;
-      --r-sm: 6px;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: sticky; top: 0; z-index: 200;
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      padding: 0 6%;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 68px;
-    }
-    .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.35rem; font-weight: 700; letter-spacing: .02em;
-      color: var(--black); text-decoration: none;
-      display: flex; flex-direction: column; line-height: 1.1;
-    }
-    .nav-logo-top { font-size: 1.35rem; }
-    .nav-logo-sub {
-      font-family: 'DM Sans', sans-serif;
-      font-size: .58rem; letter-spacing: .22em; text-transform: uppercase;
-      color: var(--muted); font-weight: 400;
-    }
-    .nav-links { display: flex; gap: 2rem; align-items: center; }
-    .nav-links a {
-      color: var(--ink); text-decoration: none;
-      font-size: .85rem; font-weight: 500; letter-spacing: .01em;
-      transition: color .15s;
-    }
-    .nav-links a:hover, .nav-links a.active { color: var(--green); }
-    .nav-cta {
-      background: var(--black); color: var(--white);
-      padding: .5rem 1.3rem; border-radius: 50px;
-      font-size: .82rem; font-weight: 600; text-decoration: none;
-      letter-spacing: .02em;
-      transition: background .2s, transform .1s;
-    }
-    .nav-cta:hover { background: var(--green); transform: translateY(-1px); }
-
-    /* ── HERO / PAGE HEADER ── */
-    .page-hero {
-      background: var(--black);
-      padding: 90px 6% 80px;
-      text-align: center;
-      position: relative; overflow: hidden;
-    }
-    .page-hero::after {
-      content: '';
-      position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent);
-    }
-    .hero-eyebrow {
-      display: inline-block;
-      font-family: 'DM Sans', sans-serif;
-      font-size: .68rem; font-weight: 600; letter-spacing: .25em; text-transform: uppercase;
-      color: var(--sand); margin-bottom: 1.4rem;
-    }
-    .page-hero h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.8rem, 5.5vw, 5rem);
-      font-weight: 300; line-height: 1.1;
-      color: var(--white); margin-bottom: 1.2rem;
-      letter-spacing: -.01em;
-    }
-    .page-hero p {
-      color: rgba(255,255,255,.58); font-size: .96rem;
-      max-width: 520px; margin: 0 auto; line-height: 1.75;
-      font-weight: 300;
-    }
-    .page-hero strong { color: rgba(255,255,255,.9); font-weight: 500; }
-
-    /* ── LAYOUT ── */
-    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 6%; }
-    .section { padding: 90px 0; }
-    .section.bg-alt { background: var(--bg); }
-    .section.bg-dark { background: var(--black); }
-    .section.bg-green { background: var(--green); }
-    .section-eyebrow {
-      font-size: .68rem; font-weight: 600; letter-spacing: .25em; text-transform: uppercase;
-      color: var(--green); margin-bottom: .7rem; display: block;
-    }
-    .section.bg-dark .section-eyebrow { color: var(--sand); }
-    .section.bg-green .section-eyebrow { color: rgba(255,255,255,.6); }
-    .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 3.5vw, 3.2rem);
-      font-weight: 400; color: var(--black); line-height: 1.15;
-      letter-spacing: -.01em; margin-bottom: .9rem;
-    }
-    .section.bg-dark .section-title,
-    .section.bg-green .section-title { color: var(--white); }
-    .section-sub {
-      font-size: .93rem; color: var(--muted);
-      max-width: 520px; line-height: 1.75; font-weight: 300;
-    }
-    .section.bg-dark .section-sub { color: rgba(255,255,255,.5); }
-    .section.bg-green .section-sub { color: rgba(255,255,255,.7); }
-
-    /* ── BUTTONS ── */
-    .btn {
-      display: inline-block; text-decoration: none; cursor: pointer; border: none;
-      font-family: 'DM Sans', sans-serif; font-weight: 600;
-      font-size: .85rem; letter-spacing: .04em; text-transform: uppercase;
-      padding: .75rem 1.8rem; border-radius: 50px;
-      transition: all .2s;
-    }
-    .btn-dark { background: var(--black); color: var(--white); }
-    .btn-dark:hover { background: var(--green); transform: translateY(-1px); box-shadow: var(--shadow-sm); }
-    .btn-green { background: var(--green); color: var(--white); }
-    .btn-green:hover { background: var(--green-md); transform: translateY(-1px); box-shadow: var(--shadow-sm); }
-    .btn-outline { background: transparent; color: var(--black); border: 1.5px solid var(--black); }
-    .btn-outline:hover { background: var(--black); color: var(--white); }
-    .btn-outline-w { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,.4); }
-    .btn-outline-w:hover { border-color: var(--white); background: rgba(255,255,255,.06); }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--black); color: rgba(255,255,255,.4);
-      padding: 2.5rem 6%; text-align: center; font-size: .8rem;
-      border-top: 1px solid rgba(255,255,255,.06);
-    }
-    footer a { color: rgba(255,255,255,.6); text-decoration: none; transition: color .15s; }
-    footer a:hover { color: var(--white); }
-    .footer-brand {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem; font-weight: 600; color: rgba(255,255,255,.75);
-      margin-bottom: .4rem; letter-spacing: .04em;
-    }
-    .footer-links { margin-top: .8rem; display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
-
-    @media (max-width: 768px) {
-      .page-hero { padding: 60px 6% 50px; }
-      .section { padding: 60px 0; }
-      .nav-links a:not(.nav-cta) { display: none; }
-    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:#fff;color:#111827;line-height:1.6;-webkit-font-smoothing:antialiased}
+    :root{--black:#111827;--ink:#374151;--muted:#6B7280;--border:#E5E7EB;--bg:#F9F8F6;--bg2:#F3F1EE;--white:#ffffff;--green:#1B4332;--green-md:#2D6A4F;--green-lt:#D8EFE5;--sand:#C4A882;--shadow-xs:0 1px 3px rgba(17,24,39,.06);--shadow-sm:0 4px 12px rgba(17,24,39,.08);--shadow-md:0 12px 32px rgba(17,24,39,.10);--shadow-lg:0 24px 56px rgba(17,24,39,.14);--r:12px;--r-sm:6px}
+    nav{position:sticky;top:0;z-index:200;background:var(--white);border-bottom:1px solid var(--border);padding:0 6%;display:flex;align-items:center;justify-content:space-between;height:68px}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;letter-spacing:.02em;color:var(--black);text-decoration:none;display:flex;flex-direction:column;line-height:1.1}
+    .nav-logo-sub{font-family:'DM Sans',sans-serif;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:400}
+    .nav-links{display:flex;gap:2rem;align-items:center}
+    .nav-links a{color:var(--ink);text-decoration:none;font-size:.85rem;font-weight:500;transition:color .15s}
+    .nav-links a:hover,.nav-links a.active{color:var(--green)}
+    .nav-cta{background:var(--black);color:var(--white);padding:.5rem 1.3rem;border-radius:50px;font-size:.82rem;font-weight:600;text-decoration:none;transition:background .2s}
+    .nav-cta:hover{background:var(--green)}
+    .page-hero{background:var(--black);padding:90px 6% 80px;text-align:center;position:relative;overflow:hidden}
+    .hero-eyebrow{display:inline-block;font-size:.68rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--sand);margin-bottom:1.4rem}
+    .page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,5.5vw,5rem);font-weight:300;line-height:1.1;color:var(--white);margin-bottom:1.2rem;letter-spacing:-.01em}
+    .page-hero p{color:rgba(255,255,255,.58);font-size:.96rem;max-width:520px;margin:0 auto;line-height:1.75;font-weight:300}
+    .page-hero strong{color:rgba(255,255,255,.9);font-weight:500}
+    .wrap{max-width:1200px;margin:0 auto;padding:0 6%}
+    .section{padding:90px 0}
+    .section.bg-alt{background:var(--bg)}
+    .section.bg-dark{background:var(--black)}
+    .section-eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--green);margin-bottom:.7rem;display:block}
+    .section.bg-dark .section-eyebrow{color:var(--sand)}
+    .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weight:400;color:var(--black);line-height:1.15;letter-spacing:-.01em;margin-bottom:.9rem}
+    .section.bg-dark .section-title{color:var(--white)}
+    .section-sub{font-size:.93rem;color:var(--muted);max-width:520px;line-height:1.75;font-weight:300}
+    .section.bg-dark .section-sub{color:rgba(255,255,255,.5)}
+    .btn{display:inline-block;text-decoration:none;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.85rem;letter-spacing:.04em;text-transform:uppercase;padding:.75rem 1.8rem;border-radius:50px;transition:all .2s;border:none;cursor:pointer}
+    .btn-dark{background:var(--black);color:var(--white)}.btn-dark:hover{background:var(--green)}
+    .btn-outline-w{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.4)}.btn-outline-w:hover{border-color:var(--white)}
+    footer{background:var(--black);color:rgba(255,255,255,.4);padding:2.5rem 6%;text-align:center;font-size:.8rem;border-top:1px solid rgba(255,255,255,.06)}
+    footer a{color:rgba(255,255,255,.6);text-decoration:none}.footer-brand{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:rgba(255,255,255,.75);margin-bottom:.4rem}
+    .footer-links{margin-top:.8rem;display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap}
+    @media(max-width:768px){.page-hero{padding:60px 6% 50px}.section{padding:60px 0}.nav-links a:not(.nav-cta){display:none}}
   </style>
   <style>
-    /* ── TOGGLE ── */
-    .toggle-wrap { display: flex; justify-content: center; margin: 2.8rem 0 3.2rem; }
-    .toggle-pill {
-      display: inline-flex; align-items: center;
-      background: var(--bg2); border: 1px solid var(--border);
-      border-radius: 50px; padding: 4px; gap: 3px;
-    }
-    .toggle-btn {
-      padding: .5rem 1.5rem; border-radius: 50px; border: none; cursor: pointer;
-      font-family: 'DM Sans', sans-serif; font-size: .82rem; font-weight: 600;
-      letter-spacing: .03em; transition: all .2s;
-      color: var(--muted); background: transparent;
-    }
-    .toggle-btn.active { background: var(--black); color: var(--white); }
-    .save-pill {
-      background: var(--green); color: var(--white);
-      font-size: .62rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
-      padding: 2px 7px; border-radius: 50px; margin-left: 5px;
-    }
-
-    /* ── PLAN GRID ── */
-    .plans-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 1px; background: var(--border);
-      border: 1px solid var(--border); border-radius: var(--r); overflow: hidden;
-    }
-    .plan-col {
-      background: var(--white); padding: 2.2rem 1.6rem 2rem;
-      display: flex; flex-direction: column;
-      transition: box-shadow .2s;
-    }
-    .plan-col.featured { background: var(--black); }
-    .plan-col.premium  { background: var(--green); }
-    .plan-col:hover { box-shadow: var(--shadow-md); position: relative; z-index: 1; }
-    .plan-tag {
-      font-size: .6rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
-      padding: 3px 10px; border-radius: 50px; display: inline-block;
-      margin-bottom: 1.2rem; align-self: flex-start;
-    }
-    .plan-col:not(.featured):not(.premium) .plan-tag { background: var(--bg2); color: var(--muted); }
-    .plan-col.featured .plan-tag { background: rgba(255,255,255,.1); color: rgba(255,255,255,.6); }
-    .plan-col.premium  .plan-tag { background: rgba(255,255,255,.15); color: rgba(255,255,255,.7); }
-    .plan-col.pop-tag .plan-tag  { background: var(--green-lt); color: var(--green); }
-    .plan-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem; font-weight: 600; letter-spacing: .01em;
-      margin-bottom: .15rem;
-    }
-    .plan-col:not(.featured):not(.premium) .plan-name { color: var(--black); }
-    .plan-col.featured .plan-name, .plan-col.premium .plan-name { color: var(--white); }
-    .plan-price {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3.4rem; font-weight: 300; line-height: 1;
-      margin: .6rem 0 .1rem; letter-spacing: -.02em;
-    }
-    .plan-col:not(.featured):not(.premium) .plan-price { color: var(--black); }
-    .plan-col.featured .plan-price, .plan-col.premium .plan-price { color: var(--white); }
-    .plan-per { font-size: .75rem; color: var(--muted); margin-bottom: .5rem; font-weight: 400; }
-    .plan-col.featured .plan-per, .plan-col.premium .plan-per { color: rgba(255,255,255,.45); }
-    .plan-annual-note {
-      font-size: .73rem; font-weight: 500; margin-bottom: 1rem;
-      color: var(--green); display: none;
-    }
-    .plan-col.featured .plan-annual-note { color: var(--sand); }
-    .plan-col.premium  .plan-annual-note { color: rgba(255,255,255,.75); }
-    .plan-desc {
-      font-size: .82rem; line-height: 1.6; font-weight: 300;
-      padding-bottom: 1.2rem; margin-bottom: 1.4rem; border-bottom: 1px solid;
-    }
-    .plan-col:not(.featured):not(.premium) .plan-desc { color: var(--muted); border-color: var(--border); }
-    .plan-col.featured .plan-desc { color: rgba(255,255,255,.5); border-color: rgba(255,255,255,.1); }
-    .plan-col.premium  .plan-desc { color: rgba(255,255,255,.6); border-color: rgba(255,255,255,.15); }
-    .plan-group { margin-bottom: 1rem; flex: 1; }
-    .plan-group-label {
-      font-size: .6rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase;
-      margin-bottom: .5rem; display: block;
-    }
-    .plan-col:not(.featured):not(.premium) .plan-group-label { color: var(--green); }
-    .plan-col.featured .plan-group-label { color: var(--sand); }
-    .plan-col.premium  .plan-group-label { color: rgba(255,255,255,.5); }
-    .plan-feats { list-style: none; }
-    .plan-feats li {
-      font-size: .78rem; padding: .2rem 0;
-      display: flex; align-items: flex-start; gap: .45rem;
-    }
-    .plan-col:not(.featured):not(.premium) .plan-feats li { color: var(--ink); }
-    .plan-col.featured .plan-feats li, .plan-col.premium .plan-feats li { color: rgba(255,255,255,.8); }
-    .plan-feats li.no { opacity: .35; }
-    .plan-feats li.no span:last-child { text-decoration: line-through; }
-    .feat-icon { font-size: .7rem; flex-shrink: 0; margin-top: 3px; }
-    .feat-icon.y { color: var(--green); }
-    .feat-icon.n { color: var(--border); }
-    .plan-col.featured .feat-icon.y, .plan-col.premium .feat-icon.y { color: rgba(255,255,255,.7); }
-    .plan-cta {
-      display: block; text-align: center; margin-top: 1.8rem;
-      padding: .7rem 1rem; border-radius: 50px; font-weight: 600;
-      font-size: .78rem; letter-spacing: .06em; text-transform: uppercase;
-      text-decoration: none; transition: all .2s;
-    }
-    .plan-col:not(.featured):not(.premium) .plan-cta {
-      border: 1.5px solid var(--border); color: var(--black);
-    }
-    .plan-col:not(.featured):not(.premium) .plan-cta:hover {
-      border-color: var(--black); background: var(--black); color: var(--white);
-    }
-    .plan-col.featured .plan-cta { background: var(--white); color: var(--black); }
-    .plan-col.featured .plan-cta:hover { background: var(--sand); }
-    .plan-col.premium  .plan-cta { background: var(--white); color: var(--green); }
-    .plan-col.premium  .plan-cta:hover { background: var(--sand); color: var(--black); }
-
-    /* ── ADD-ONS ── */
-    .addons-header { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-bottom: 3.5rem; }
-    .addons-header p { font-size: .9rem; color: var(--muted); line-height: 1.75; font-weight: 300; }
-    .callout-box {
-      background: var(--black); border-radius: var(--r);
-      padding: 1.8rem 2rem; border-left: 3px solid var(--sand);
-    }
-    .callout-box p { color: rgba(255,255,255,.6); font-size: .84rem; line-height: 1.75; }
-    .callout-box strong { color: var(--sand); font-weight: 500; }
-    .addons-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-      gap: 1.5rem;
-    }
-    .addon-card {
-      background: var(--white); border: 1px solid var(--border);
-      border-radius: var(--r); padding: 1.8rem;
-      transition: box-shadow .2s, border-color .2s;
-    }
-    .addon-card:hover { box-shadow: var(--shadow-md); border-color: rgba(27,67,50,.2); }
-    .addon-icon { font-size: 1.5rem; margin-bottom: .7rem; }
-    .addon-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15rem; font-weight: 600; color: var(--black); margin-bottom: .4rem;
-    }
-    .addon-desc { font-size: .8rem; color: var(--muted); line-height: 1.65; margin-bottom: 1.3rem; font-weight: 300; }
-    .addon-prices {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 0;
-      border-top: 1px solid var(--border); padding-top: 1.1rem;
-    }
-    .price-block { padding: .1rem .5rem .1rem 0; }
-    .price-block + .price-block { padding-left: .5rem; border-left: 1px solid var(--border); }
-    .price-label {
-      font-size: .6rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase;
-      margin-bottom: .25rem; display: block;
-    }
-    .price-block.standalone .price-label { color: var(--muted); }
-    .price-block.member    .price-label { color: var(--green); }
-    .price-amount {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.6rem; font-weight: 400; line-height: 1; display: block;
-    }
-    .price-block.standalone .price-amount { color: var(--ink); }
-    .price-block.member    .price-amount { color: var(--green); }
-    .price-unit { font-size: .7rem; color: var(--muted); font-weight: 300; }
-    .addon-saving {
-      margin-top: .9rem; font-size: .73rem; font-weight: 500;
-      color: var(--green); display: flex; align-items: center; gap: .4rem;
-    }
-    .addon-saving::before { content: ''; display: block; width: 20px; height: 1px; background: var(--green); flex-shrink: 0; }
-    .addon-included {
-      margin-top: .5rem; font-size: .72rem; font-weight: 400;
-      color: var(--muted); font-style: italic;
-    }
-
-    /* ── VALUE TABLE ── */
-    .value-table-wrap { overflow-x: auto; margin-top: 2.5rem; border-radius: var(--r); border: 1px solid rgba(255,255,255,.08); }
-    .value-table { width: 100%; border-collapse: collapse; }
-    .value-table th {
-      padding: .9rem 1.2rem; text-align: left;
-      font-size: .62rem; letter-spacing: .2em; text-transform: uppercase;
-      font-weight: 600; color: rgba(255,255,255,.4);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.03);
-    }
-    .value-table td { padding: .9rem 1.2rem; border-bottom: 1px solid rgba(255,255,255,.05); font-size: .83rem; }
-    .value-table tr:last-child td { border-bottom: none; }
-    .value-table .col-service { color: rgba(255,255,255,.85); font-weight: 500; }
-    .value-table .col-stand   { color: rgba(255,255,255,.35); }
-    .value-table .col-member  { color: #6BD0A0; font-weight: 500; }
-    .value-table .col-save    { color: var(--sand); font-weight: 600; }
-    .value-table .col-incl    { color: rgba(255,255,255,.45); font-style: italic; }
-
-    /* ── WHP FINE PRINT ── */
-    .whp-wrap { max-width: 800px; margin: 0 auto; }
-    .whp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin: 2rem 0; }
-    .whp-item h4 { font-size: .78rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--black); margin-bottom: .5rem; }
-    .whp-item p { font-size: .84rem; color: var(--muted); line-height: 1.65; font-weight: 300; }
-    .fine-print {
-      background: var(--bg); border: 1px solid var(--border);
-      border-radius: var(--r-sm); padding: 1.4rem;
-    }
-    .fine-print h4 { font-size: .62rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin-bottom: .6rem; }
-    .fine-print p { font-size: .78rem; color: var(--muted); line-height: 1.7; }
-    @media (max-width: 900px) {
-      .plans-grid { grid-template-columns: 1fr; }
-      .addons-header { grid-template-columns: 1fr; gap: 2rem; }
-      .whp-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-    }
+    .toggle-wrap{display:flex;justify-content:center;margin:2.8rem 0 3.2rem}
+    .toggle-pill{display:inline-flex;align-items:center;background:var(--bg2);border:1px solid var(--border);border-radius:50px;padding:4px;gap:3px}
+    .toggle-btn{padding:.5rem 1.5rem;border-radius:50px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:600;letter-spacing:.03em;transition:all .2s;color:var(--muted);background:transparent}
+    .toggle-btn.active{background:var(--black);color:var(--white)}
+    .save-pill{background:var(--green);color:var(--white);font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:50px;margin-left:5px}
+    .plans-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+    .plan-col{background:var(--white);padding:2.2rem 1.6rem 2rem;display:flex;flex-direction:column;transition:box-shadow .2s}
+    .plan-col:hover{box-shadow:var(--shadow-md);position:relative;z-index:1}
+    .plan-col.featured{background:var(--black)}
+    .plan-col.premium{background:var(--green)}
+    .plan-tag{font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:3px 10px;border-radius:50px;display:inline-block;margin-bottom:1.2rem;align-self:flex-start}
+    .plan-col:not(.featured):not(.premium) .plan-tag{background:var(--bg2);color:var(--muted)}
+    .plan-col.featured .plan-tag{background:rgba(255,255,255,.1);color:rgba(255,255,255,.6)}
+    .plan-col.premium .plan-tag{background:rgba(255,255,255,.15);color:rgba(255,255,255,.7)}
+    .plan-col.pop-tag .plan-tag{background:var(--green-lt);color:var(--green)}
+    .plan-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;margin-bottom:.15rem}
+    .plan-col:not(.featured):not(.premium) .plan-name{color:var(--black)}
+    .plan-col.featured .plan-name,.plan-col.premium .plan-name{color:var(--white)}
+    .plan-price{font-family:'Cormorant Garamond',serif;font-size:3.4rem;font-weight:300;line-height:1;margin:.6rem 0 .1rem;letter-spacing:-.02em}
+    .plan-col:not(.featured):not(.premium) .plan-price{color:var(--black)}
+    .plan-col.featured .plan-price,.plan-col.premium .plan-price{color:var(--white)}
+    .plan-per{font-size:.75rem;color:var(--muted);margin-bottom:.5rem}
+    .plan-col.featured .plan-per,.plan-col.premium .plan-per{color:rgba(255,255,255,.45)}
+    .plan-annual-note{font-size:.73rem;font-weight:500;margin-bottom:1rem;color:var(--green);display:none}
+    .plan-col.featured .plan-annual-note{color:var(--sand)}
+    .plan-col.premium .plan-annual-note{color:rgba(255,255,255,.75)}
+    .plan-desc{font-size:.82rem;line-height:1.6;font-weight:300;padding-bottom:1.2rem;margin-bottom:1.4rem;border-bottom:1px solid}
+    .plan-col:not(.featured):not(.premium) .plan-desc{color:var(--muted);border-color:var(--border)}
+    .plan-col.featured .plan-desc{color:rgba(255,255,255,.5);border-color:rgba(255,255,255,.1)}
+    .plan-col.premium .plan-desc{color:rgba(255,255,255,.6);border-color:rgba(255,255,255,.15)}
+    .plan-group{margin-bottom:1rem;flex:1}
+    .plan-group-label{font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.5rem;display:block}
+    .plan-col:not(.featured):not(.premium) .plan-group-label{color:var(--green)}
+    .plan-col.featured .plan-group-label{color:var(--sand)}
+    .plan-col.premium .plan-group-label{color:rgba(255,255,255,.5)}
+    .plan-feats{list-style:none}
+    .plan-feats li{font-size:.78rem;padding:.2rem 0;display:flex;align-items:flex-start;gap:.45rem}
+    .plan-col:not(.featured):not(.premium) .plan-feats li{color:var(--ink)}
+    .plan-col.featured .plan-feats li,.plan-col.premium .plan-feats li{color:rgba(255,255,255,.8)}
+    .plan-feats li.no{opacity:.35}
+    .plan-feats li.no span:last-child{text-decoration:line-through}
+    .feat-icon{font-size:.7rem;flex-shrink:0;margin-top:3px}
+    .feat-icon.y{color:var(--green)}
+    .feat-icon.n{color:var(--border)}
+    .plan-col.featured .feat-icon.y,.plan-col.premium .feat-icon.y{color:rgba(255,255,255,.7)}
+    .plan-cta{display:block;text-align:center;margin-top:1.8rem;padding:.7rem 1rem;border-radius:50px;font-weight:600;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:all .2s}
+    .plan-col:not(.featured):not(.premium) .plan-cta{border:1.5px solid var(--border);color:var(--black)}
+    .plan-col:not(.featured):not(.premium) .plan-cta:hover{border-color:var(--black);background:var(--black);color:var(--white)}
+    .plan-col.featured .plan-cta{background:var(--white);color:var(--black)}
+    .plan-col.featured .plan-cta:hover{background:var(--sand)}
+    .plan-col.premium .plan-cta{background:var(--white);color:var(--green)}
+    .plan-col.premium .plan-cta:hover{background:var(--sand);color:var(--black)}
+    .addons-header{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-bottom:3.5rem}
+    .addons-header p{font-size:.9rem;color:var(--muted);line-height:1.75;font-weight:300}
+    .callout-box{background:var(--black);border-radius:var(--r);padding:1.8rem 2rem;border-left:3px solid var(--sand)}
+    .callout-box p{color:rgba(255,255,255,.6);font-size:.84rem;line-height:1.75}
+    .callout-box strong{color:var(--sand);font-weight:500}
+    .addons-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:1.5rem}
+    .addon-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:1.8rem;transition:box-shadow .2s,border-color .2s}
+    .addon-card:hover{box-shadow:var(--shadow-md);border-color:rgba(27,67,50,.2)}
+    .addon-icon{font-size:1.5rem;margin-bottom:.7rem}
+    .addon-name{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;color:var(--black);margin-bottom:.4rem}
+    .addon-desc{font-size:.8rem;color:var(--muted);line-height:1.65;margin-bottom:1.3rem;font-weight:300}
+    .addon-prices{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--border);padding-top:1.1rem}
+    .price-block{padding:.1rem .5rem .1rem 0}
+    .price-block+.price-block{padding-left:.5rem;border-left:1px solid var(--border)}
+    .price-label{font-size:.6rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.25rem;display:block}
+    .price-block.standalone .price-label{color:var(--muted)}
+    .price-block.member .price-label{color:var(--green)}
+    .price-amount{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:400;line-height:1;display:block}
+    .price-block.standalone .price-amount{color:var(--ink)}
+    .price-block.member .price-amount{color:var(--green)}
+    .price-unit{font-size:.7rem;color:var(--muted);font-weight:300}
+    .addon-saving{margin-top:.9rem;font-size:.73rem;font-weight:500;color:var(--green);display:flex;align-items:center;gap:.4rem}
+    .addon-saving::before{content:'';display:block;width:20px;height:1px;background:var(--green);flex-shrink:0}
+    .addon-included{margin-top:.5rem;font-size:.72rem;color:var(--muted);font-style:italic}
+    .value-table-wrap{overflow-x:auto;margin-top:2.5rem;border-radius:var(--r);border:1px solid rgba(255,255,255,.08)}
+    .value-table{width:100%;border-collapse:collapse}
+    .value-table th{padding:.9rem 1.2rem;text-align:left;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.4);border-bottom:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03)}
+    .value-table td{padding:.9rem 1.2rem;border-bottom:1px solid rgba(255,255,255,.05);font-size:.83rem}
+    .value-table tr:last-child td{border-bottom:none}
+    .col-service{color:rgba(255,255,255,.85);font-weight:500}
+    .col-stand{color:rgba(255,255,255,.35)}
+    .col-member{color:#6BD0A0;font-weight:500}
+    .col-save{color:var(--sand);font-weight:600}
+    .col-incl{color:rgba(255,255,255,.45);font-style:italic}
+    .whp-wrap{max-width:800px;margin:0 auto}
+    .whp-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin:2rem 0}
+    .whp-item h4{font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--black);margin-bottom:.5rem}
+    .whp-item p{font-size:.84rem;color:var(--muted);line-height:1.65;font-weight:300}
+    .fine-print{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-sm);padding:1.4rem}
+    .fine-print h4{font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem}
+    .fine-print p{font-size:.78rem;color:var(--muted);line-height:1.7}
+    @media(max-width:900px){.plans-grid{grid-template-columns:1fr}.addons-header{grid-template-columns:1fr;gap:2rem}.whp-grid{grid-template-columns:1fr;gap:1.5rem}}
   </style>
 </head>
 <body>
-  <!-- NAV -->
   <nav>
-    <a href="index.html" class="nav-logo">
-      <span class="nav-logo-top">SRQ HGC</span>
-      <span class="nav-logo-sub">Home Guardian &amp; Concierge</span>
-    </a>
+    <a href="index.html" class="nav-logo"><span class="nav-logo-top">SRQ HGC</span><span class="nav-logo-sub">Home Guardian &amp; Concierge</span></a>
     <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="pricing.html" class="active">Pricing</a>
-      <a href="realtors.html">Realtors</a>
+      <a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html" class="active">Pricing</a><a href="realtors.html">Realtors</a>
       <a href="contact.html" class="nav-cta">Contact</a>
     </div>
   </nav>
-
-  <!-- HERO -->
   <header class="page-hero">
     <span class="hero-eyebrow">Membership Plans</span>
     <h1>Simple, Transparent Pricing</h1>
     <p>No hidden fees. No surprise charges. Pay monthly, or <strong>save 15%</strong> when you pay annually upfront.</p>
   </header>
-
-  <!-- PLANS -->
   <section class="section bg-alt">
     <div class="wrap">
-      <div style="text-align:center; margin-bottom:.2rem;">
+      <div style="text-align:center;margin-bottom:.2rem">
         <span class="section-eyebrow">Choose Your Level of Care</span>
-        <h2 class="section-title" style="max-width:none;">Your Membership, Your Way</h2>
+        <h2 class="section-title" style="max-width:none">Your Membership, Your Way</h2>
       </div>
-
       <div class="toggle-wrap">
         <div class="toggle-pill">
           <button class="toggle-btn active" id="btn-monthly" onclick="setMode('monthly')">Monthly</button>
           <button class="toggle-btn" id="btn-annual" onclick="setMode('annual')">Annual<span class="save-pill">15% OFF</span></button>
         </div>
       </div>
-
       <div class="plans-grid">
-
-        <!-- ESSENTIAL -->
         <div class="plan-col">
-          <span class="plan-tag">Essential</span>
-          <span class="plan-name">Essential</span>
-          <span class="plan-price" id="price-essential">$169</span>
-          <span class="plan-per">/ month</span>
+          <span class="plan-tag">Essential</span><span class="plan-name">Essential</span>
+          <span class="plan-price" id="price-essential">$169</span><span class="plan-per">/ month</span>
           <span class="plan-annual-note" id="note-essential"></span>
           <p class="plan-desc">Core home watch for part-time residents who want reliable, professional eyes on their property.</p>
-          <div class="plan-group">
-            <span class="plan-group-label">Inspections</span>
-            <ul class="plan-feats">
-              <li><span class="feat-icon y">✓</span><span>Bi-weekly interior &amp; exterior</span></li>
-              <li><span class="feat-icon y">✓</span><span>Photo report every visit</span></li>
-              <li><span class="feat-icon y">✓</span><span>Mail &amp; package collection</span></li>
-              <li class="no"><span class="feat-icon n">✗</span><span>Weekly visits</span></li>
-            </ul>
-          </div>
-          <div class="plan-group">
-            <span class="plan-group-label">Protection</span>
-            <ul class="plan-feats">
-              <li><span class="feat-icon y">✓</span><span>Basic storm check</span></li>
-              <li class="no"><span class="feat-icon n">✗</span><span>Hurricane prep</span></li>
-              <li class="no"><span class="feat-icon n">✗</span><span>24/7 emergency line</span></li>
-            </ul>
-          </div>
-          <div class="plan-group">
-            <span class="plan-group-label">Services</span>
-            <ul class="plan-feats">
-              <li><span class="feat-icon y">✓</span><span>1 vendor coordination/mo</span></li>
-              <li class="no"><span class="feat-icon n">✗</span><span>Smart home monitoring</span></li>
-              <li class="no"><span class="feat-icon n">✗</span><span>Concierge services</span></li>
-            </ul>
-          </div>
+          <div class="plan-group"><span class="plan-group-label">Inspections</span><ul class="plan-feats"><li><span class="feat-icon y">✓</span><span>Bi-weekly interior &amp; exterior</span></li><li><span class="feat-icon y">✓</span><span>Photo report every visit</span></li><li><span class="feat-icon y">✓</span><span>Mail &amp; package collection</span></li><li class="no"><span class="feat-icon n">✗</span><span>Weekly visits</span></li></ul></div>
+          <div class="plan-group"><span class="plan-group-label">Protection</span><ul class="plan-feats"><li><span class="feat-icon y">✓</span><span>Basic storm check</span></li><li class="no"><span class="feat-icon n">✗</span><span>Hurricane prep</span></li><li class="no"><span class="feat-icon n">✗</span><span>24/7 emergency line</span></li></ul></div>
+          <div class="plan-group"><span class="plan-group-label">Services</span><ul class="plan-feats"><li><span class="feat-icon y">✓</span><span>1 vendor coordination/mo</span></li><li class="no"><span class="feat-icon n">✗</span><span>Smart home monitoring</span></li><li class="no"><span class="feat-icon n">✗</span><span>Concierge services</span></li></ul></div>
           <a href="contact.html" class="plan-cta">Get Started</a>
         </div>
-
-        <!-- COASTAL -->
         <div class="plan-col">
-          <span class="plan-tag">Coastal</span>
-          <span class="plan-name">Coastal</span>
-          <span class="plan-price" id="price-coastal">$297</span>
-          <span class="plan-per">/ month</span>
+          <span class="plan-tag">Coastal</span><span class="plan-name">Coastal</span>
+          <span class="plan-price" id="price-coastal">$297</span><span class="plan-per">/ month</span>
           <span class="plan-annual-note" id="note-coastal"></span>
           <p class="plan-desc">Enhanced coverage for waterfront and barrier island properties. Weekly presence, storm-ready protocols.</p>
-          <div class="plan-group">
-            <span class="plan-group-label">Inspections</span>
-            <ul class="plan-feats">
-              <li><span class="feat-icon y">✓</span><span>Weekly interior &amp; exterior</span></li>
-              <li><span class="feat-icon y">✓</span><span>Detailed photo reports</span></li>
-              <li><span class="feat-icon y">✓</span><span>Mail &amp; package management</span></li>
-            </ul>
-          </div>
-          <div class="plan-group">
-            <span class="plan-group-label">Hurricane &amp; Storm</span>
-            <ul class="plan-feats">
-              <li><span class="feat-icon y">✓</span><span>Hurricane prep &amp; shutdown</span></li>
-              <li><span class="feat-icon y">✓</span><span>Post-storm inspection</span></li>
-              <li><span class="feat-icon y">✓</span><span>Storm shutter deployment</span></li>
-            </ul>
-          </div>
-          <div class="plan-group">
-            <span class="plan-group-label">Services</span>
-            <ul class="plan-feats">
-              <li><span class="feat-icon y">✓</span><span>2 vendor coordinations/mo</span></li>
-              <li><span class="feat-icon y">✓</span><span>Smart home &amp; alarm check</span></li>
-              <li class="no"><span class="feat-icon n">✗</span><span>Unlimited coordination</span></li>
-              <li class="no"><span class="feat-icon n">✗</span><span>24/7 emergency line</span></li>
-            </ul>
-          </div>
+          <div class="plan-group"><span class="plan-group-label">Inspections</span><ul class="plan-feats"><li><span class="feat-icon y">✓</span><span>Weekly interior &amp; exterior</span></li><li><span class="feat-icon y">✓</span><span>Detailed photo reports</span></li><li><span class="feat-icon y">✓</span><span>Mail &amp; package management</span></li></ul></div>
+          <div class="plan-group"><span class="plan-group-label">Hurricane &amp; Storm</span><ul class="plan-feats"><li><span class="feat-icon y">✓</span><span>Hurricane prep &amp; shutdown</span></li><li><span class="feat-icon y">✓</span><span>Post-storm inspection</span></li><li><span class="feat-icon y">✓</span><span>Storm shutter deployment</span></li></ul></div>
+          <div class="plan-group"><span class="plan-group-label">Services</span><ul class="plan-feats"><li><span class="feat-icon y">✓</span><span>2 vendor coordinations/mo</span></li><li><span class="feat-icon y">✓</span><span>Smart home &amp; alarm check</span></li><li class="no"><span class="feat-icon n">✗</span><span>Unlimited coordination</span></li><li class="no"><span class="feat-icon n">✗</span><span>24/7 emergency line</span></li></ul></div>
           <a href="contact.html" class="plan-cta">Get Started</a>
         </div>
-
-        <!-- SRQ CARE (featured) -->
         <div class="plan-col featured pop-tag">
-          <span class="plan-tag">Most Popular</span>
-          <span class="plan-name">SRQ Care</span>
-          <span class="plan-price" id="price-srq">$509</span>
-          <span class="plan-per">/ month</span>
+          <span class="plan-tag">Most Popular</span><span class="plan-name">SRQ Care</span>
+          <span class="plan-price" id="price-srq">$509</span><span class="plan-per">/ month</span>
           <span class="plan-annual-note" id="note-srq"></span>
           <p class="plan-desc">Full-service, hands-free property care. Everything in Coastal, plus unlimited coordination, concierge, and rental support.</p>
-          <div class="plan-group">
-            <span class="plan-group-label">Inspections</span>
-            <ul class="plan-feats">
-              <li><span class="feat-icon y">✓</span><span>Weekly inspection</span></li>
-              <li><span class="feat-icon y">✓</span><span>Detailed photo reports</span></li>
-              <li><span class="feat-icon y">✓</span><span>Rental turnover coordination</span></li>
-            </ul>
-          </div>
-          <div class="plan-group">
-            <span class="plan-group-label">Hurricane &amp; Emergency</span>
-            <ul class="plan-feats">
-              <li><span class="feat-icon y">✓</span><span>Full hurricane prep</span></li>
-              <li><span class="feat-icon y">✓</span><span>24/7 emergency response</span></li>
-              <li><span class="feat-icon y">✓</span><span>Emergency contractor dispatch</span></li>
-            </ul>
-          </div>
-          <div class="plan-group">
-            <span class="plan-group-label">Coordination &amp; Concierge</span>
-            <ul class="plan-feats">
-              <li><span class="feat-icon y">✓</span><span>Unlimited vendor coordination</span></li>
-              <li><span class="feat-icon y">✓</span><span>Smart home monitoring</span></li>
-              <li><span class="feat-icon y">✓</span><span>Restaurant &amp; event reservations</span></li>
-              <li><span class="feat-icon y">✓</span><span>Grocery delivery coordination</span></li>
-              <li><span class="feat-icon y">✓</span><span>Transportation coordination</span></li>
-            </ul>
-          </div>
+          <div class="plan-group"><span class="plan-group-label">Inspections</span><ul class="plan-feats"><li><span class="feat-icon y">✓</span><span>Weekly inspection</span></li><li><span class="feat-icon y">✓</span><span>Detailed photo reports</span></li><li><span class="feat-icon y">✓</span><span>Rental turnover coordination</span></li></ul></div>
+          <div class="plan-group"><span class="plan-group-label">Hurricane &amp; Emergency</span><ul class="plan-feats"><li><span class="feat-icon y">✓</span><span>Full hurricane prep</span></li><li><span class="feat-icon y">✓</span><span>24/7 emergency response</span></li><li><span class="feat-icon y">✓</span><span>Emergency contractor dispatch</span></li></ul></div>
+          <div class="plan-group"><span class="plan-group-label">Coordination &amp; Concierge</span><ul class="plan-feats"><li><span class="feat-icon y">✓</span><span>Unlimited vendor coordination</span></li><li><span class="feat-icon y">✓</span><span>Smart home monitoring</span></li><li><span class="feat-icon y">✓</span><span>Restaurant &amp; event reservations</span></li><li><span class="feat-icon y">✓</span><span>Grocery delivery coordination</span></li><li><span class="feat-icon y">✓</span><span>Transportation coordination</span></li></ul></div>
           <a href="contact.html" class="plan-cta">Get Started</a>
         </div>
-
-        <!-- ESTATE CARE -->
         <div class="plan-col">
-          <span class="plan-tag">Estate Care</span>
-          <span class="plan-name">Estate Care</span>
-          <span class="plan-price" id="price-estate">$1,019</span>
-          <span class="plan-per">/ month</span>
+          <span class="plan-tag">Estate Care</span><span class="plan-name">Estate Care</span>
+          <span class="plan-price" id="price-estate">$1,019</span><span class="plan-per">/ month</span>
           <span class="plan-annual-note" id="note-estate"></span>
           <p class="plan-desc">White-glove guardianship for large estates, luxury properties, and multi-property portfolios.</p>
-          <div class="plan-group">
-            <span class="plan-group-label">Inspections</span>
-            <ul class="plan-feats">
-              <li><span class="feat-icon y">✓</span><span>Twice-weekly inspections</span></li>
-              <li><span class="feat-icon y">✓</span><span>Pool, dock &amp; waterfront</span></li>
-              <li><span class="feat-icon y">✓</span><span>Vehicle, boat &amp; golf cart</span></li>
-              <li><span class="feat-icon y">✓</span><span>Quarterly condition report</span></li>
-            </ul>
-          </div>
-          <div class="plan-group">
-            <span class="plan-group-label">Estate Management</span>
-            <ul class="plan-feats">
-              <li><span class="feat-icon y">✓</span><span>Guest &amp; staff coordination</span></li>
-              <li><span class="feat-icon y">✓</span><span>Contractor supervision</span></li>
-              <li><span class="feat-icon y">✓</span><span>Vendor performance review</span></li>
-              <li><span class="feat-icon y">✓</span><span>Secure mail &amp; package storage</span></li>
-            </ul>
-          </div>
-          <div class="plan-group">
-            <span class="plan-group-label">Emergency</span>
-            <ul class="plan-feats">
-              <li><span class="feat-icon y">✓</span><span>Dedicated direct emergency line</span></li>
-              <li><span class="feat-icon y">✓</span><span>Vendor dispatch authority</span></li>
-              <li><span class="feat-icon y">✓</span><span>Full hurricane protocols</span></li>
-            </ul>
-          </div>
+          <div class="plan-group"><span class="plan-group-label">Inspections</span><ul class="plan-feats"><li><span class="feat-icon y">✓</span><span>Twice-weekly inspections</span></li><li><span class="feat-icon y">✓</span><span>Pool, dock &amp; waterfront</span></li><li><span class="feat-icon y">✓</span><span>Vehicle, boat &amp; golf cart</span></li><li><span class="feat-icon y">✓</span><span>Quarterly condition report</span></li></ul></div>
+          <div class="plan-group"><span class="plan-group-label">Estate Management</span><ul class="plan-feats"><li><span class="feat-icon y">✓</span><span>Guest &amp; staff coordination</span></li><li><span class="feat-icon y">✓</span><span>Contractor supervision</span></li><li><span class="feat-icon y">✓</span><span>Vendor performance review</span></li><li><span class="feat-icon y">✓</span><span>Secure mail &amp; package storage</span></li></ul></div>
+          <div class="plan-group"><span class="plan-group-label">Emergency</span><ul class="plan-feats"><li><span class="feat-icon y">✓</span><span>Dedicated direct emergency line</span></li><li><span class="feat-icon y">✓</span><span>Vendor dispatch authority</span></li><li><span class="feat-icon y">✓</span><span>Full hurricane protocols</span></li></ul></div>
           <a href="contact.html" class="plan-cta">Get Started</a>
         </div>
-
-        <!-- SARASOTA LIFE (premium) -->
         <div class="plan-col premium">
-          <span class="plan-tag">Premium Tier</span>
-          <span class="plan-name">Sarasota Life</span>
-          <span class="plan-price" id="price-life">$2,124</span>
-          <span class="plan-per">/ month</span>
+          <span class="plan-tag">Premium Tier</span><span class="plan-name">Sarasota Life</span>
+          <span class="plan-price" id="price-life">$2,124</span><span class="plan-per">/ month</span>
           <span class="plan-annual-note" id="note-life"></span>
           <p class="plan-desc">Full life management. Everything in Estate Care, plus personal concierge for every detail of your Sarasota life.</p>
-          <div class="plan-group">
-            <span class="plan-group-label">Everything in Estate, Plus</span>
-            <ul class="plan-feats">
-              <li><span class="feat-icon y">✓</span><span>Restaurant &amp; dining reservations</span></li>
-              <li><span class="feat-icon y">✓</span><span>Event tickets &amp; curation</span></li>
-              <li><span class="feat-icon y">✓</span><span>Airport transfers &amp; transport</span></li>
-              <li><span class="feat-icon y">✓</span><span>Grocery &amp; specialty delivery</span></li>
-              <li><span class="feat-icon y">✓</span><span>Spa, marina &amp; recreation</span></li>
-              <li><span class="feat-icon y">✓</span><span>Personal shopping coordination</span></li>
-              <li><span class="feat-icon y">✓</span><span>Medical &amp; errand coordination</span></li>
-              <li><span class="feat-icon y">✓</span><span>Seasonal home open &amp; close</span></li>
-              <li><span class="feat-icon y">✓</span><span>Monthly property health summary</span></li>
-              <li><span class="feat-icon y">✓</span><span>24/7 personal concierge line</span></li>
-            </ul>
-          </div>
+          <div class="plan-group"><span class="plan-group-label">Everything in Estate, Plus</span><ul class="plan-feats"><li><span class="feat-icon y">✓</span><span>Restaurant &amp; dining reservations</span></li><li><span class="feat-icon y">✓</span><span>Event tickets &amp; curation</span></li><li><span class="feat-icon y">✓</span><span>Airport transfers &amp; transport</span></li><li><span class="feat-icon y">✓</span><span>Grocery &amp; specialty delivery</span></li><li><span class="feat-icon y">✓</span><span>Spa, marina &amp; recreation</span></li><li><span class="feat-icon y">✓</span><span>Personal shopping coordination</span></li><li><span class="feat-icon y">✓</span><span>Medical &amp; errand coordination</span></li><li><span class="feat-icon y">✓</span><span>Seasonal home open &amp; close</span></li><li><span class="feat-icon y">✓</span><span>Monthly property health summary</span></li><li><span class="feat-icon y">✓</span><span>24/7 personal concierge line</span></li></ul></div>
           <a href="contact.html" class="plan-cta">Inquire Now</a>
         </div>
-
-      </div><!-- /plans-grid -->
+      </div>
     </div>
   </section>
-  <!-- ADD-ONS -->
   <section class="section">
     <div class="wrap">
       <div class="addons-header">
-        <div>
-          <span class="section-eyebrow">À La Carte Options</span>
-          <h2 class="section-title">Build Your Perfect Plan</h2>
-          <p>Start with any membership and add exactly what you need. Every service has a standalone rate — but your membership always makes it cheaper. The more you use, the more your plan pays for itself.</p>
-        </div>
-        <div class="callout-box">
-          <p><strong>Membership = built-in savings.</strong> Every add-on below shows the standalone rate vs. your member rate. On a single month with a hurricane event, two extra visits, and a few vendor coordinations, a Coastal membership can easily save you $500+ vs. paying à la carte.</p>
-        </div>
+        <div><span class="section-eyebrow">À La Carte Options</span><h2 class="section-title">Build Your Perfect Plan</h2><p>Start with any membership and add exactly what you need. Every service has a standalone rate — but your membership always makes it cheaper.</p></div>
+        <div class="callout-box"><p><strong>Membership = built-in savings.</strong> Every add-on below shows the standalone rate vs. your member rate. On a single month with a hurricane event, extra visits, and vendor coordinations, a Coastal membership can save you $500+ vs. paying à la carte.</p></div>
       </div>
-
       <div class="addons-grid">
-
-        <div class="addon-card">
-          <div class="addon-icon">🌀</div>
-          <div class="addon-name">Hurricane Preparation</div>
-          <p class="addon-desc">Full pre-storm shutdown — storm shutters, outdoor furniture, generator check, water shutoff, post-storm damage inspection with photo report.</p>
-          <div class="addon-prices">
-            <div class="price-block standalone">
-              <span class="price-label">Standalone</span>
-              <span class="price-amount">$299</span>
-              <span class="price-unit">per storm event</span>
-            </div>
-            <div class="price-block member">
-              <span class="price-label">Member Add-On</span>
-              <span class="price-amount">$149</span>
-              <span class="price-unit">per storm event</span>
-            </div>
-          </div>
-          <p class="addon-saving">Members save $150 per event</p>
-          <p class="addon-included">Included free in Coastal, SRQ Care, Estate Care &amp; Sarasota Life</p>
-        </div>
-
-        <div class="addon-card">
-          <div class="addon-icon">🏠</div>
-          <div class="addon-name">Extra Property Inspection</div>
-          <p class="addon-desc">Additional inspection visits beyond your plan's schedule — full written report and photo documentation included with each visit.</p>
-          <div class="addon-prices">
-            <div class="price-block standalone">
-              <span class="price-label">Standalone</span>
-              <span class="price-amount">$175</span>
-              <span class="price-unit">per visit</span>
-            </div>
-            <div class="price-block member">
-              <span class="price-label">Member Add-On</span>
-              <span class="price-amount">$89</span>
-              <span class="price-unit">per visit</span>
-            </div>
-          </div>
-          <p class="addon-saving">Members save $86 per visit</p>
-        </div>
-
-        <div class="addon-card">
-          <div class="addon-icon">🔧</div>
-          <div class="addon-name">Vendor Coordination</div>
-          <p class="addon-desc">We schedule, meet, supervise, and follow up with any contractor or service provider at your property — use your own vendors or whoever you choose.</p>
-          <div class="addon-prices">
-            <div class="price-block standalone">
-              <span class="price-label">Standalone</span>
-              <span class="price-amount">$125</span>
-              <span class="price-unit">per coordination</span>
-            </div>
-            <div class="price-block member">
-              <span class="price-label">Member Add-On</span>
-              <span class="price-amount">$65</span>
-              <span class="price-unit">per coordination</span>
-            </div>
-          </div>
-          <p class="addon-saving">Members save $60 per coordination</p>
-          <p class="addon-included">Unlimited in SRQ Care, Estate Care &amp; Sarasota Life</p>
-        </div>
-
-        <div class="addon-card">
-          <div class="addon-icon">📱</div>
-          <div class="addon-name">Smart Home Monitoring</div>
-          <p class="addon-desc">Monthly check of all smart devices, alarm systems, cameras, thermostats, and water sensors. Includes basic troubleshooting and alert response coordination.</p>
-          <div class="addon-prices">
-            <div class="price-block standalone">
-              <span class="price-label">Standalone</span>
-              <span class="price-amount">$99</span>
-              <span class="price-unit">per month</span>
-            </div>
-            <div class="price-block member">
-              <span class="price-label">Member Add-On</span>
-              <span class="price-amount">$49</span>
-              <span class="price-unit">per month</span>
-            </div>
-          </div>
-          <p class="addon-saving">Members save $600/year</p>
-          <p class="addon-included">Included in Coastal, SRQ Care, Estate Care &amp; Sarasota Life</p>
-        </div>
-
-        <div class="addon-card">
-          <div class="addon-icon">🚗</div>
-          <div class="addon-name">Transportation &amp; Transfers</div>
-          <p class="addon-desc">Private airport pickups/drop-offs, errands, medical appointments, and local transportation. Professional, discreet, always on time.</p>
-          <div class="addon-prices">
-            <div class="price-block standalone">
-              <span class="price-label">Standalone</span>
-              <span class="price-amount">$95</span>
-              <span class="price-unit">per trip (local)</span>
-            </div>
-            <div class="price-block member">
-              <span class="price-label">Member Add-On</span>
-              <span class="price-amount">$65</span>
-              <span class="price-unit">per trip (local)</span>
-            </div>
-          </div>
-          <p class="addon-saving">Members save $30 per trip</p>
-          <p class="addon-included">Unlimited in Sarasota Life</p>
-        </div>
-
-        <div class="addon-card">
-          <div class="addon-icon">🍽️</div>
-          <div class="addon-name">Concierge — Reservations &amp; Events</div>
-          <p class="addon-desc">Restaurant reservations, event tickets, marina bookings, spa appointments. We handle all the calling and coordination.</p>
-          <div class="addon-prices">
-            <div class="price-block standalone">
-              <span class="price-label">Standalone</span>
-              <span class="price-amount">$75</span>
-              <span class="price-unit">per booking</span>
-            </div>
-            <div class="price-block member">
-              <span class="price-label">Member Add-On</span>
-              <span class="price-amount">$35</span>
-              <span class="price-unit">per booking</span>
-            </div>
-          </div>
-          <p class="addon-saving">Members save $40 per booking</p>
-          <p class="addon-included">Unlimited in SRQ Care, Estate Care &amp; Sarasota Life</p>
-        </div>
-
-        <div class="addon-card">
-          <div class="addon-icon">🛒</div>
-          <div class="addon-name">Grocery &amp; Delivery Coordination</div>
-          <p class="addon-desc">We coordinate grocery orders, specialty deliveries, and household restocking so your home is stocked before you arrive.</p>
-          <div class="addon-prices">
-            <div class="price-block standalone">
-              <span class="price-label">Standalone</span>
-              <span class="price-amount">$85</span>
-              <span class="price-unit">per coordination</span>
-            </div>
-            <div class="price-block member">
-              <span class="price-label">Member Add-On</span>
-              <span class="price-amount">$45</span>
-              <span class="price-unit">per coordination</span>
-            </div>
-          </div>
-          <p class="addon-saving">Members save $40 per coordination</p>
-          <p class="addon-included">Unlimited in SRQ Care, Estate Care &amp; Sarasota Life</p>
-        </div>
-
-        <div class="addon-card">
-          <div class="addon-icon">🏡</div>
-          <div class="addon-name">Welcome Home Package</div>
-          <p class="addon-desc">Pre-arrival home preparation — fresh flowers, stocked pantry basics, linens turned down, AC set, lights on. Walk in and it feels like home immediately.</p>
-          <div class="addon-prices">
-            <div class="price-block standalone">
-              <span class="price-label">Standalone</span>
-              <span class="price-amount">$175</span>
-              <span class="price-unit">per preparation</span>
-            </div>
-            <div class="price-block member">
-              <span class="price-label">Member Add-On</span>
-              <span class="price-amount">$99</span>
-              <span class="price-unit">per preparation</span>
-            </div>
-          </div>
-          <p class="addon-saving">Members save $76 per preparation</p>
-        </div>
-
-        <div class="addon-card">
-          <div class="addon-icon">🌊</div>
-          <div class="addon-name">Pool, Dock &amp; Waterfront Inspection</div>
-          <p class="addon-desc">Dedicated inspection of pool equipment, dock integrity, boat lifts, and waterfront structures — separate from standard home inspection.</p>
-          <div class="addon-prices">
-            <div class="price-block standalone">
-              <span class="price-label">Standalone</span>
-              <span class="price-amount">$149</span>
-              <span class="price-unit">per month</span>
-            </div>
-            <div class="price-block member">
-              <span class="price-label">Member Add-On</span>
-              <span class="price-amount">$79</span>
-              <span class="price-unit">per month</span>
-            </div>
-          </div>
-          <p class="addon-saving">Members save $840/year</p>
-          <p class="addon-included">Included in Estate Care &amp; Sarasota Life</p>
-        </div>
-
+        <div class="addon-card"><div class="addon-icon">🌀</div><div class="addon-name">Hurricane Preparation</div><p class="addon-desc">Full pre-storm shutdown — storm shutters, outdoor furniture, generator check, water shutoff, post-storm damage inspection.</p><div class="addon-prices"><div class="price-block standalone"><span class="price-label">Standalone</span><span class="price-amount">$299</span><span class="price-unit">per storm event</span></div><div class="price-block member"><span class="price-label">Member Add-On</span><span class="price-amount">$149</span><span class="price-unit">per storm event</span></div></div><p class="addon-saving">Members save $150 per event</p><p class="addon-included">Included free in Coastal, SRQ Care, Estate Care &amp; Sarasota Life</p></div>
+        <div class="addon-card"><div class="addon-icon">🏠</div><div class="addon-name">Extra Property Inspection</div><p class="addon-desc">Additional inspection visits beyond your plan's schedule — full written report and photo documentation included.</p><div class="addon-prices"><div class="price-block standalone"><span class="price-label">Standalone</span><span class="price-amount">$175</span><span class="price-unit">per visit</span></div><div class="price-block member"><span class="price-label">Member Add-On</span><span class="price-amount">$89</span><span class="price-unit">per visit</span></div></div><p class="addon-saving">Members save $86 per visit</p></div>
+        <div class="addon-card"><div class="addon-icon">🔧</div><div class="addon-name">Vendor Coordination</div><p class="addon-desc">We schedule, meet, supervise, and follow up with any contractor — use your own vendors or whoever you choose.</p><div class="addon-prices"><div class="price-block standalone"><span class="price-label">Standalone</span><span class="price-amount">$125</span><span class="price-unit">per coordination</span></div><div class="price-block member"><span class="price-label">Member Add-On</span><span class="price-amount">$65</span><span class="price-unit">per coordination</span></div></div><p class="addon-saving">Members save $60 per coordination</p><p class="addon-included">Unlimited in SRQ Care, Estate Care &amp; Sarasota Life</p></div>
+        <div class="addon-card"><div class="addon-icon">📱</div><div class="addon-name">Smart Home Monitoring</div><p class="addon-desc">Monthly check of smart devices, alarm systems, cameras, thermostats, and water sensors. Includes basic troubleshooting.</p><div class="addon-prices"><div class="price-block standalone"><span class="price-label">Standalone</span><span class="price-amount">$99</span><span class="price-unit">per month</span></div><div class="price-block member"><span class="price-label">Member Add-On</span><span class="price-amount">$49</span><span class="price-unit">per month</span></div></div><p class="addon-saving">Members save $600/year</p><p class="addon-included">Included in Coastal, SRQ Care, Estate Care &amp; Sarasota Life</p></div>
+        <div class="addon-card"><div class="addon-icon">🚗</div><div class="addon-name">Transportation &amp; Transfers</div><p class="addon-desc">Private airport pickups/drop-offs, errands, medical appointments. Professional, discreet, always on time.</p><div class="addon-prices"><div class="price-block standalone"><span class="price-label">Standalone</span><span class="price-amount">$95</span><span class="price-unit">per trip (local)</span></div><div class="price-block member"><span class="price-label">Member Add-On</span><span class="price-amount">$65</span><span class="price-unit">per trip (local)</span></div></div><p class="addon-saving">Members save $30 per trip</p><p class="addon-included">Unlimited in Sarasota Life</p></div>
+        <div class="addon-card"><div class="addon-icon">🍽️</div><div class="addon-name">Concierge — Reservations &amp; Events</div><p class="addon-desc">Restaurant reservations, event tickets, marina bookings, spa appointments. We handle all the calling and coordination.</p><div class="addon-prices"><div class="price-block standalone"><span class="price-label">Standalone</span><span class="price-amount">$75</span><span class="price-unit">per booking</span></div><div class="price-block member"><span class="price-label">Member Add-On</span><span class="price-amount">$35</span><span class="price-unit">per booking</span></div></div><p class="addon-saving">Members save $40 per booking</p><p class="addon-included">Unlimited in SRQ Care, Estate Care &amp; Sarasota Life</p></div>
+        <div class="addon-card"><div class="addon-icon">🛒</div><div class="addon-name">Grocery &amp; Delivery Coordination</div><p class="addon-desc">We coordinate grocery orders, specialty deliveries, and household restocking so your home is stocked before you arrive.</p><div class="addon-prices"><div class="price-block standalone"><span class="price-label">Standalone</span><span class="price-amount">$85</span><span class="price-unit">per coordination</span></div><div class="price-block member"><span class="price-label">Member Add-On</span><span class="price-amount">$45</span><span class="price-unit">per coordination</span></div></div><p class="addon-saving">Members save $40 per coordination</p><p class="addon-included">Unlimited in SRQ Care, Estate Care &amp; Sarasota Life</p></div>
+        <div class="addon-card"><div class="addon-icon">🏡</div><div class="addon-name">Welcome Home Package</div><p class="addon-desc">Pre-arrival home preparation — fresh flowers, stocked pantry, linens turned down, AC set, lights on.</p><div class="addon-prices"><div class="price-block standalone"><span class="price-label">Standalone</span><span class="price-amount">$175</span><span class="price-unit">per preparation</span></div><div class="price-block member"><span class="price-label">Member Add-On</span><span class="price-amount">$99</span><span class="price-unit">per preparation</span></div></div><p class="addon-saving">Members save $76 per preparation</p></div>
+        <div class="addon-card"><div class="addon-icon">🌊</div><div class="addon-name">Pool, Dock &amp; Waterfront</div><p class="addon-desc">Dedicated inspection of pool equipment, dock integrity, boat lifts, and waterfront structures.</p><div class="addon-prices"><div class="price-block standalone"><span class="price-label">Standalone</span><span class="price-amount">$149</span><span class="price-unit">per month</span></div><div class="price-block member"><span class="price-label">Member Add-On</span><span class="price-amount">$79</span><span class="price-unit">per month</span></div></div><p class="addon-saving">Members save $840/year</p><p class="addon-included">Included in Estate Care &amp; Sarasota Life</p></div>
       </div>
     </div>
   </section>
-  <!-- VALUE TABLE -->
   <section class="section bg-dark">
     <div class="wrap">
       <span class="section-eyebrow">By the Numbers</span>
       <h2 class="section-title">What Every Service Is Worth</h2>
-      <p class="section-sub">Standalone rates vs. what members pay — see exactly how fast your plan pays for itself.</p>
+      <p class="section-sub">Standalone rates vs. what members pay — see how fast your plan pays for itself.</p>
       <div class="value-table-wrap">
         <table class="value-table">
-          <thead>
-            <tr>
-              <th>Service</th>
-              <th>Standalone Rate</th>
-              <th>Member Rate</th>
-              <th>You Save</th>
-              <th>Included In</th>
-            </tr>
-          </thead>
+          <thead><tr><th>Service</th><th>Standalone Rate</th><th>Member Rate</th><th>You Save</th><th>Included In</th></tr></thead>
           <tbody>
-            <tr><td class="col-service">Bi-weekly Home Inspection</td><td class="col-stand">$175/visit × 2 = $350/mo</td><td class="col-member">In Essential ($169/mo)</td><td class="col-save">$181+/mo</td><td class="col-incl">All plans</td></tr>
-            <tr><td class="col-service">Weekly Home Inspection</td><td class="col-stand">$175/visit × 4 = $700/mo</td><td class="col-member">In Coastal ($297/mo)</td><td class="col-save">$403+/mo</td><td class="col-incl">Coastal &amp; above</td></tr>
-            <tr><td class="col-service">Hurricane Prep (per event)</td><td class="col-stand">$299/event</td><td class="col-member">$149 add-on</td><td class="col-save">$150/event</td><td class="col-incl">Coastal &amp; above</td></tr>
+            <tr><td class="col-service">Bi-weekly Inspection</td><td class="col-stand">$175/visit × 2 = $350/mo</td><td class="col-member">In Essential ($169/mo)</td><td class="col-save">$181+/mo</td><td class="col-incl">All plans</td></tr>
+            <tr><td class="col-service">Weekly Inspection</td><td class="col-stand">$175/visit × 4 = $700/mo</td><td class="col-member">In Coastal ($297/mo)</td><td class="col-save">$403+/mo</td><td class="col-incl">Coastal &amp; above</td></tr>
+            <tr><td class="col-service">Hurricane Prep</td><td class="col-stand">$299/event</td><td class="col-member">$149 add-on</td><td class="col-save">$150/event</td><td class="col-incl">Coastal &amp; above</td></tr>
             <tr><td class="col-service">Vendor Coordination</td><td class="col-stand">$125/each</td><td class="col-member">$65 add-on</td><td class="col-save">$60 each</td><td class="col-incl">Unlimited in SRQ Care+</td></tr>
             <tr><td class="col-service">Smart Home Monitoring</td><td class="col-stand">$99/month</td><td class="col-member">$49 add-on</td><td class="col-save">$600/year</td><td class="col-incl">Coastal &amp; above</td></tr>
-            <tr><td class="col-service">Transportation (per trip)</td><td class="col-stand">$95/trip</td><td class="col-member">$65 add-on</td><td class="col-save">$30/trip</td><td class="col-incl">Unlimited in Sarasota Life</td></tr>
-            <tr><td class="col-service">Restaurant / Event Concierge</td><td class="col-stand">$75/booking</td><td class="col-member">$35 add-on</td><td class="col-save">$40/booking</td><td class="col-incl">Unlimited in SRQ Care+</td></tr>
-            <tr><td class="col-service">Grocery &amp; Delivery Coordination</td><td class="col-stand">$85/each</td><td class="col-member">$45 add-on</td><td class="col-save">$40 each</td><td class="col-incl">Unlimited in SRQ Care+</td></tr>
+            <tr><td class="col-service">Transportation</td><td class="col-stand">$95/trip</td><td class="col-member">$65 add-on</td><td class="col-save">$30/trip</td><td class="col-incl">Unlimited in Sarasota Life</td></tr>
+            <tr><td class="col-service">Concierge / Reservations</td><td class="col-stand">$75/booking</td><td class="col-member">$35 add-on</td><td class="col-save">$40/booking</td><td class="col-incl">Unlimited in SRQ Care+</td></tr>
+            <tr><td class="col-service">Grocery Coordination</td><td class="col-stand">$85/each</td><td class="col-member">$45 add-on</td><td class="col-save">$40 each</td><td class="col-incl">Unlimited in SRQ Care+</td></tr>
             <tr><td class="col-service">Welcome Home Package</td><td class="col-stand">$175/prep</td><td class="col-member">$99 add-on</td><td class="col-save">$76 each</td><td class="col-incl">Add-on all plans</td></tr>
-            <tr><td class="col-service">Pool, Dock &amp; Waterfront Check</td><td class="col-stand">$149/month</td><td class="col-member">$79 add-on</td><td class="col-save">$840/year</td><td class="col-incl">Estate Care &amp; above</td></tr>
-            <tr><td class="col-service">Twice-Weekly Inspections</td><td class="col-stand">$175 × 8 = $1,400/mo</td><td class="col-member">In Estate Care ($1,019/mo)</td><td class="col-save">$381+/mo</td><td class="col-incl">Estate Care &amp; above</td></tr>
+            <tr><td class="col-service">Pool, Dock &amp; Waterfront</td><td class="col-stand">$149/month</td><td class="col-member">$79 add-on</td><td class="col-save">$840/year</td><td class="col-incl">Estate Care &amp; above</td></tr>
           </tbody>
         </table>
       </div>
-      <p style="text-align:center; margin-top:1.8rem; font-size:.74rem; color:rgba(255,255,255,.28); font-style:italic;">
-        * Standalone rates reflect standard one-time pricing. Member add-on rates require an active membership. Annual billing saves an additional 15%.
-      </p>
+      <p style="text-align:center;margin-top:1.8rem;font-size:.74rem;color:rgba(255,255,255,.28);font-style:italic">* Standalone rates reflect standard one-time pricing. Member add-on rates require an active membership. Annual billing saves an additional 15%.</p>
     </div>
   </section>
-
-  <!-- WELCOME HOME FINE PRINT -->
   <section class="section">
     <div class="wrap">
       <div class="whp-wrap">
         <span class="section-eyebrow">Welcome Home Package — Full Details</span>
         <h2 class="section-title">Available as an Add-On to Any Plan</h2>
         <div class="whp-grid">
-          <div class="whp-item">
-            <h4>What's Included</h4>
-            <p>Fresh flowers, stocked pantry essentials, linens turned down, AC set to your preference, lights on, and a personal welcome note — so your home is warm and ready the moment you walk in.</p>
-          </div>
-          <div class="whp-item">
-            <h4>How It Works</h4>
-            <p>Schedule at least 48 hours before arrival. We coordinate everything remotely — no need for you to manage a single detail. Available for all membership tiers as an add-on.</p>
-          </div>
-          <div class="whp-item">
-            <h4>Pricing</h4>
-            <p>$99/preparation for members (reg. $175 standalone). No minimum frequency — use it whenever you visit.</p>
-          </div>
-          <div class="whp-item">
-            <h4>What's Not Included</h4>
-            <p>Cost of groceries, flowers, or consumables billed separately at actual cost. Zero markup — you pay exactly what we pay.</p>
-          </div>
+          <div class="whp-item"><h4>What's Included</h4><p>Fresh flowers, stocked pantry essentials, linens turned down, AC set, lights on, and a personal welcome note.</p></div>
+          <div class="whp-item"><h4>How It Works</h4><p>Schedule at least 48 hours before arrival. We coordinate everything remotely — no need for you to manage a single detail.</p></div>
+          <div class="whp-item"><h4>Pricing</h4><p>$99/preparation for members (reg. $175 standalone). No minimum frequency — use it whenever you visit.</p></div>
+          <div class="whp-item"><h4>What's Not Included</h4><p>Cost of groceries, flowers, or consumables billed at actual cost. Zero markup — you pay exactly what we pay.</p></div>
         </div>
-        <div class="fine-print">
-          <h4>Fine Print</h4>
-          <p>Available to active members only. Minimum 48-hour advance notice required. Rush requests under 48 hours may be accommodated with a $40 surcharge. Supply costs (groceries, flowers, etc.) billed at actual cost with zero markup. Does not include cleaning services — cleaning can be coordinated separately through vendor coordination. No limit on frequency — use as often as you visit.</p>
-        </div>
+        <div class="fine-print"><h4>Fine Print</h4><p>Available to active members only. 48-hour advance notice required. Rush requests under 48 hours may be accommodated with a $40 surcharge. Supply costs billed at actual cost, zero markup. Does not include cleaning — cleaning can be coordinated through vendor coordination. No limit on frequency.</p></div>
       </div>
     </div>
   </section>
-
-  <!-- FOOTER -->
   <footer>
     <div class="footer-brand">SRQ Home Guardian &amp; Concierge</div>
     <div>Sarasota · Longboat Key · Siesta Key · Casey Key</div>
-    <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="realtors.html">Realtors</a>
-      <a href="contact.html">Contact</a>
-    </div>
+    <div class="footer-links"><a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="realtors.html">Realtors</a><a href="contact.html">Contact</a></div>
   </footer>
-
   <script>
-    function setMode(mode) {
-      const isAnnual = mode === 'annual';
-      document.getElementById('btn-monthly').classList.toggle('active', !isAnnual);
-      document.getElementById('btn-annual').classList.toggle('active', isAnnual);
-      const monthly = { essential:169, coastal:297, srq:509, estate:1019, life:2124 };
-      ['essential','coastal','srq','estate','life'].forEach(id => {
-        const mo = monthly[id];
-        const ann = Math.round(mo * 12 * 0.85);
-        const moEq = Math.round(mo * 0.85);
-        const saved = (mo*12) - ann;
-        document.getElementById('price-'+id).textContent = isAnnual ? ('$'+moEq.toLocaleString()) : ('$'+mo.toLocaleString());
-        const note = document.getElementById('note-'+id);
-        note.style.display = isAnnual ? 'block' : 'none';
-        note.textContent = '$'+ann.toLocaleString()+'/yr — save $'+saved.toLocaleString();
+    function setMode(m){
+      const a=m==='annual';
+      document.getElementById('btn-monthly').classList.toggle('active',!a);
+      document.getElementById('btn-annual').classList.toggle('active',a);
+      const mo={essential:169,coastal:297,srq:509,estate:1019,life:2124};
+      ['essential','coastal','srq','estate','life'].forEach(id=>{
+        const v=mo[id],ann=Math.round(v*12*.85),eq=Math.round(v*.85),sv=(v*12)-ann;
+        document.getElementById('price-'+id).textContent='$'+(a?eq:v).toLocaleString();
+        const n=document.getElementById('note-'+id);
+        n.style.display=a?'block':'none';
+        n.textContent='$'+ann.toLocaleString()+'/yr — save $'+sv.toLocaleString();
       });
     }
   </script>
