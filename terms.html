@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Membership Agreement | SRQ Home Guardian &amp; Concierge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:#F9F8F6;color:#111827;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif}
+a{text-decoration:none;color:inherit}
+:root{--black:#0a0a0a;--charcoal:#111827;--ink:#1f2937;--muted:#6B7280;--bg:#F9F8F6;--white:#fff;--green:#1B4332;--gmd:#2D6A4F;--sand:#C4A882;--border:#e5e7eb}
+.nav{position:fixed;top:0;left:0;right:0;z-index:9999;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:76px;background:rgba(10,10,10,.9);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.07)}
+.nl .lm{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:#fff;letter-spacing:.05em}
+.nl .ls{font-size:.58rem;font-weight:500;color:rgba(255,255,255,.4);letter-spacing:.2em;text-transform:uppercase;display:block;margin-top:2px}
+.nr{display:flex;align-items:center;gap:36px}
+.nr a{font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7);transition:color .2s}
+.nr a:hover{color:#fff}
+.nr .ncta{background:#fff;color:#0a0a0a;padding:11px 26px;border-radius:2px;font-size:.72rem;font-weight:600;letter-spacing:.12em;transition:all .3s}
+.nr .ncta:hover{background:var(--sand);color:#fff}
+
+/* HERO */
+.thero{background:var(--charcoal);padding:140px 80px 80px;border-bottom:1px solid rgba(255,255,255,.06)}
+.thero-inner{max-width:860px}
+.stag{font-size:.63rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--sand);margin-bottom:14px;display:block}
+.thero h1{font-size:clamp(2.8rem,4.5vw,4.8rem);font-weight:300;color:#fff;line-height:1.1;margin-bottom:16px}
+.thero p{font-size:.9rem;color:rgba(255,255,255,.5);line-height:1.7;max-width:580px}
+.thero .updated{font-size:.72rem;color:rgba(255,255,255,.3);margin-top:20px;letter-spacing:.05em}
+
+/* LAYOUT */
+.terms-wrap{display:grid;grid-template-columns:240px 1fr;gap:0;max-width:1200px;margin:0 auto;padding:72px 80px}
+.toc{position:sticky;top:100px;align-self:start;padding-right:48px}
+.toc h4{font-family:'DM Sans',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+.toc-list{list-style:none;display:flex;flex-direction:column;gap:2px}
+.toc-list a{font-size:.8rem;color:var(--muted);padding:7px 12px;border-radius:4px;display:block;transition:all .2s;border-left:2px solid transparent}
+.toc-list a:hover{color:var(--charcoal);background:rgba(0,0,0,.04);border-left-color:var(--sand)}
+.toc-list a.active{color:var(--green);font-weight:500;border-left-color:var(--green);background:rgba(27,67,50,.05)}
+
+/* CONTENT */
+.terms-body{border-left:1px solid var(--border);padding-left:60px}
+.tsection{margin-bottom:64px;padding-bottom:64px;border-bottom:1px solid var(--border)}
+.tsection:last-child{border-bottom:none;margin-bottom:0}
+.tsection h2{font-size:clamp(1.8rem,2.5vw,2.6rem);font-weight:300;color:var(--charcoal);margin-bottom:8px}
+.tsection .section-num{font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--sand);margin-bottom:10px;display:block}
+.tsection p{font-size:.88rem;color:var(--ink);line-height:1.85;margin-bottom:16px}
+.tsection p:last-child{margin-bottom:0}
+.tsection h3{font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:600;color:var(--charcoal);margin:28px 0 10px;letter-spacing:.01em}
+.rule-box{background:#fff;border:1px solid var(--border);border-radius:10px;padding:24px 28px;margin:20px 0}
+.rule-box .rb-label{font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.rule-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.rule-list li{font-size:.84rem;color:var(--ink);display:flex;align-items:flex-start;gap:10px;line-height:1.6}
+.rule-list li::before{content:'→';color:var(--sand);font-weight:700;flex-shrink:0;margin-top:1px}
+.alert-box{background:rgba(196,168,130,.08);border:1px solid rgba(196,168,130,.3);border-radius:10px;padding:20px 24px;margin:20px 0;display:flex;gap:14px;align-items:flex-start}
+.alert-box .ai{font-size:1.2rem;flex-shrink:0;margin-top:2px}
+.alert-box p{font-size:.82rem;color:var(--ink);line-height:1.65;margin:0}
+.tier-table{width:100%;border-collapse:collapse;margin:20px 0;border-radius:8px;overflow:hidden;border:1px solid var(--border)}
+.tier-table th{background:var(--charcoal);color:rgba(255,255,255,.7);font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:14px 18px;text-align:left}
+.tier-table td{padding:13px 18px;font-size:.82rem;color:var(--ink);border-bottom:1px solid var(--border);background:#fff}
+.tier-table tr:last-child td{border-bottom:none}
+.tier-table td:first-child{font-weight:500;color:var(--charcoal)}
+.tier-table tr:hover td{background:#fafafa}
+
+/* FOOTER */
+.footer{background:#050505;padding:48px 80px;color:rgba(255,255,255,.5)}
+.fbot{display:flex;align-items:center;justify-content:space-between}
+.fbot .lm{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:#fff;font-weight:400}
+.fbot p{font-size:.7rem;color:rgba(255,255,255,.22)}
+.fbot-links{display:flex;gap:24px}
+.fbot-links a{font-size:.75rem;color:rgba(255,255,255,.45);transition:color .2s}
+.fbot-links a:hover{color:#fff}
+
+@media(max-width:900px){
+  .nav{padding:0 24px}
+  .thero{padding:120px 28px 60px}
+  .terms-wrap{grid-template-columns:1fr;padding:48px 28px}
+  .toc{display:none}
+  .terms-body{border-left:none;padding-left:0}
+  .footer{padding:40px 28px}
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nl"><span class="lm">SRQ HGC</span><span class="ls">Home Guardian &amp; Concierge</span></div>
+  <div class="nr">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="realtors.html">Realtors</a>
+    <a href="contact.html" class="ncta">Get Started</a>
+  </div>
+</nav>
+
+<section class="thero">
+  <div class="thero-inner">
+    <span class="stag">Legal</span>
+    <h1>Membership Agreement &amp;<br>Terms of Service</h1>
+    <p>These terms govern your membership with SRQ Home Guardian &amp; Concierge. They exist to protect both you and us — so every service is delivered fairly, consistently, and without surprises.</p>
+    <div class="updated">Last updated: January 2025 &nbsp;·&nbsp; Applies to all active and new memberships</div>
+  </div>
+</section>
+<div class="terms-wrap">
+  <!-- TOC -->
+  <nav class="toc">
+    <h4>Contents</h4>
+    <ul class="toc-list">
+      <li><a href="#membership">1. Membership</a></li>
+      <li><a href="#inspections">2. Home Inspections</a></li>
+      <li><a href="#hurricane">3. Hurricane Services</a></li>
+      <li><a href="#transportation">4. Transportation</a></li>
+      <li><a href="#concierge">5. Concierge</a></li>
+      <li><a href="#vendors">6. Vendor Coordination</a></li>
+      <li><a href="#smarthome">7. Smart Home</a></li>
+      <li><a href="#whp">8. Welcome Home Package</a></li>
+      <li><a href="#estate">9. Estate Services</a></li>
+      <li><a href="#billing">10. Billing &amp; Cancellation</a></li>
+      <li><a href="#liability">11. Liability</a></li>
+      <li><a href="#conduct">12. Fair Use &amp; Conduct</a></li>
+    </ul>
+  </nav>
+
+  <!-- BODY -->
+  <div class="terms-body">
+
+    <!-- 1 -->
+    <div class="tsection" id="membership">
+      <span class="section-num">Section 01</span>
+      <h2>Membership &amp; Enrollment</h2>
+      <p>Membership in SRQ Home Guardian &amp; Concierge is available to property owners within our service area (Sarasota, Longboat Key, Siesta Key, Casey Key, and surrounding Sarasota County communities). Membership is per property — each additional property requires a separate membership.</p>
+      <p>Memberships begin on the date your first payment is processed and remain active on a month-to-month or annual basis. Services are only available to active members in good standing.</p>
+      <div class="alert-box"><div class="ai">ℹ️</div><p>Membership is non-transferable. It may not be transferred to another person, property, or used for commercial rental operations (e.g., Airbnb, VRBO, or short-term rental management).</p></div>
+    </div>
+
+    <!-- 2 -->
+    <div class="tsection" id="inspections">
+      <span class="section-num">Section 02</span>
+      <h2>Home Inspections</h2>
+      <p>Inspections are scheduled visits to your property conducted by our team. Each visit includes a full interior and exterior walkthrough with photo documentation delivered to you the same day.</p>
+      <h3>Scheduled Visits by Plan</h3>
+      <table class="tier-table">
+        <thead><tr><th>Plan</th><th>Included Visits</th><th>Advance Notice</th></tr></thead>
+        <tbody>
+          <tr><td>Essential</td><td>2 per month</td><td>48 hours</td></tr>
+          <tr><td>Coastal</td><td>4 per month</td><td>48 hours</td></tr>
+          <tr><td>SRQ Care</td><td>Weekly (up to 5/month)</td><td>24 hours</td></tr>
+          <tr><td>Estate Care</td><td>Up to 2 per week</td><td>24 hours</td></tr>
+          <tr><td>Sarasota Life</td><td>Up to 2 per week</td><td>12 hours</td></tr>
+        </tbody>
+      </table>
+      <div class="rule-box">
+        <div class="rb-label">Important Rules</div>
+        <ul class="rule-list">
+          <li>Unused visits do not roll over to the following month.</li>
+          <li>Additional visits beyond your plan's included amount are available at member add-on rates.</li>
+          <li>We will not enter the property if access cannot be safely obtained.</li>
+          <li>Emergency inspections (e.g., after a storm or reported incident) are prioritized and do not count toward your monthly allotment.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="tsection" id="hurricane">
+      <span class="section-num">Section 03</span>
+      <h2>Hurricane Preparation &amp; Recovery</h2>
+      <p>Hurricane services are included in Coastal, SRQ Care, Estate Care, and Sarasota Life plans. Essential plan members may add hurricane services at the member add-on rate per event.</p>
+      <p>We begin preparation when a storm is projected to affect Sarasota County and a watch or warning has been issued. Post-storm assessment begins as soon as conditions are safe for entry.</p>
+      <div class="rule-box">
+        <div class="rb-label">Scope &amp; Limitations</div>
+        <ul class="rule-list">
+          <li>Hurricane services cover your primary enrolled property only.</li>
+          <li>We work with hurricane shutters, impact windows, or storm panels already installed at your property. Installation of new systems is not included.</li>
+          <li>Outdoor furniture, potted plants, and decorative items will be secured or stored — extremely large or permanently anchored items are excluded.</li>
+          <li>Generator operation and fuel management is covered for monitoring and checks only. Fuel procurement or generator repair is coordinated through vendor coordination.</li>
+          <li>Post-storm contractor coordination is included. Actual repair costs are your responsibility.</li>
+          <li>We are not liable for damage that occurs despite preparation or for circumstances beyond our reasonable control (e.g., catastrophic storm surge, direct impact).</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="tsection" id="transportation">
+      <span class="section-num">Section 04</span>
+      <h2>Transportation Services</h2>
+      <p>Transportation is available to SRQ Care, Estate Care, and Sarasota Life members, and as an add-on for Essential and Coastal members at member rates.</p>
+      <h3>Trip Allotments by Plan</h3>
+      <table class="tier-table">
+        <thead><tr><th>Plan</th><th>Trips Included</th><th>Advance Booking</th></tr></thead>
+        <tbody>
+          <tr><td>SRQ Care</td><td>2 trips/month</td><td>24 hours minimum</td></tr>
+          <tr><td>Estate Care</td><td>4 trips/month</td><td>24 hours minimum</td></tr>
+          <tr><td>Sarasota Life</td><td>Unlimited (fair use)</td><td>12 hours minimum</td></tr>
+        </tbody>
+      </table>
+      <div class="rule-box">
+        <div class="rb-label">Rules &amp; Restrictions</div>
+        <ul class="rule-list">
+          <li>All transportation is within Sarasota County. Trips outside county lines (e.g., Tampa, Fort Myers) require advance arrangement and may incur additional charges.</li>
+          <li>Unused trips do not roll over to the following month.</li>
+          <li>A "trip" is defined as one-way point-to-point transport (e.g., home to airport = 1 trip; airport pickup = 1 trip).</li>
+          <li>Sarasota Life "unlimited" transportation is subject to fair use. We reserve the right to limit use that exceeds reasonable personal transportation needs (more than 2 trips per day on average).</li>
+          <li>Transportation is for the member and their immediate household or guests — not for third parties or commercial purposes.</li>
+          <li>We reserve the right to decline transportation requests that conflict with other member commitments or staffing availability. We will notify you as early as possible in such cases.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="tsection" id="concierge">
+      <span class="section-num">Section 05</span>
+      <h2>Concierge &amp; Reservation Services</h2>
+      <p>Concierge services are available to SRQ Care and above. Sarasota Life members receive unlimited requests within the scope defined below.</p>
+      <h3>Request Limits by Plan</h3>
+      <table class="tier-table">
+        <thead><tr><th>Plan</th><th>Monthly Requests</th><th>Response Time</th></tr></thead>
+        <tbody>
+          <tr><td>SRQ Care</td><td>Up to 4 requests</td><td>Within 24 business hours</td></tr>
+          <tr><td>Estate Care</td><td>Up to 8 requests</td><td>Within 24 business hours</td></tr>
+          <tr><td>Sarasota Life</td><td>Unlimited (fair use)</td><td>Within 12 business hours</td></tr>
+        </tbody>
+      </table>
+      <div class="rule-box">
+        <div class="rb-label">Scope of Concierge Services</div>
+        <ul class="rule-list">
+          <li>Concierge covers Sarasota-area lifestyle requests: restaurant reservations, local event tickets, spa bookings, grocery coordination, and similar personal arrangements.</li>
+          <li>We act as a coordinator — final booking costs, tickets, or purchases are the member's responsibility unless otherwise agreed.</li>
+          <li>We do not provide legal, medical, financial, or professional advisory services.</li>
+          <li>We will not fulfill requests that are illegal, unethical, or outside reasonable lifestyle scope.</li>
+          <li>"Unlimited" on Sarasota Life is subject to fair use. We define fair use as requests consistent with personal lifestyle management — not operating a business or delegating an unreasonable volume of tasks simultaneously.</li>
+          <li>Only one active complex request will be handled at a time per member. Simple requests (e.g., a restaurant reservation) do not count toward this limit.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="tsection" id="vendors">
+      <span class="section-num">Section 06</span>
+      <h2>Vendor Coordination</h2>
+      <p>Vendor coordination means we schedule, grant access to, and oversee the work of service providers at your property — and report back to you. You choose your vendors. We do not impose our own.</p>
+      <div class="rule-box">
+        <div class="rb-label">What's Covered</div>
+        <ul class="rule-list">
+          <li>Routine and recurring service vendors: lawn care, pest control, pool service, cleaning, HVAC maintenance, appliance repair, and similar.</li>
+          <li>One-time service calls that can be completed in a single visit or short engagement.</li>
+          <li>We will provide access, supervise the work where appropriate, and submit a report to you.</li>
+        </ul>
+      </div>
+      <div class="rule-box">
+        <div class="rb-label">What's Not Covered</div>
+        <ul class="rule-list">
+          <li>Full construction or major renovation project management (multi-week or multi-contractor projects).</li>
+          <li>Acting as a general contractor or signing contracts on your behalf.</li>
+          <li>Payment of vendor invoices — all payments remain your direct responsibility.</li>
+          <li>Warranty or quality disputes with vendors — we facilitate but do not assume liability for vendor workmanship.</li>
+        </ul>
+      </div>
+      <div class="alert-box"><div class="ai">⚠️</div><p>If you require full renovation project oversight, this can be arranged as a separate custom agreement. Contact us to discuss.</p></div>
+    </div>
+
+    <!-- 7 -->
+    <div class="tsection" id="smarthome">
+      <span class="section-num">Section 07</span>
+      <h2>Smart Home Monitoring</h2>
+      <p>Smart home monitoring is available as an included feature (Coastal and above) or as a monthly add-on. We interface with your existing smart home systems — we do not install hardware.</p>
+      <div class="rule-box">
+        <div class="rb-label">Scope &amp; Limitations</div>
+        <ul class="rule-list">
+          <li>We manage thermostat settings, check security system status, monitor smart locks, and respond to alerts from your existing devices.</li>
+          <li>You must grant us appropriate access credentials. We store these securely and use them only for your property management.</li>
+          <li>We are not responsible for hardware failures, internet outages, or system malfunctions beyond our control.</li>
+          <li>Alert response means we will investigate, document, and notify you. Emergency dispatch (police/fire) is coordinated with your approval unless there is an immediate safety threat.</li>
+          <li>We do not provide 24/7 live monitoring — alerts are reviewed during active business operations and responded to on a priority basis.</li>
+        </ul>
+      </div>
+    </div>
+    <!-- 8 -->
+    <div class="tsection" id="whp">
+      <span class="section-num">Section 08</span>
+      <h2>Welcome Home Package</h2>
+      <p>The Welcome Home Package is available as an add-on to any membership plan. It prepares your home for your arrival — fresh flowers, stocked essentials, linens turned down, climate set, and lights on.</p>
+      <div class="rule-box">
+        <div class="rb-label">Rules &amp; Restrictions</div>
+        <ul class="rule-list">
+          <li>Minimum 48-hour advance notice required. Rush requests (under 48 hours) may be accommodated with a $40 surcharge, subject to availability.</li>
+          <li>Supply costs (groceries, flowers, consumables) are billed at actual cost with zero markup. You will be invoiced for supplies separately.</li>
+          <li>Does not include professional cleaning — cleaning can be arranged through vendor coordination.</li>
+          <li>Available for the enrolled member's personal arrivals only — not for rental turnover, guest programs, or commercial use.</li>
+          <li>No limit on frequency for active members, but requests must be scheduled individually.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="tsection" id="estate">
+      <span class="section-num">Section 09</span>
+      <h2>Estate Care Services</h2>
+      <p>Estate Care and Sarasota Life plans include oversight of pool, dock, waterfront, and generator systems. This is monitoring and coordination — not direct maintenance or repair.</p>
+      <div class="rule-box">
+        <div class="rb-label">What Estate Oversight Covers</div>
+        <ul class="rule-list">
+          <li>Visual inspection and condition reporting for pool, spa, dock, seawall, and waterfront areas.</li>
+          <li>Generator fuel level checks and test-run coordination (actual fuel procurement through vendor).</li>
+          <li>Coordination with your pool or marine service provider — we do not perform chemical treatments or mechanical repairs.</li>
+          <li>Guest suite preparation for the member's personal guests — not for short-term rental or commercial hospitality operations.</li>
+          <li>Seasonal property transitions (e.g., snowbird opening/closing checklist, furniture setup/storage).</li>
+        </ul>
+      </div>
+      <div class="alert-box"><div class="ai">🏠</div><p>Guest suite prep is for your personal guests only. Members using the property for Airbnb, VRBO, or any short-term rental platform are not eligible for guest suite prep services under their membership and will need to arrange these separately.</p></div>
+    </div>
+
+    <!-- 10 -->
+    <div class="tsection" id="billing">
+      <span class="section-num">Section 10</span>
+      <h2>Billing &amp; Cancellation</h2>
+      <h3>Monthly Plans</h3>
+      <p>Monthly memberships are billed on the same date each month. Your membership renews automatically unless cancelled. Cancellation takes effect at the end of the current billing period — no refunds are issued for partial months.</p>
+      <h3>Annual Plans</h3>
+      <p>Annual plans are billed in full upfront at a 15% discount. Annual memberships are non-refundable after 30 days from the start date. Within the first 30 days, a prorated refund (minus services rendered) may be issued at our discretion.</p>
+      <h3>Add-On Services</h3>
+      <p>Add-on services (transportation, concierge requests, Welcome Home Package, etc.) are billed at the time of service or at month-end, depending on the service type. Supply costs are invoiced separately at actual cost.</p>
+      <div class="rule-box">
+        <div class="rb-label">Non-Payment</div>
+        <ul class="rule-list">
+          <li>Memberships more than 10 days past due will be suspended. Services resume upon payment.</li>
+          <li>Memberships more than 30 days past due will be terminated. Reinstatement requires a new enrollment.</li>
+          <li>Outstanding balances must be settled before services resume.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 11 -->
+    <div class="tsection" id="liability">
+      <span class="section-num">Section 11</span>
+      <h2>Liability &amp; Limitations</h2>
+      <p>SRQ Home Guardian &amp; Concierge carries general liability insurance and operates professionally and in good faith at all times. However, our liability is limited as follows:</p>
+      <div class="rule-box">
+        <div class="rb-label">Limitations</div>
+        <ul class="rule-list">
+          <li>We are not liable for pre-existing property conditions, latent defects, or issues that are not reasonably discoverable during a routine inspection.</li>
+          <li>We are not liable for damage caused by natural disasters, acts of God, or events beyond our reasonable control — including hurricane damage despite preparation.</li>
+          <li>Our total liability for any single incident shall not exceed the equivalent of three (3) months of your membership fees.</li>
+          <li>We are not liable for the quality of work performed by third-party vendors we coordinate. Vendor disputes are between you and the vendor.</li>
+          <li>We are not responsible for losses resulting from smart home system failures, internet outages, or hardware malfunctions.</li>
+        </ul>
+      </div>
+      <p>Nothing in these terms limits our liability for gross negligence or willful misconduct.</p>
+    </div>
+
+    <!-- 12 -->
+    <div class="tsection" id="conduct">
+      <span class="section-num">Section 12</span>
+      <h2>Fair Use &amp; Member Conduct</h2>
+      <p>Our memberships are designed for personal residential property care. They are not intended — and may not be used — for commercial property management, rental operations, or any purpose that would place unreasonable demands on our team.</p>
+      <div class="rule-box">
+        <div class="rb-label">Fair Use Policy</div>
+        <ul class="rule-list">
+          <li>"Unlimited" features (inspections, transportation, concierge) are subject to reasonable personal use. We define reasonable use as consistent with the purpose of each service as described in these terms.</li>
+          <li>We reserve the right to convert a member to a more appropriate plan or negotiate a custom agreement if usage consistently and materially exceeds reasonable personal use patterns.</li>
+          <li>We will always notify you before taking any such action and work with you to find a fair solution.</li>
+        </ul>
+      </div>
+      <div class="rule-box">
+        <div class="rb-label">Member Responsibilities</div>
+        <ul class="rule-list">
+          <li>Ensure we have current access credentials, codes, and contact information at all times.</li>
+          <li>Notify us of any changes to your property (construction, new systems, new vendors) that affect our services.</li>
+          <li>Treat our team with respect. We reserve the right to terminate membership for abusive behavior with no refund obligation.</li>
+          <li>Comply with all applicable laws regarding your property and its use.</li>
+        </ul>
+      </div>
+      <p style="margin-top:28px;font-size:.82rem;color:var(--muted)">These terms were last updated January 2025. SRQ Home Guardian &amp; Concierge reserves the right to update these terms with 30 days written notice to active members. Continued membership after notice constitutes acceptance of updated terms. For questions, contact us at <a href="contact.html" style="color:var(--green);border-bottom:1px solid rgba(27,67,50,.3);padding-bottom:1px">srqhgc@gmail.com</a>.</p>
+    </div>
+
+  </div><!-- end terms-body -->
+</div><!-- end terms-wrap -->
+
+<footer class="footer">
+  <div class="fbot">
+    <div><div class="lm">SRQ HGC</div></div>
+    <div class="fbot-links">
+      <a href="index.html">Home</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+      <a href="terms.html">Terms</a>
+    </div>
+    <p>&copy; 2025 SRQ Home Guardian &amp; Concierge</p>
+  </div>
+</footer>
+
+<script>
+// Highlight active TOC item on scroll
+const sections = document.querySelectorAll('.tsection');
+const tocLinks = document.querySelectorAll('.toc-list a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      tocLinks.forEach(l => l.classList.remove('active'));
+      const link = document.querySelector('.toc-list a[href="#'+entry.target.id+'"]');
+      if(link) link.classList.add('active');
+    }
+  });
+},{threshold:0.4, rootMargin:'-80px 0px -60% 0px'});
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
