@@ -1,373 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Services | SRQ Home Guardian &amp; Concierge</title>
-undefined
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    .service-block { margin-bottom: 4rem; padding-bottom: 4rem; border-bottom: 1px solid var(--border); }
-    .service-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-    .service-header { display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: start; margin-bottom: 2rem; }
-    .service-icon-lg { font-size: 2.2rem; padding-top: .3rem; }
-    .service-header h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; color: var(--black); margin-bottom: .4rem; }
-    .service-header p { font-size: .87rem; color: var(--muted); line-height: 1.75; max-width: 640px; font-weight: 300; }
-    .tier-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; }
-    .tier-col { padding: 1.6rem; background: var(--white); }
-    .tier-col.dark { background: var(--black); }
-    .tier-col.green { background: var(--green); }
-    .tier-col:hover:not(.dark):not(.green) { background: var(--bg); }
-    .tier-label { font-size: .58rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; margin-bottom: .8rem; display: block; }
-    .tier-col:not(.dark):not(.green) .tier-label { color: var(--green); }
-    .tier-col.dark  .tier-label { color: var(--sand); }
-    .tier-col.green .tier-label { color: rgba(255,255,255,.55); }
-    .tier-feats { list-style: none; }
-    .tier-feats li { font-size: .79rem; padding: .22rem 0; display: flex; gap: .45rem; }
-    .tier-col:not(.dark):not(.green) .tier-feats li { color: var(--ink); }
-    .tier-col.dark  .tier-feats li { color: rgba(255,255,255,.75); }
-    .tier-col.green .tier-feats li { color: rgba(255,255,255,.8); }
-    .tc { font-size: .65rem; flex-shrink: 0; margin-top: 3px; }
-    .tier-col:not(.dark):not(.green) .tc { color: var(--green); }
-    .tier-col.dark  .tc { color: rgba(255,255,255,.45); }
-    .tier-col.green .tc { color: rgba(255,255,255,.45); }
-    .addon-tag { display: inline-block; margin-top: 1rem; font-size: .71rem; font-weight: 500; color: var(--green); font-style: italic; }
-    .tier-col.dark  .addon-tag { color: var(--sand); }
-    .tier-col.green .addon-tag { color: rgba(255,255,255,.6); }
-    @media (max-width: 700px) { .tier-grid { grid-template-columns: 1fr; } }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:#fff;color:#111827;line-height:1.6;-webkit-font-smoothing:antialiased}
+    :root{--black:#111827;--ink:#374151;--muted:#6B7280;--border:#E5E7EB;--bg:#F9F8F6;--bg2:#F3F1EE;--white:#ffffff;--green:#1B4332;--green-md:#2D6A4F;--green-lt:#D8EFE5;--sand:#C4A882;--shadow-sm:0 4px 12px rgba(17,24,39,.08);--shadow-md:0 12px 32px rgba(17,24,39,.10);--r:12px;--r-sm:6px}
+    nav{position:sticky;top:0;z-index:200;background:var(--white);border-bottom:1px solid var(--border);padding:0 6%;display:flex;align-items:center;justify-content:space-between;height:68px}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;color:var(--black);text-decoration:none;display:flex;flex-direction:column;line-height:1.1}
+    .nav-logo-sub{font-family:'DM Sans',sans-serif;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:400}
+    .nav-links{display:flex;gap:2rem;align-items:center}
+    .nav-links a{color:var(--ink);text-decoration:none;font-size:.85rem;font-weight:500;transition:color .15s}
+    .nav-links a:hover,.nav-links a.active{color:var(--green)}
+    .nav-cta{background:var(--black);color:var(--white);padding:.5rem 1.3rem;border-radius:50px;font-size:.82rem;font-weight:600;text-decoration:none}
+    .page-hero{background:var(--black);padding:90px 6% 80px;text-align:center}
+    .hero-eyebrow{display:inline-block;font-size:.68rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--sand);margin-bottom:1.4rem}
+    .page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,5.5vw,5rem);font-weight:300;line-height:1.1;color:var(--white);margin-bottom:1.2rem}
+    .page-hero p{color:rgba(255,255,255,.58);font-size:.96rem;max-width:520px;margin:0 auto;line-height:1.75;font-weight:300}
+    .wrap{max-width:1200px;margin:0 auto;padding:0 6%}
+    .section{padding:90px 0}.section.bg-alt{background:var(--bg)}.section.bg-dark{background:var(--black)}
+    .section-eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--green);margin-bottom:.7rem;display:block}
+    .section.bg-dark .section-eyebrow{color:var(--sand)}
+    .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weight:400;color:var(--black);line-height:1.15;margin-bottom:.9rem}
+    .section.bg-dark .section-title{color:var(--white)}
+    .section-sub{font-size:.93rem;color:var(--muted);max-width:520px;line-height:1.75;font-weight:300}
+    .section.bg-dark .section-sub{color:rgba(255,255,255,.5)}
+    .btn{display:inline-block;text-decoration:none;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.85rem;letter-spacing:.04em;text-transform:uppercase;padding:.75rem 1.8rem;border-radius:50px;transition:all .2s;border:none;cursor:pointer}
+    .btn-dark{background:var(--black);color:var(--white)}.btn-dark:hover{background:var(--green)}
+    .btn-outline-w{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.4)}.btn-outline-w:hover{border-color:var(--white)}
+    footer{background:var(--black);color:rgba(255,255,255,.4);padding:2.5rem 6%;text-align:center;font-size:.8rem;border-top:1px solid rgba(255,255,255,.06)}
+    footer a{color:rgba(255,255,255,.6);text-decoration:none}.footer-brand{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:rgba(255,255,255,.75);margin-bottom:.4rem}
+    .footer-links{margin-top:.8rem;display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap}
+    @media(max-width:768px){.page-hero{padding:60px 6% 50px}.section{padding:60px 0}.nav-links a:not(.nav-cta){display:none}}
+  </style>
+  <style>
+    .service-block{margin-bottom:4rem;padding-bottom:4rem;border-bottom:1px solid var(--border)}
+    .service-block:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+    .service-header{display:grid;grid-template-columns:auto 1fr;gap:1.5rem;align-items:start;margin-bottom:2rem}
+    .service-icon-lg{font-size:2.2rem;padding-top:.3rem}
+    .service-header h2{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--black);margin-bottom:.4rem}
+    .service-header p{font-size:.87rem;color:var(--muted);line-height:1.75;max-width:640px;font-weight:300}
+    .tier-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+    .tier-col{padding:1.6rem;background:var(--white);transition:background .15s}
+    .tier-col:hover:not(.dark):not(.green2){background:var(--bg)}
+    .tier-col.dark{background:var(--black)}.tier-col.green2{background:var(--green)}
+    .tier-label{font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.8rem;display:block}
+    .tier-col:not(.dark):not(.green2) .tier-label{color:var(--green)}
+    .tier-col.dark .tier-label{color:var(--sand)}.tier-col.green2 .tier-label{color:rgba(255,255,255,.55)}
+    .tier-feats{list-style:none}
+    .tier-feats li{font-size:.79rem;padding:.22rem 0;display:flex;gap:.45rem}
+    .tier-col:not(.dark):not(.green2) .tier-feats li{color:var(--ink)}
+    .tier-col.dark .tier-feats li,.tier-col.green2 .tier-feats li{color:rgba(255,255,255,.8)}
+    .tc{font-size:.65rem;flex-shrink:0;margin-top:3px}
+    .tier-col:not(.dark):not(.green2) .tc{color:var(--green)}
+    .tier-col.dark .tc,.tier-col.green2 .tc{color:rgba(255,255,255,.45)}
+    .addon-tag{display:inline-block;margin-top:1rem;font-size:.71rem;font-weight:500;color:var(--green);font-style:italic}
+    .tier-col.dark .addon-tag{color:var(--sand)}.tier-col.green2 .addon-tag{color:rgba(255,255,255,.6)}
+    @media(max-width:700px){.tier-grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
   <nav>
-    <a href="index.html" class="nav-logo">
-      <span class="nav-logo-top">SRQ HGC</span>
-      <span class="nav-logo-sub">Home Guardian &amp; Concierge</span>
-    </a>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="services.html" class="active">Services</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="realtors.html">Realtors</a>
-      <a href="contact.html" class="nav-cta">Contact</a>
-    </div>
+    <a href="index.html" class="nav-logo"><span class="nav-logo-top">SRQ HGC</span><span class="nav-logo-sub">Home Guardian &amp; Concierge</span></a>
+    <div class="nav-links"><a href="index.html">Home</a><a href="services.html" class="active">Services</a><a href="pricing.html">Pricing</a><a href="realtors.html">Realtors</a><a href="contact.html" class="nav-cta">Contact</a></div>
   </nav>
-
   <header class="page-hero">
     <span class="hero-eyebrow">What We Do</span>
     <h1>Every Service You Need in Sarasota</h1>
     <p>Professional home watch, hurricane protection, concierge, and lifestyle services — all from one trusted team.</p>
   </header>
-
   <section class="section">
     <div class="wrap">
       <span class="section-eyebrow">Services by Tier</span>
       <h2 class="section-title">The Right Level for Every Property</h2>
-      <p class="section-sub" style="margin-bottom:3.5rem;">Every service below is available in a membership tier or as an add-on. See exactly what's included at each level.</p>
-
-      <!-- HOME WATCH -->
+      <p class="section-sub" style="margin-bottom:3.5rem">Every service below is available in a membership tier or as an add-on. See exactly what's included at each level.</p>
       <div class="service-block">
-        <div class="service-header">
-          <div class="service-icon-lg">🏠</div>
-          <div>
-            <h2>Home Watch &amp; Property Inspections</h2>
-            <p>Professional eyes on your property on a regular schedule. Every visit includes a detailed written and photo report delivered directly to you — so you always know exactly what's happening at your home, no matter where you are in the world.</p>
-          </div>
-        </div>
+        <div class="service-header"><div class="service-icon-lg">🏠</div><div><h2>Home Watch &amp; Property Inspections</h2><p>Professional eyes on your property on a regular schedule. Every visit includes a detailed written and photo report delivered directly to you — so you always know exactly what's happening, no matter where you are.</p></div></div>
         <div class="tier-grid">
-          <div class="tier-col">
-            <span class="tier-label">Essential</span>
-            <ul class="tier-feats">
-              <li><span class="tc">✓</span><span>Bi-weekly interior &amp; exterior</span></li>
-              <li><span class="tc">✓</span><span>Photo report every visit</span></li>
-              <li><span class="tc">✓</span><span>Mail &amp; package collection</span></li>
-              <li><span class="tc">✓</span><span>Lock check &amp; perimeter walk</span></li>
-            </ul>
-            <span class="addon-tag">+ Extra visits: $89 member / $175 standalone</span>
-          </div>
-          <div class="tier-col">
-            <span class="tier-label">Coastal</span>
-            <ul class="tier-feats">
-              <li><span class="tc">✓</span><span>Weekly interior &amp; exterior</span></li>
-              <li><span class="tc">✓</span><span>Detailed photo reports</span></li>
-              <li><span class="tc">✓</span><span>Mail, packages &amp; deliveries</span></li>
-              <li><span class="tc">✓</span><span>Appliance &amp; HVAC visual check</span></li>
-            </ul>
-          </div>
-          <div class="tier-col dark">
-            <span class="tier-label">SRQ Care</span>
-            <ul class="tier-feats">
-              <li><span class="tc">✓</span><span>Weekly + rental turnover support</span></li>
-              <li><span class="tc">✓</span><span>Detailed photo reports</span></li>
-              <li><span class="tc">✓</span><span>Full interior systems check</span></li>
-              <li><span class="tc">✓</span><span>Pre-arrival home preparation</span></li>
-            </ul>
-          </div>
-          <div class="tier-col">
-            <span class="tier-label">Estate Care</span>
-            <ul class="tier-feats">
-              <li><span class="tc">✓</span><span>Twice-weekly inspections</span></li>
-              <li><span class="tc">✓</span><span>Pool, dock &amp; waterfront</span></li>
-              <li><span class="tc">✓</span><span>Vehicle, boat &amp; golf cart</span></li>
-              <li><span class="tc">✓</span><span>Quarterly condition report</span></li>
-            </ul>
-          </div>
-          <div class="tier-col green">
-            <span class="tier-label">Sarasota Life</span>
-            <ul class="tier-feats">
-              <li><span class="tc">✓</span><span>All Estate Care inspections</span></li>
-              <li><span class="tc">✓</span><span>Monthly property health summary</span></li>
-              <li><span class="tc">✓</span><span>Seasonal opening &amp; closing</span></li>
-              <li><span class="tc">✓</span><span>Full documentation archive</span></li>
-            </ul>
-          </div>
+          <div class="tier-col"><span class="tier-label">Essential</span><ul class="tier-feats"><li><span class="tc">✓</span><span>Bi-weekly interior &amp; exterior</span></li><li><span class="tc">✓</span><span>Photo report every visit</span></li><li><span class="tc">✓</span><span>Mail &amp; package collection</span></li><li><span class="tc">✓</span><span>Lock check &amp; perimeter walk</span></li></ul><span class="addon-tag">+ Extra visits: $89 member / $175 standalone</span></div>
+          <div class="tier-col"><span class="tier-label">Coastal</span><ul class="tier-feats"><li><span class="tc">✓</span><span>Weekly interior &amp; exterior</span></li><li><span class="tc">✓</span><span>Detailed photo reports</span></li><li><span class="tc">✓</span><span>Mail, packages &amp; deliveries</span></li><li><span class="tc">✓</span><span>Appliance &amp; HVAC visual check</span></li></ul></div>
+          <div class="tier-col dark"><span class="tier-label">SRQ Care</span><ul class="tier-feats"><li><span class="tc">✓</span><span>Weekly + rental turnover support</span></li><li><span class="tc">✓</span><span>Detailed photo reports</span></li><li><span class="tc">✓</span><span>Full interior systems check</span></li><li><span class="tc">✓</span><span>Pre-arrival home preparation</span></li></ul></div>
+          <div class="tier-col"><span class="tier-label">Estate Care</span><ul class="tier-feats"><li><span class="tc">✓</span><span>Twice-weekly inspections</span></li><li><span class="tc">✓</span><span>Pool, dock &amp; waterfront</span></li><li><span class="tc">✓</span><span>Vehicle, boat &amp; golf cart</span></li><li><span class="tc">✓</span><span>Quarterly condition report</span></li></ul></div>
+          <div class="tier-col green2"><span class="tier-label">Sarasota Life</span><ul class="tier-feats"><li><span class="tc">✓</span><span>All Estate Care inspections</span></li><li><span class="tc">✓</span><span>Monthly property health summary</span></li><li><span class="tc">✓</span><span>Seasonal opening &amp; closing</span></li><li><span class="tc">✓</span><span>Full documentation archive</span></li></ul></div>
         </div>
       </div>
-
-      <!-- HURRICANE -->
       <div class="service-block">
-        <div class="service-header">
-          <div class="service-icon-lg">🌀</div>
-          <div>
-            <h2>Hurricane &amp; Storm Protection</h2>
-            <p>Sarasota is in one of the most hurricane-active corridors in the US. When a storm is coming and you're not here, we are. Full pre-storm preparation, post-storm inspection, and real-time updates — included in Coastal and above, available as an add-on for Essential.</p>
-          </div>
-        </div>
+        <div class="service-header"><div class="service-icon-lg">🌀</div><div><h2>Hurricane &amp; Storm Protection</h2><p>Sarasota is in one of the most hurricane-active corridors in the US. When a storm is coming and you're not here, we are. Full pre-storm preparation, post-storm inspection, and real-time updates — included Coastal and above, available as an add-on for Essential.</p></div></div>
         <div class="tier-grid">
-          <div class="tier-col">
-            <span class="tier-label">Essential</span>
-            <ul class="tier-feats">
-              <li><span class="tc">✓</span><span>Basic post-storm check</span></li>
-              <li><span class="tc">✓</span><span>Photo report post-storm</span></li>
-            </ul>
-            <span class="addon-tag">+ Full hurricane prep: $149 member / $299 standalone</span>
-          </div>
-          <div class="tier-col">
-            <span class="tier-label">Coastal &amp; Above</span>
-            <ul class="tier-feats">
-              <li><span class="tc">✓</span><span>Storm shutter deployment</span></li>
-              <li><span class="tc">✓</span><span>Outdoor furniture securing</span></li>
-              <li><span class="tc">✓</span><span>Generator check &amp; fuel</span></li>
-              <li><span class="tc">✓</span><span>Water &amp; gas shutoff</span></li>
-              <li><span class="tc">✓</span><span>Immediate post-storm inspection</span></li>
-              <li><span class="tc">✓</span><span>Real-time owner updates</span></li>
-            </ul>
-          </div>
-          <div class="tier-col dark">
-            <span class="tier-label">SRQ Care &amp; Above</span>
-            <ul class="tier-feats">
-              <li><span class="tc">✓</span><span>Everything in Coastal</span></li>
-              <li><span class="tc">✓</span><span>24/7 emergency response</span></li>
-              <li><span class="tc">✓</span><span>Emergency contractor dispatch</span></li>
-              <li><span class="tc">✓</span><span>Seasonal storm prep checklist</span></li>
-            </ul>
-          </div>
-          <div class="tier-col">
-            <span class="tier-label">Estate Care &amp; Above</span>
-            <ul class="tier-feats">
-              <li><span class="tc">✓</span><span>Everything in SRQ Care</span></li>
-              <li><span class="tc">✓</span><span>Pool, dock &amp; waterfront prep</span></li>
-              <li><span class="tc">✓</span><span>Vessel &amp; vehicle protection</span></li>
-              <li><span class="tc">✓</span><span>Dedicated storm response line</span></li>
-            </ul>
-          </div>
+          <div class="tier-col"><span class="tier-label">Essential</span><ul class="tier-feats"><li><span class="tc">✓</span><span>Basic post-storm check</span></li><li><span class="tc">✓</span><span>Photo report post-storm</span></li></ul><span class="addon-tag">+ Full hurricane prep: $149 member / $299 standalone</span></div>
+          <div class="tier-col"><span class="tier-label">Coastal &amp; Above</span><ul class="tier-feats"><li><span class="tc">✓</span><span>Storm shutter deployment</span></li><li><span class="tc">✓</span><span>Outdoor furniture securing</span></li><li><span class="tc">✓</span><span>Generator check &amp; fuel</span></li><li><span class="tc">✓</span><span>Water &amp; gas shutoff</span></li><li><span class="tc">✓</span><span>Immediate post-storm inspection</span></li><li><span class="tc">✓</span><span>Real-time owner updates</span></li></ul></div>
+          <div class="tier-col dark"><span class="tier-label">SRQ Care &amp; Above</span><ul class="tier-feats"><li><span class="tc">✓</span><span>Everything in Coastal</span></li><li><span class="tc">✓</span><span>24/7 emergency response</span></li><li><span class="tc">✓</span><span>Emergency contractor dispatch</span></li><li><span class="tc">✓</span><span>Seasonal storm prep checklist</span></li></ul></div>
+          <div class="tier-col"><span class="tier-label">Estate Care &amp; Above</span><ul class="tier-feats"><li><span class="tc">✓</span><span>Everything in SRQ Care</span></li><li><span class="tc">✓</span><span>Pool, dock &amp; waterfront prep</span></li><li><span class="tc">✓</span><span>Vessel &amp; vehicle protection</span></li><li><span class="tc">✓</span><span>Dedicated storm response line</span></li></ul></div>
         </div>
       </div>
-
-      <!-- VENDOR -->
       <div class="service-block">
-        <div class="service-header">
-          <div class="service-icon-lg">🔧</div>
-          <div>
-            <h2>Vendor &amp; Contractor Coordination</h2>
-            <p>Stop flying home to meet a plumber or wondering if the A/C tech showed up. We meet, manage, and oversee every contractor at your property — scheduling, access, supervision, and follow-up. Use your own contractors or whoever you choose.</p>
-          </div>
-        </div>
+        <div class="service-header"><div class="service-icon-lg">🔧</div><div><h2>Vendor &amp; Contractor Coordination</h2><p>Stop flying home to meet a plumber. We meet, manage, and oversee every contractor at your property — scheduling, access, supervision, and follow-up. Use your own contractors or whoever you choose.</p></div></div>
         <div class="tier-grid">
-          <div class="tier-col">
-            <span class="tier-label">Essential</span>
-            <ul class="tier-feats">
-              <li><span class="tc">✓</span><span>1 vendor coordination/month</span></li>
-              <li><span class="tc">✓</span><span>Scheduling &amp; access management</span></li>
-            </ul>
-            <span class="addon-tag">+ Extra coordinations: $65 member / $125 standalone</span>
-          </div>
-          <div class="tier-col">
-            <span class="tier-label">Coastal</span>
-            <ul class="tier-feats">
-              <li><span class="tc">✓</span><span>2 vendor coordinations/month</span></li>
-              <li><span class="tc">✓</span><span>Scheduling, access &amp; supervision</span></li>
-              <li><span class="tc">✓</span><span>Follow-up report provided</span></li>
-            </ul>
-            <span class="addon-tag">+ Extra: $65 member / $125 standalone</span>
-          </div>
-          <div class="tier-col dark">
-            <span class="tier-label">SRQ Care &amp; Above</span>
-            <ul class="tier-feats">
-              <li><span class="tc">✓</span><span>Unlimited vendor coordinations</span></li>
-              <li><span class="tc">✓</span><span>On-site supervision included</span></li>
-              <li><span class="tc">✓</span><span>Contractor quality follow-up</span></li>
-              <li><span class="tc">✓</span><span>Vendor scheduling calendar</span></li>
-            </ul>
-          </div>
-          <div class="tier-col">
-            <span class="tier-label">Estate Care &amp; Above</span>
-            <ul class="tier-feats">
-              <li><span class="tc">✓</span><span>Everything in SRQ Care</span></li>
-              <li><span class="tc">✓</span><span>Contractor performance reviews</span></li>
-              <li><span class="tc">✓</span><span>Guest &amp; staff coordination</span></li>
-              <li><span class="tc">✓</span><span>Emergency dispatch authority</span></li>
-            </ul>
-          </div>
+          <div class="tier-col"><span class="tier-label">Essential</span><ul class="tier-feats"><li><span class="tc">✓</span><span>1 vendor coordination/month</span></li><li><span class="tc">✓</span><span>Scheduling &amp; access management</span></li></ul><span class="addon-tag">+ Extra: $65 member / $125 standalone</span></div>
+          <div class="tier-col"><span class="tier-label">Coastal</span><ul class="tier-feats"><li><span class="tc">✓</span><span>2 vendor coordinations/month</span></li><li><span class="tc">✓</span><span>Scheduling, access &amp; supervision</span></li><li><span class="tc">✓</span><span>Follow-up report provided</span></li></ul><span class="addon-tag">+ Extra: $65 member / $125 standalone</span></div>
+          <div class="tier-col dark"><span class="tier-label">SRQ Care &amp; Above</span><ul class="tier-feats"><li><span class="tc">✓</span><span>Unlimited vendor coordinations</span></li><li><span class="tc">✓</span><span>On-site supervision included</span></li><li><span class="tc">✓</span><span>Contractor quality follow-up</span></li><li><span class="tc">✓</span><span>Vendor scheduling calendar</span></li></ul></div>
+          <div class="tier-col"><span class="tier-label">Estate Care &amp; Above</span><ul class="tier-feats"><li><span class="tc">✓</span><span>Everything in SRQ Care</span></li><li><span class="tc">✓</span><span>Contractor performance reviews</span></li><li><span class="tc">✓</span><span>Guest &amp; staff coordination</span></li><li><span class="tc">✓</span><span>Emergency dispatch authority</span></li></ul></div>
         </div>
       </div>
-
-      <!-- SMART HOME -->
       <div class="service-block">
-        <div class="service-header">
-          <div class="service-icon-lg">📱</div>
-          <div>
-            <h2>Smart Home Monitoring &amp; Integration</h2>
-            <p>Your smart home systems, alarms, cameras, and sensors are only useful if someone is watching them. We integrate smart home monitoring into all plans — catching alerts, responding to issues, and keeping your technology working properly.</p>
-          </div>
-        </div>
+        <div class="service-header"><div class="service-icon-lg">📱</div><div><h2>Smart Home Monitoring &amp; Integration</h2><p>Your smart home systems, alarms, cameras, and sensors are only useful if someone is watching them. We integrate smart home monitoring into all plans — catching alerts and keeping your technology working.</p></div></div>
         <div class="tier-grid">
-          <div class="tier-col">
-            <span class="tier-label">Essential</span>
-            <ul class="tier-feats">
-              <li><span class="tc">✓</span><span>Alarm check during each visit</span></li>
-            </ul>
-            <span class="addon-tag">+ Smart home monitoring: $49 member / $99 standalone</span>
-          </div>
-          <div class="tier-col">
-            <span class="tier-label">Coastal &amp; Above</span>
-            <ul class="tier-feats">
-              <li><span class="tc">✓</span><span>Smart device check each visit</span></li>
-              <li><span class="tc">✓</span><span>Alarm &amp; camera system review</span></li>
-              <li><span class="tc">✓</span><span>Thermostat &amp; water sensor check</span></li>
-              <li><span class="tc">✓</span><span>Alert response coordination</span></li>
-            </ul>
-          </div>
-          <div class="tier-col dark">
-            <span class="tier-label">SRQ Care &amp; Above</span>
-            <ul class="tier-feats">
-              <li><span class="tc">✓</span><span>Full smart home monitoring</span></li>
-              <li><span class="tc">✓</span><span>Basic on-site troubleshooting</span></li>
-              <li><span class="tc">✓</span><span>Vendor coordination for tech issues</span></li>
-              <li><span class="tc">✓</span><span>Remote system support coordination</span></li>
-            </ul>
-          </div>
+          <div class="tier-col"><span class="tier-label">Essential</span><ul class="tier-feats"><li><span class="tc">✓</span><span>Alarm check during each visit</span></li></ul><span class="addon-tag">+ Smart home monitoring: $49 member / $99 standalone</span></div>
+          <div class="tier-col"><span class="tier-label">Coastal &amp; Above</span><ul class="tier-feats"><li><span class="tc">✓</span><span>Smart device check each visit</span></li><li><span class="tc">✓</span><span>Alarm &amp; camera system review</span></li><li><span class="tc">✓</span><span>Thermostat &amp; water sensor check</span></li><li><span class="tc">✓</span><span>Alert response coordination</span></li></ul></div>
+          <div class="tier-col dark"><span class="tier-label">SRQ Care &amp; Above</span><ul class="tier-feats"><li><span class="tc">✓</span><span>Full smart home monitoring</span></li><li><span class="tc">✓</span><span>Basic on-site troubleshooting</span></li><li><span class="tc">✓</span><span>Tech vendor coordination</span></li><li><span class="tc">✓</span><span>Remote system support</span></li></ul></div>
         </div>
       </div>
-
-      <!-- TRANSPORTATION -->
       <div class="service-block">
-        <div class="service-header">
-          <div class="service-icon-lg">🚗</div>
-          <div>
-            <h2>Transportation &amp; Airport Transfers</h2>
-            <p>Private, reliable, and professional transportation for all your Sarasota needs. Airport pickups and drop-offs, errands, medical appointments — handled with discretion, always on time.</p>
-          </div>
-        </div>
+        <div class="service-header"><div class="service-icon-lg">🚗</div><div><h2>Transportation &amp; Airport Transfers</h2><p>Private, reliable, and professional transportation for all your Sarasota needs — airport pickups, errands, medical appointments. Discreet and always on time.</p></div></div>
         <div class="tier-grid">
-          <div class="tier-col">
-            <span class="tier-label">All Plans (Add-On)</span>
-            <ul class="tier-feats">
-              <li><span class="tc">✓</span><span>SRQ / TPA airport transfers</span></li>
-              <li><span class="tc">✓</span><span>Local errands &amp; appointments</span></li>
-              <li><span class="tc">✓</span><span>Private, professional service</span></li>
-            </ul>
-            <span class="addon-tag">$65 member / $95 standalone per trip</span>
-          </div>
-          <div class="tier-col dark">
-            <span class="tier-label">SRQ Care</span>
-            <ul class="tier-feats">
-              <li><span class="tc">✓</span><span>Transportation coordination included</span></li>
-              <li><span class="tc">✓</span><span>Seamlessly scheduled with concierge</span></li>
-              <li><span class="tc">✓</span><span>Coordinated with arrival/departure</span></li>
-            </ul>
-          </div>
-          <div class="tier-col green">
-            <span class="tier-label">Sarasota Life</span>
-            <ul class="tier-feats">
-              <li><span class="tc">✓</span><span>Unlimited transportation included</span></li>
-              <li><span class="tc">✓</span><span>Full travel coordination</span></li>
-              <li><span class="tc">✓</span><span>Medical &amp; personal appointments</span></li>
-              <li><span class="tc">✓</span><span>Special event transportation</span></li>
-            </ul>
-          </div>
+          <div class="tier-col"><span class="tier-label">All Plans (Add-On)</span><ul class="tier-feats"><li><span class="tc">✓</span><span>SRQ / TPA airport transfers</span></li><li><span class="tc">✓</span><span>Local errands &amp; appointments</span></li><li><span class="tc">✓</span><span>Private, professional service</span></li></ul><span class="addon-tag">$65 member / $95 standalone per trip</span></div>
+          <div class="tier-col dark"><span class="tier-label">SRQ Care</span><ul class="tier-feats"><li><span class="tc">✓</span><span>Transportation coordination included</span></li><li><span class="tc">✓</span><span>Seamlessly scheduled with concierge</span></li><li><span class="tc">✓</span><span>Coordinated with arrivals/departures</span></li></ul></div>
+          <div class="tier-col green2"><span class="tier-label">Sarasota Life</span><ul class="tier-feats"><li><span class="tc">✓</span><span>Unlimited transportation included</span></li><li><span class="tc">✓</span><span>Full travel coordination</span></li><li><span class="tc">✓</span><span>Medical &amp; personal appointments</span></li><li><span class="tc">✓</span><span>Special event transportation</span></li></ul></div>
         </div>
       </div>
-
-      <!-- CONCIERGE -->
       <div class="service-block">
-        <div class="service-header">
-          <div class="service-icon-lg">🍽️</div>
-          <div>
-            <h2>Concierge &amp; Lifestyle Services</h2>
-            <p>Restaurant reservations, event tickets, grocery delivery, spa bookings, personal shopping — we handle the details of your Sarasota life so you can simply enjoy it. Available in SRQ Care and above, or as individual add-ons.</p>
-          </div>
-        </div>
+        <div class="service-header"><div class="service-icon-lg">🍽️</div><div><h2>Concierge &amp; Lifestyle Services</h2><p>Restaurant reservations, event tickets, grocery delivery, spa bookings, personal shopping — we handle the details of your Sarasota life so you can simply enjoy it. Available in SRQ Care and above, or as individual add-ons.</p></div></div>
         <div class="tier-grid">
-          <div class="tier-col">
-            <span class="tier-label">Essential &amp; Coastal</span>
-            <ul class="tier-feats">
-              <li><span class="tc">✓</span><span>Available as individual add-ons</span></li>
-            </ul>
-            <span class="addon-tag">$35 member / $75 standalone per booking</span>
-          </div>
-          <div class="tier-col dark">
-            <span class="tier-label">SRQ Care</span>
-            <ul class="tier-feats">
-              <li><span class="tc">✓</span><span>Restaurant reservations</span></li>
-              <li><span class="tc">✓</span><span>Event tickets &amp; curation</span></li>
-              <li><span class="tc">✓</span><span>Grocery delivery coordination</span></li>
-              <li><span class="tc">✓</span><span>Spa &amp; marina bookings</span></li>
-              <li><span class="tc">✓</span><span>All unlimited</span></li>
-            </ul>
-          </div>
-          <div class="tier-col">
-            <span class="tier-label">Estate Care</span>
-            <ul class="tier-feats">
-              <li><span class="tc">✓</span><span>All SRQ Care concierge</span></li>
-              <li><span class="tc">✓</span><span>Dedicated service coordination</span></li>
-              <li><span class="tc">✓</span><span>Secure mail &amp; package storage</span></li>
-            </ul>
-          </div>
-          <div class="tier-col green">
-            <span class="tier-label">Sarasota Life</span>
-            <ul class="tier-feats">
-              <li><span class="tc">✓</span><span>Full lifestyle management</span></li>
-              <li><span class="tc">✓</span><span>Personal shopping &amp; styling</span></li>
-              <li><span class="tc">✓</span><span>Medical &amp; errand coordination</span></li>
-              <li><span class="tc">✓</span><span>Seasonal home open &amp; close</span></li>
-              <li><span class="tc">✓</span><span>24/7 personal concierge line</span></li>
-            </ul>
-          </div>
+          <div class="tier-col"><span class="tier-label">Essential &amp; Coastal</span><ul class="tier-feats"><li><span class="tc">✓</span><span>Available as individual add-ons</span></li></ul><span class="addon-tag">$35 member / $75 standalone per booking</span></div>
+          <div class="tier-col dark"><span class="tier-label">SRQ Care</span><ul class="tier-feats"><li><span class="tc">✓</span><span>Restaurant reservations</span></li><li><span class="tc">✓</span><span>Event tickets &amp; curation</span></li><li><span class="tc">✓</span><span>Grocery delivery coordination</span></li><li><span class="tc">✓</span><span>Spa &amp; marina bookings</span></li><li><span class="tc">✓</span><span>All unlimited</span></li></ul></div>
+          <div class="tier-col"><span class="tier-label">Estate Care</span><ul class="tier-feats"><li><span class="tc">✓</span><span>All SRQ Care concierge</span></li><li><span class="tc">✓</span><span>Dedicated service coordination</span></li><li><span class="tc">✓</span><span>Secure mail &amp; package storage</span></li></ul></div>
+          <div class="tier-col green2"><span class="tier-label">Sarasota Life</span><ul class="tier-feats"><li><span class="tc">✓</span><span>Full lifestyle management</span></li><li><span class="tc">✓</span><span>Personal shopping &amp; styling</span></li><li><span class="tc">✓</span><span>Medical &amp; errand coordination</span></li><li><span class="tc">✓</span><span>Seasonal home open &amp; close</span></li><li><span class="tc">✓</span><span>24/7 personal concierge line</span></li></ul></div>
         </div>
       </div>
-
     </div>
   </section>
-
-  <section class="section bg-dark" style="text-align:center;">
+  <section class="section bg-dark" style="text-align:center">
     <div class="wrap">
       <span class="section-eyebrow">Ready to Begin</span>
       <h2 class="section-title">Protect Your Sarasota Property</h2>
-      <p class="section-sub" style="margin: 0 auto 2rem;">Choose a plan that fits your needs, or reach out to build a custom solution.</p>
-      <a href="pricing.html" class="btn btn-outline-w" style="margin-right:1rem;">View Membership Plans</a>
-      <a href="contact.html" class="btn btn-dark" style="background:var(--white); color:var(--black);">Contact Us</a>
+      <p class="section-sub" style="margin:0 auto 2rem">Choose a plan that fits your needs, or reach out to build a custom solution.</p>
+      <a href="pricing.html" class="btn btn-outline-w" style="margin-right:1rem">View Membership Plans</a>
+      <a href="contact.html" class="btn" style="background:var(--white);color:var(--black)">Contact Us</a>
     </div>
   </section>
-
   <footer>
     <div class="footer-brand">SRQ Home Guardian &amp; Concierge</div>
     <div>Sarasota · Longboat Key · Siesta Key · Casey Key</div>
-    <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="realtors.html">Realtors</a>
-      <a href="contact.html">Contact</a>
-    </div>
+    <div class="footer-links"><a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="realtors.html">Realtors</a><a href="contact.html">Contact</a></div>
   </footer>
 </body>
 </html>
